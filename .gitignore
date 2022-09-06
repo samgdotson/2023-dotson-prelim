@@ -21,3 +21,5 @@
 *.lof 
 *.fdb_latexmk
 *.DS_Store
+*.bcf
+*.run.xml
