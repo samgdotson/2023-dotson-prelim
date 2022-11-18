@@ -1,0 +1,18 @@
+Data summary for Osier simulations
+
+11/14/22 (files without a date)
+
+- The results for this simulation are pretty good, however the total system cost is significantly higher than Temoa's. This is
+because Temoa truncates annual payments at the end of the simulation. In this case, the undiscounted objective for a single year
+is essentially the same as dividing by the average technology lifetime (I made all technology lifetimes 25 years). 
+
+11/15/22
+
+- I modified the capital cost calculation by dividing the average technology lifetime (25 years). Another successful run! The
+least cost simulations were much more consistent with the value from Temoa. In fact, it looks like the (cost, co2) pair 
+lies along the pareto front! However, the co2 values are a bit strange... I think the specific co2 (co2 / energy) were given in kg/GWh?
+Since I don't trust these values, I want to run it again.
+
+11/16/22 
+
+- The data are modified again. Now the CO2 values are in units of Million metric tons per GWh (confirmed by unyt).
