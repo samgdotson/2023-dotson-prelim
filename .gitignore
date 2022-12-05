@@ -23,7 +23,3 @@
 *.DS_Store
 *.bcf
 *.run.xml
-
-
-__pycache__/
-.ipynb_checkpoints/
