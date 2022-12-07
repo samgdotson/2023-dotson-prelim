@@ -1,0 +1,15 @@
+\section{Economic Dispatch}
+
+Economic dispatch models optimize the hourly power output of \textit{dispatchable} 
+generators in a model system \cite{de_queiroz_repurposing_2019,neumann_near-optimal_2021}.
+As shown in the previous section, there are many frameworks and tools that calculate 
+economic dispatch using linear (LP) or mixed-integer linear programming (MILP). They all
+share the same fundamental formulation.
+
+\begin{align}
+    \intertext{Minimize}
+    &F(x),\\
+    \intertext{subject to,}
+    &g(x, p) \leq 0.\\
+    x \in \vec{X}
+\end{align}
