@@ -16,3 +16,11 @@ Since I don't trust these values, I want to run it again.
 11/16/22 
 
 - The data are modified again. Now the CO2 values are in units of Million metric tons per GWh (confirmed by unyt).
+
+12-11-22
+
+- This run used the USNGA-3 algorithm, and ran for 4 days (103 hours). 
+- There are known issues with this version. Primarily with the value of lost load -- which was set way too high
+(due to my failure to convert units). Thus, the most expensive result has a total cost of ~1e8 million dollars.
+Which is utterly nonsensical. The demand is in GWh, power is in GW. I need to make sure that the data are all 
+in the correct units.
