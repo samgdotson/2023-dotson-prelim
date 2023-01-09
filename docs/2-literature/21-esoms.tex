@@ -1,0 +1,52 @@
+\section{Modeling Energy Systems}
+
+Energy systems are spatially, temporally, and topologically complex ‘machines’
+that operate cohesively to supply energy where it is needed at the exact moment
+it is needed. Beyond the physical and engineering aspects of energy systems is a 
+social context that motivates choices at every layer of complexity 
+\cite{dotson_influence_2022}. \Acfp{esom} therefore have several possible purposes such as forecasting future quantities, generating insight for policy development, or energy system planning for scheduling and acquisition \cite{decarolis_using_2011, yue_review_2018}.
+\textcolor{red}{SIREN \cite{sustainable_energy_now_renewable_2016} can actually do multi-objective optimization with a GUI. It's not as flexible as mine will be, but it \textit{can} do it.}
+
+\textcolor{red}{EnergyScope is \textit{suitable} for uncertainty analysis (i.e. many runs are computationally tractable) but does not have any built-in capabilities \cite{limpens_energyscope_2019}.}
+
+\begin{table}
+    \centering
+    \caption{Summary of \ac{esom} frameworks.}
+    \label{tab:esoms}
+    \resizebox*{\textwidth}{0.95\textheight}{\input{tables/esom_database.tex}}
+\end{table}
+
+
+
+These papers assume inelastic electricity demand
+\begin{enumerate}
+    \item Hueberger et al. 2017 \cite{heuberger_power_2017}
+\end{enumerate}
+
+These papers allow elastic electricity demand
+\begin{enumerate}
+    \item Leuthold et al. 2008 \cite{leuthold_elmod_2008}
+\end{enumerate}
+
+\begin{itemize}
+    \item METIS has the following motivation \cite{sakellaris_metis_2018}
+    \begin{enumerate}
+        \item Close the gap between modellers and policy-makers, enabling policy-makers to become modellers.
+        \item reconciles user-friendliness with powerful capabilities
+        \item modularity
+        \item \textcolor{red}{METIS does not support multi-objective optimization!}    
+    \end{enumerate}
+    \item energyRt has similar motivations \cite{lugovoy_energyrt_2022}.
+    \begin{enumerate}
+        \item enhance reproducibility
+        \item reduce the learning curve
+        \item minimize model development time
+    \end{enumerate}
+    \item GENESYS cannot \sout{can} do multi-objective optimization \cite{bussar_optimal_2014}. It uses a logical flow to model dispatch behavior for a genetic algorithm!
+    \begin{enumerate}
+        \item One drawback of the "hierarchical system management" method (i.e. a logical flow chart) is the difficulty to model ramping rates... (test this).
+    \end{enumerate}
+\end{itemize}
+
+Some models such as MEDEAS \cite{capellan-perez_medeas_2020} and MultiMod \cite{huppmann_market_2014} are general equilibrium models which embed energy
+systems within the macro-economy and facilitate modeling of strategic behavior 

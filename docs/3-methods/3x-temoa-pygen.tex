@@ -1,0 +1,35 @@
+\section{\acs{temoa} and \acs{pygen}}
+\label{section:temoa}
+
+This thesis uses the tools \ac{temoa} and \ac{pygen} 
+to establish benchmark results for a typical \acp{esom}.
+\ac{temoa} is an open-source \ac{esom} developed at North
+Carolina State University that uses \ac{milp} to develop
+capacity-expansion scenarios \cite{decarolis_temoa_2010}. The 
+key benefits of \ac{temoa} are its open-source code, open data, 
+and built-in uncertainty analysis capabilities. These features 
+address the need for greater transparency in \ac{esom} modeling 
+and robust assessment of future uncertainties \cite{hunter_modeling_2013, fattahi_systemic_2020}.
+
+A single \ac{temoa} run minimizes total system cost \cite{decarolis_temoa_2010},
+
+\begin{align}
+  C_{total} &= C_{loans} + C_{fixed} + C_{variable}
+  \intertext{where}
+  C_{loans} &= \text{the sum of all investment loan costs},\nonumber\\
+  C_{fixed} &= \text{the sum of all fixed operating costs},\nonumber\\
+  C_{variable} &= \text{the sum of all variable operating costs}.\nonumber
+\end{align}
+
+Each of these terms is amortized over the model time horizon. The decision 
+variables include the generation from each technology at time, $t$, along with 
+the capacity of each technology in
+year, $y$. The dispatch model deviates slightly from the model described in 
+Section \ref{section:dispatch} by making the initial storage level for energy
+storage technologies a decision variable, whereas the dispatch model used in this 
+thesis does not optimize initial storage and assumes energy storage starts at zero. 
+The detailed formulation of \ac{temoa}'s constraints and equations are available 
+online \cite{decarolis_temoa_2010} (\textcolor{red}{maybe in an appendix?}). 
+\ac{temoa}'s built-in method for uncertainty analysis is the \ac{hsj} formulation of
+\ac{mga}. This algorithm is designed to handle \textit{structural} uncertainty which 
+assumes unmodeled objectives.

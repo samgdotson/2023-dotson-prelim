@@ -1,100 +1,102 @@
-\begin{tabular}{llllrl}
+\begin{tabular}{lllll*{8}{c}rc}
 \toprule
- &  Citation  &  math model type  &  Objective  & Method &  model source public  \\
-Model  &  &  &  &  &  \\
+Model &   Citation   &   math model type   &  MILP  &   Objective   & Transmission & \multicolumn{3}{c}{Sector}& Investment & Physical & Forecasting & Agent  &  Uncertainty& Public  \\ 
+&  & & & & & Heat & Electric & Transport & Optimization & Models & & Based& Analysis& Code \\
+% Model  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
 \midrule
-% JMM  &  -  &  -  &  -  & nan &  false   \\
-% PowerMatcher  &  -  &  -  &  -  & nan &  true   \\
-% USENSYS  &  Cost  &  Optimization  &  -  & nan &  true   \\
-GAMAMOD-DE  &  \cite{hauser_modelling_2019}  &  Optimization  &  Cost  & nan &  false   \\
-% GAMAMOD  &  -  &  Optimization   &  -  & nan &  false   \\
-% NEMO (SEI)  &  Minimize total discounted costs  &  Optimization   &  In preparation  & nan &  true   \\
-% OMEGAlpes  &  -  &  Optimization   &  -  & nan &  true   \\
-% PowerSimulations.jl  &  Least Cost  &  Optimization   &  -  & nan &  true   \\
-% Region4FLEX  &  -  &  Optimization   &  -  & nan &  false   \\
-% TIMES Évora  &  Minimise total discounted cost of the energy system  &  Optimization   &  -  & nan &  true   \\
-% TIMES-PT  &  Minimise total discounted cost of the energy system  &  Optimization   &  -  & nan &  true   \\
-AnyMOD   &  \cite{goke_graph-based_2021}  &  Optimization   &  Cost  & nan &  true   \\
-Backbone   &  \cite{helisto_backboneadaptable_2019}  &  Optimization   &  Cost  & nan &  true   \\
-Balmorel   &  \cite{goransson_cost-optimized_2013}  &  Optimization   &  Cost  & nan &  true   \\
-Calliope   &  \cite{pfenninger_calliope_2018}  &  Optimization   &  Cost  & nan &  true   \\
-CapacityExpansion   &  \cite{kuepper_capacityexpansion_2020}  &  Optimization   &  Cost  & nan &  true   \\
-DIETER   &  \cite{zerrahn_long-run_2017}  &  Optimization   &  Cost  & nan &  true   \\
-Dispa-SET  &  \cite{quoilin_modelling_2017}  &  Optimization   &  Cost  & nan &  true   \\
-ELMOD   &  \cite{leuthold_elmod_2008}  &  Optimization   &  Welfare  & nan &  true   \\
-ELTRAMOD   &  \cite{ladwig_demand_2018}  &  Optimization   &  Cost  & nan &  false   \\
-EMMA   &  \cite{hirth_european_2021}  &  Optimization   &  Cost  & nan &  true   \\
-ENSYSI   &  \cite{limpens_energyscope_2019} &  Optimization   &  Cost  & nan &  true   \\
-ESME   &  \cite{heaton_modelling_2014}  &  Optimization   &  Cost  & nan &  false   \\
-ESO-X  &  \cite{heuberger_power_2017}  &  Optimization   &  Cost  & nan &  true   \\
-EnergyPLAN   &  \cite{lund_energyplan_2021} &  Optimization   &  Cost  & nan &  false  \\
-EnergyRt   &  \cite{lugovoy_energyrt_2022}  &  Optimization   &  Cost  & nan &  true   \\
-EnergyScope  &  \cite{limpens_energyscope_2019}  &  Optimization   &  Cost, \acs{ghg}  & nan &  true   \\
-Ficus   & \cite{atabay_open-source_2017}  &  Optimization   &  Cost  & nan &  true   \\
-GRIMSEL-FLEX  &  \cite{rinaldi_what_2022}  &  Optimization   &  Cost  & nan &  true   \\
-GenX   &  \cite{jenkins_genx_2022}  &  Optimization   &  Cost  & nan &  true   \\
-HighRES   &  \cite{zeyringer_designing_2018}  &  Optimization   &  Cost  & nan &  false   \\
-MARKAL   &  \cite{loulou_documentation_2004}  &  Optimization   &  Cost  & nan &  true   \\
-METIS   &  \cite{sakellaris_metis_2018}  &  Optimization   &  Cost  & nan &  true   \\
-Medea   &  \cite{wehrle_cost_2021}  &  Optimization   &  Cost  & nan &  true   \\
-OPERA   &  \cite{van_stralen_opera_2021}  &  Optimization   &  Cost  & nan &  true   \\
-OSeMOSYS   &  \cite{howells_osemosys_2011}  &  Optimization   &  Cost  & nan &  true   \\
-OnSSET   &  \cite{mentis_gis-based_2015}  &  Optimization   &  Cost  & nan &  true   \\
-PLEXOS   & \cite{deane_quantifying_2015}  &  Optimization   &  Cost  & nan &  true   \\
-POLES   &  \cite{vandyck_global_2016}   &  Optimization   &  Cost  & nan &  false   \\
-POMATO   &  \cite{weinhold_power_2021}   &  Optimization   &  Cost  & nan &  true   \\
-REMix   &  \cite{gils_integrated_2017}  &  Optimization   &  Cost  & nan &  true   \\
-REopt   &  \cite{simpkins_reopt_nodate}  &  Optimization   &  Cost  & nan &  true   \\
-SMS   &  \cite{the_sms_team_sms_2022}  &  Optimization   &  Cost  & nan &  true   \\
-StELMOD   &  \cite{abrell_integrating_2015}  &  Optimization   &  Cost  & nan &  true   \\
-Switch   &  \cite{johnston_switch_2019}  &  Optimization   &  Cost  & nan &  true   \\
-TIMES   &  \cite{loulou_documentation_2016}  &  Optimization   &  Cost  & nan &  true   \\
-Temoa   &  \cite{hunter_modeling_2013}  &  Optimization   &  Cost  & nan &  true   \\
-URBS   &  \cite{dorfner_open_2015}  &  Optimization   &  Cost  & nan &  true   \\
-% DynPP  &  operation, cost, emissions, thermal stress  &  Optimization  and Simulation   &  Modelling and simulation of a coal-fired power plant for start-up optimisation  & nan &  false   \\
-% EA-PSM Electric Arc Flash  &  -  &  Optimization  and Simulation   &  -  & nan &  false   \\
-% EA-PSM Electric Short Circuit  &  -  &  Optimization  and Simulation   &  -  & nan &  false   \\
-% NEMO  &  minimise average cost of electricity  &  Optimization  and Simulation   &  -  & nan &  true   \\
-Breakthrough Energy Model  &  \cite{xu_us_2020}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-EOLES elec  &  \cite{shirizadeh_how_2022}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-FlexiGIS   &  \cite{alhamwi_gis-based_2017}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-Genesys   &  \cite{bussar_optimal_2014}  &  Optimization  and Simulation   &  Cost  & nan &  false   \\
-GridCal   &  \cite{vera_gridcal_2022}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-Oemof   &  \cite{hilpert_open_2018}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-OpenTUMFlex   &  \cite{zade_quantifying_2020}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-PRIMES   &  \cite{antoniou_decision_1999}  &  Optimization  and Simulation   &  Cost  & nan &  false   \\
-PowNet   &  \cite{chowdhury_pownet_2020}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-PyPSA   &  \cite{brown_pypsa_2018}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-Renpass   &  \cite{frauke_wiese_renpass_2015}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-SimSEE   &  \cite{chaer_simulacion_2008}  &  Optimization  and Simulation   &  Cost  & nan &  true   \\
-% Maon  &  Economic welfare at electricity spot, electricity reserve, and emission markets in Europe  &  Optimization , Simulation  and Other   &  Ketov, Mihail (2019). "Marktsimulationen unter Berücksichtigung der Strom-Wärme-Sektorenkopplung", Print Production, Aachener Beiträge zur Energieversorgung, volume 189, PhD thesis, RWTH Aachen University.  & nan &  false   \\
-MEDEAS   &  \cite{capellan-perez_medeas_2020}  &  Other   &  -  & nan &  false   \\
-MultiMod   &  \cite{huppmann_market_2014}  &  Other   &  -  & nan &  false   \\
-NEMS   &  \cite{nalley_national_2019}  &  Other   &  -  & nan &  true   \\
-LoadProfileGenerator   &  \cite{pflugradt_modelling_2016}  &  Simulation  &  -  & nan &  true   \\
-% Energy Policy Simulator  &  -  &  Simulation   &  -  & nan &  true   \\
-% EnergyNumbers-Balancing  &  -  &  Simulation   &  -  & nan &  false   \\
-% PowerSimulationsDynamics.jl  &  -  &  Simulation   &  -  & nan &  true   \\
-% PowerSystems.jl  &  -  &  Simulation   &  -  & nan &  true   \\
-CAPOW   &  \cite{su_open_2020}  &  Simulation   &  Cost  & nan &  true   \\
-CESAR-P  &  \cite{leoniefierz_hues-platformcesar-p-core_2021}  &  Simulation   &  -  & nan &  false   \\
-DESSTinEE  &  \cite{bosmann_shape_2015}  &  Simulation   &  Usage forecast  & nan &  true   \\
-Demod  &  \cite{barsanti_socio-technical_2021}  &  Simulation   &  Usage forecast  & nan &  true   \\
-EMLab-Generation  &  \cite{richstein_cross-border_2014}  &  Simulation   &  -  & nan &  true   \\
-Energy Transition Model  &  \cite{quintel_etm_2022}  &  Simulation   &  -  & nan &  true   \\
-Pandapower   &  \cite{thurner_pandapower_2018}  &  Simulation   &  -  & nan &  true   \\
-Pvlib   &  \cite{holmgren_pvlib_2018}  &  Simulation   &  -  & nan &  true   \\
-PyLESA   &  \cite{lyden_pylesa_2021}  &  Simulation   &  Cost  & nan &  true   \\
-SAM  &  \cite{blair_system_2014}  &  Simulation   &  Usage forecast, Cost  & nan &  true   \\
-SciGRID power  &  \cite{matke_structure_2017}  &  Simulation   &  -  & nan &  true   \\
-SimSES   &  \cite{naumann_simses_2017}  &  Simulation   &  -  & nan &  true   \\
-TransiEnt   &  \cite{andresen_status_2015}  &  Simulation   &  -  & nan &  true   \\
-AMIRIS   &  \cite{nitsch_economic_2021}  &  Simulation  and Agent-based   &  -  & nan &  true   \\
-ASAM   &  \cite{glismann_ancillary_2021}  &  Simulation  and Agent-based   &  -  & nan &  true   \\
-Lemlab   &  \cite{zade_satisfying_2022}  &  Simulation  and Agent-based   &  -  & nan &  true   \\
-MOCES   &  \cite{exel_multi-domain_2015}  &  Simulation  and Agent-based   &  -  & nan &  false   \\
-Mosaik   &  \cite{ofenloch_mosaik_2022}  &  Simulation  and Agent-based   &  -  & nan &  true   \\
-% SIREN   &  \cite{sustainable_energy_now_renewable_2016}  &  Simulation  and Other   &  Cost  & nan &  true   \\
-% SciGRID gas  &  -  &  Simulation  and Other   &  -  & nan &  true   \\
+% JMM    &    -    &    -    &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% PowerMatcher    &    -    &    -    &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% USENSYS    &    Cost    &    Optimization    &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% GAMAMOD    &    -    &    Optimization     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% NEMO (SEI)    &    Minimize total discounted costs    &    Optimization     &   nan   &    In preparation    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% OMEGAlpes    &    -    &    Optimization     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% PowerSimulations.jl    &    Least Cost    &    Optimization     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% Region4FLEX    &    -    &    Optimization     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% TIMES Évora    &    Minimise total discounted cost of the energy system    &    Optimization     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% TIMES-PT    &    Minimise total discounted cost of the energy system    &    Optimization     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+AnyMOD     &    \cite{goke_graph-based_2021}    &    Optimization     &   \checkmark   &    Cost    &    &  \checkmark  &  \checkmark  &   &  \checkmark  &   &    &    & &    \checkmark     \\
+Backbone     &    \cite{helisto_backboneadaptable_2019}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &  \checkmark  &   & \acs{sp} &    \checkmark     \\
+Balmorel     &    \cite{goransson_cost-optimized_2013}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &    &  \checkmark  &   &  \checkmark  &   &   &    & &    \checkmark     \\
+Calliope     &    \cite{pfenninger_calliope_2018}    &    Optimization     &   \checkmark   &    Cost    &   &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & &    \checkmark     \\
+CapacityExpansion     &    \cite{kuepper_capacityexpansion_2020}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &    &  \checkmark  &   &  \checkmark  &    &    &    &  &    \checkmark     \\
+DIETER     &    \cite{zerrahn_long-run_2017}    &    Optimization     &   \checkmark   &    Cost    &   & \checkmark  & \checkmark  &   &  \checkmark  &   &   &   & &    \checkmark     \\
+Dispa-SET    &    \cite{quoilin_modelling_2017}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &   &  \checkmark  &   &  \checkmark  &   &   &   & &    \checkmark     \\
+ELMOD     &    \cite{leuthold_elmod_2008}    &    Optimization     &   \checkmark   &    Welfare    &  \checkmark  &   &  \checkmark  &   &  \checkmark &   &   &   & &    \checkmark     \\
+ELTRAMOD     &    \cite{ladwig_demand_2018}    &    Optimization     &   \checkmark   &    Cost    &   &   &  \checkmark  &   &  \checkmark  &   &   &   & &   \\
+EMMA     &    \cite{hirth_european_2021}    &    Optimization     &   \checkmark   &  Cost  &   &   &  \checkmark  &   &  \checkmark  &   &   &   & &    \checkmark     \\
+% ENSYSI     &    \cite{limpens_energyscope_2019}   &    Optimization     &   \checkmark   &    Cost    &  nan  &  \checkmark  &  \checkmark  &  \checkmark  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+EOLES elec    &    \cite{shirizadeh_how_2022}    &    Optimization &   \checkmark   &    Cost    &   &   &  \checkmark  &   &  \checkmark  &    &    &    & &    \checkmark     \\
+ESME     &    \cite{heaton_modelling_2014}    &    Optimization     &   \checkmark   &    Cost    &   &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & \acs{mc} &   \\
+ESO-X    &    \cite{heuberger_power_2017}    &    Optimization     &   \checkmark   &    Cost    &    &   &   \checkmark  &    &  \checkmark  &   & &   & &    \checkmark     \\
+EnergyRt     &    \cite{lugovoy_energyrt_2022}    &    Optimization     &   \checkmark   &    Cost    &   &   &  \checkmark  &   &  \checkmark  &   &   &   & &    \checkmark     \\
+EnergyScope    &    \cite{limpens_energyscope_2019}    &    Optimization     &   \checkmark   &    Cost, \acs{ghg}    &   &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & &    \checkmark     \\
+Ficus     &   \cite{atabay_open-source_2017}    &    Optimization     &   \checkmark   &    Cost    &   &   &  \checkmark  &   &  \checkmark  &   &   & & &    \checkmark     \\
+FlexiGIS     &    \cite{alhamwi_gis-based_2017}    &    Optimization     & \checkmark &    Cost    &   & \checkmark  & \checkmark  & \checkmark  &   &   &   &   & &    \checkmark     \\
+GAMAMOD-DE    &    \cite{hauser_modelling_2019}    &    Optimization    &   \checkmark   &    Cost    &    &   &  \checkmark  &   &  \checkmark  &   &   &   &  &   \\
+GenX     &    \cite{jenkins_genx_2022}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark   &    &  \checkmark  &   & \checkmark  &   &   & & \acs{mga}& \checkmark     \\
+GRIMSEL-FLEX    &    \cite{rinaldi_what_2022}    &    Optimization     &   \checkmark   &    Cost    &    &  \checkmark  &  \checkmark  &    &  \checkmark  &  \checkmark  &    &    & &    \checkmark     \\
+HighRES     &    \cite{zeyringer_designing_2018}    &    Optimization     &   \checkmark   &    Cost    &    &  \checkmark  &  \checkmark  &    &  \checkmark  &    &    &    & &   \\
+MARKAL     &    \cite{loulou_documentation_2004}    &    Optimization     &   \checkmark   &    Cost    &    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &    &    &    & \acs{mc}, \acs{sp} &    \checkmark     \\
+METIS     &    \cite{sakellaris_metis_2018}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &    &  \checkmark  &    &    &    & \acs{mc} &    \checkmark     \\
+Medea     &    \cite{wehrle_cost_2021}    &    Optimization     &   \checkmark   &    Cost    &   &   &  \checkmark  &    &  \checkmark  &   &   &   & &    \checkmark     \\
+Oemof     &    \cite{hilpert_open_2018}    &    Optimization  &   \checkmark   &    Cost    &    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &     &   &  &  &  \checkmark     \\
+OPERA     &    \cite{van_stralen_opera_2021}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &   &  \checkmark  &   &   &   & &    \checkmark     \\
+OSeMOSYS     &    \cite{howells_osemosys_2011}    &    Optimization     &   \checkmark   &    Cost    &    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &    &    &    & &    \checkmark     \\
+OnSSET     &    \cite{mentis_gis-based_2015}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &    &  \checkmark  &    &  \checkmark  &    &    &    & &    \checkmark     \\
+PLEXOS     &   \cite{deane_quantifying_2015}    &    Optimization     &   \checkmark   &    Cost    &   &   &  \checkmark  &   &  \checkmark  &   &   &   & \acs{mc} &   \\
+POLES     &    \cite{vandyck_global_2016}     &    Optimization     &   \checkmark   &    Cost    &   &   &  \checkmark  &   &  \checkmark  &   &   &   &  &   \\
+POMATO     &    \cite{weinhold_power_2021}     &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &   &    &   &   &   &  &    \checkmark     \\
+PRIMES     &    \cite{antoniou_decision_1999}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & &  \\
+PyPSA     &    \cite{brown_pypsa_2018}    &    Optimization  &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   & \acs{mga} &    \checkmark     \\
+REMix     &    \cite{gils_integrated_2017}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   &  &    \checkmark     \\
+REopt     &    \cite{simpkins_reopt_nodate}    &    Optimization     &   \checkmark   &    Cost    &   &  \checkmark  &  \checkmark  &   &  \checkmark  &   &   &   &  &    \checkmark     \\
+% SMS     &    \cite{the_sms_team_sms_2022}    &    Optimization     &   \checkmark   &    Cost    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+StELMOD     &    \cite{abrell_integrating_2015}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &   &  \checkmark  &   &  \checkmark  &   &   &   &  &    \checkmark     \\
+Switch     &    \cite{johnston_switch_2019}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   &  &    \checkmark     \\
+TIMES     &    \cite{loulou_documentation_2016}    &    Optimization     &   \checkmark   &    Cost, Welfare    &   & \checkmark  & \checkmark  &    & \checkmark  &    &    &    & \acs{sp} &    \checkmark     \\
+Temoa     &    \cite{hunter_modeling_2013}    &    Optimization     &   \checkmark   &    Cost    &   &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & \acs{mga}, \acs{mc}, \acs{sp} &    \checkmark     \\
+% &  &  &  &  &  &  &  &  &  &  &  &  & Monte Carlo &  \\
+URBS     &    \cite{dorfner_open_2015}    &    Optimization     &   \checkmark   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & &    \checkmark     \\
+% DynPP    &    operation, cost, emissions, thermal stress    &    Optimization  and Simulation     &   nan   &    Modelling and simulation of a coal-fired power plant for start-up optimisation    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% EA-PSM Electric Arc Flash    &    -    &    Optimization  and Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% EA-PSM Electric Short Circuit    &    -    &    Optimization  and Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% NEMO    &    minimise average cost of electricity    &    Optimization  and Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+Genesys     &    \cite{bussar_optimal_2014}    &    Optimization  and Simulation     &      &    Cost    &    &    &  \checkmark  &    &  \checkmark  &    &    &  &  &      \\
+OpenTUMFlex     &    \cite{zade_quantifying_2020}    &    Optimization  and Simulation     &   \checkmark   &    Cost    &   &  \checkmark  &  \checkmark&  \checkmark  &   &   &  \checkmark &   & &    \checkmark     \\
+PowNet     &    \cite{chowdhury_pownet_2020}    &    Optimization  and Simulation     &   \checkmark   &    Cost    &  \checkmark  &  &  \checkmark  &  &   &  \checkmark  &   &   & &    \checkmark     \\
+Renpass     &    \cite{frauke_wiese_renpass_2015}    &    Optimization  and Simulation     &    &    Cost    &    &    &  \checkmark&    &   &   &   &   & &    \checkmark     \\
+SimSEE     &    \cite{chaer_simulacion_2008}    &    Optimization  and Simulation     &      &    Cost    &    &    &  \checkmark  &    &    &  \checkmark  &    &    &  &    \checkmark     \\
+% Maon    &    Economic welfare at electricity spot, electricity reserve, and emission markets in Europe    &    Optimization , Simulation  and Other     &   nan   &    Ketov, Mihail (2019). "Marktsimulationen unter Berücksichtigung der Strom-Wärme-Sektorenkopplung", Print Production, Aachener Beiträge zur Energieversorgung, volume 189, PhD thesis, RWTH Aachen University.    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+MEDEAS     &    \cite{capellan-perez_medeas_2020}    &    Other     &    &    &   & \checkmark  & \checkmark  & \checkmark  &   & \checkmark  &   &   & \acs{mc} &  \checkmark    \\
+MultiMod     &    \cite{huppmann_market_2014}    &    Other     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+NEMS     &    \cite{nalley_national_2019}    &    Other     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% Energy Policy Simulator    &    -    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% EnergyNumbers-Balancing    &    -    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+% PowerSimulationsDynamics.jl    &    -    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% PowerSystems.jl    &    -    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+Breakthrough Energy Model    &    \cite{xu_us_2020}    & Simulation     &  & &  \checkmark  &   & \checkmark  &   &  \checkmark&   &   &   & &    \checkmark     \\
+CAPOW     &    \cite{su_open_2020}    &    Simulation     &   nan   &    Cost    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+CESAR-P    &    \cite{leoniefierz_hues-platformcesar-p-core_2021}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \xmark     \\
+DESSTinEE    &    \cite{bosmann_shape_2015}    &    Simulation     &   nan   &    Usage forecast    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+Demod    &    \cite{barsanti_socio-technical_2021}    &    Simulation     &   nan   &    Usage forecast    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+EMLab-Generation    &    \cite{richstein_cross-border_2014}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+EnergyPLAN     &    \cite{lund_energyplan_2021}   &    Simulation     &   &    Cost    &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &  \checkmark  &   &   &   & nan &     \\
+Energy Transition Model    &    \cite{quintel_etm_2022}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+GridCal     &    \cite{vera_gridcal_2022}    &    Simulation     &   &     &  \checkmark  &   &  \checkmark  &   &   &  \checkmark  &   &   & &    \checkmark     \\
+LoadProfileGenerator     &    \cite{pflugradt_modelling_2016}    &    Simulation    &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+Pandapower     &    \cite{thurner_pandapower_2018}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+Pvlib     &    \cite{holmgren_pvlib_2018}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+PyLESA     &    \cite{lyden_pylesa_2021}    &    Simulation     & &    Cost    &  \checkmark  &   &  \checkmark &  \checkmark  & &  \checkmark &   &   & &    \checkmark     \\
+SAM    &    \cite{blair_system_2014}    &    Simulation     &   nan   &    Usage forecast, Cost    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+SciGRID power    &    \cite{matke_structure_2017}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+SimSES     &    \cite{naumann_simses_2017}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+TransiEnt     &    \cite{andresen_status_2015}    &    Simulation     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+AMIRIS     &    \cite{nitsch_economic_2021}    &    Simulation  and Agent-based     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  \checkmark  & nan &    \checkmark     \\
+ASAM     &    \cite{glismann_ancillary_2021}    &    Simulation  and Agent-based     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  \checkmark  & nan &    \checkmark     \\
+Lemlab     &    \cite{zade_satisfying_2022}    &    Simulation  and Agent-based     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  \checkmark  & nan &    \checkmark     \\
+MOCES     &    \cite{exel_multi-domain_2015}    &    Simulation  and Agent-based     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  \checkmark  & nan &    \xmark     \\
+Mosaik     &    \cite{ofenloch_mosaik_2022}    &    Simulation  and Agent-based     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  \checkmark  & nan &    \checkmark     \\
+% SIREN     &    \cite{sustainable_energy_now_renewable_2016}    &    Simulation  and Other     &   nan   &    Cost    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
+% SciGRID gas    &    -    &    Simulation  and Other     &   nan   &    -    &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  &  nan  & nan &    \checkmark     \\
 \bottomrule
 \end{tabular}

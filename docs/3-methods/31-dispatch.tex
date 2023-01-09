@@ -1,0 +1,99 @@
+\section{Economic Dispatch}
+\label{section:dispatch}
+
+Economic dispatch models optimize the hourly power output of \textit{dispatchable} 
+generators in a model system \cite{de_queiroz_repurposing_2019,neumann_near-optimal_2021}.
+As shown in the previous chapter, there are many frameworks and tools
+that calculate economic dispatch using \ac{lp} or \ac{milp}. They all share the same fundamental
+formulation.
+\begin{align}
+    \intertext{Minimize}
+    &F(x) = \sum_i\sum_j{C_i x_j},\\
+    \intertext{subject to,}
+    &g(x, p) \leq 0.\nonumber\\
+    &x \in \vec{X}\nonumber\\
+    \intertext{where}
+    &\vec{X} \text{ is the set of decision variables,}\nonumber\\
+    & C_i \text{ is the \textit{i-th} cost,}\nonumber\\
+    & g \text{ is some linear inequality constraint.}
+\end{align}
+The objective for all economic dispatch models is to minimize total 
+cost. The universality of a cost-based objective function comes from the concept of 
+\textit{social welfare maximization}. This concept is illustrated in Figure \ref{fig:social-max}.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\columnwidth}{!}{\input{figures/social_max.pgf}}
+  \caption{Demonstration of ``social welfare maximization.'' Plot a) shows the total surplus when the price is at equilibrium. Plot b)
+  shows the total surplus when the price is artificially depressed.}
+  \label{fig:social-max}
+\end{figure}
+
+In microeconomics, social welfare is identical to the sum of consumer and producer surplus.
+Therefore social welfare is maximized when the sum of these two quantities is maximized. Figure 
+\ref{fig:social-max} shows this case on the left panel. However, if an economic policy capped
+the price of some product at a price lower than the equilibrium price then the consumer surplus
+expands, and the producer surplus contracts, as shown in the right panel of Figure \ref{fig:social-max}. 
+Nobody receives the ``lost surplus'' because suppliers do not produce more despite unmet demand 
+for the product because the price is capped. Typically, modeling tools consolidate the demand
+curve to a single value. This simplification is valid because demand for energy is highly 
+inelastic \cite{eia_price_2021, labandeira_meta-analysis_2017, csereklyei_price_2020}. Figure \ref{fig:inelastic} shows the impact of highly inelastic demand.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\columnwidth}{!}{\input{figures/elasticity.pgf}}
+  \caption{Demonstration of ``price elasticity.'' Plot a) shows a typical supply-demand curve where changes in price lead to proportional changes in demand. Plot b) shows an inelastic demand where consumption does not change proportionally with price.}
+  \label{fig:inelastic}
+\end{figure}
+
+For an elastic good supply and demand are in proportion with each other. An increase in the 
+supply leads to a proportional increase in demand via a reduced price, eventually returning to 
+an equilibrium price (shown in Figure \ref{fig:inelastic}a). However, as Figure 
+\ref{fig:inelastic}b demonstrates, an inelastic demand does not respond proportionally to 
+changes in price, such that consumers become ``price-takers,'' paying the price set by 
+producers. Since electricity demand is highly inelastic, economic dispatch models minimize the 
+cost of generating electricity. This is also the approach adopted in this thesis. The economic dispatch model minimizes the generation cost subject to physical constraints. The complete set of equations for the model is detailed below.
+\begin{align}
+    \intertext{Minimize: }
+    \label{eq:dispatch-objective}
+    &\left(\sum_t^T\sum_g^G \left[C_{g,t}^{fuel} + C_{g,t}^{vom}\right]x_{g,t}
+    \right)+\left(\sum_t^T\sum_g^S x_{g,t}c_{g,t}\pi\right)\\
+    \intertext{such that,}
+    \intertext{1. The generation meets demand, less the amount of energy stored or curtailed, 
+    within a user-specified tolerance (undersupply and oversupply),}
+    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\geq \left(1-\text{undersupply}\right)\text{D}_t\quad \forall \quad t \in T, S\subset G, \\
+    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\leq \left(1+\text{oversupply}\right)\text{D}_t \quad \forall \quad t \in T, S\subset G,
+    \intertext{2. A generator's production, $x_{g}$ does not exceed its capacity at any time, $t$}
+    x_{g,t} &\leq \textbf{CAP}_{g}\Delta \tau \quad \forall \quad g,t \in G,T
+    \intertext{3. A generator's ramping rate is never exceeded,}
+    \frac{x_{r,t} - x_{r,t-1}}{\Delta \tau} = \Delta P_{r,t} &\leq
+        \rho^{up}_g\textbf{CAP}_g\Delta\tau \quad \forall \quad r,t
+        \in R \subset G, T,\\
+    \frac{x_{r,t} - x_{r,t-1}}{\Delta \tau} = \Delta P_{r,t} &\leq
+        -\rho^{down}_g\textbf{CAP}_g\Delta\tau \quad \forall \quad r,t
+        \in R \subset G, T,
+    \intertext{4. Storage capacity for each storage technology is never exceeded}
+    \textbf{SOC}_{s,t} &\leq \textbf{CAP}^S_{s} \quad \forall \quad s,t \in S\subset G,T,
+    \intertext{5. Storage discharge cannot exceed stored energy.}
+    x_{s,t} &\leq \textbf{SOC}_{s,t} \quad \forall \quad s,t \in S\subset G,T,
+    \intertext{6. Storage charge rate cannot exceed unit capacity}
+    c_{s,t} &\leq \textbf{CAP}_{s}\Delta \tau \quad \forall \quad s,t \in S\subset G,T.
+    \intertext{Where,}
+    G &= \text{ the set of all generating technologies},\nonumber\\
+    R &= \text{ the set of all ramping technologies},\nonumber\\
+    S &= \text{ the set of all storage technologies},\nonumber\\
+    T &= \text{ the set of all time periods in the model},\nonumber\\
+    D_t &= \text{ the demand at each time period, \textit{t}},\nonumber\\
+    \textbf{CAP}_g &= \text{ the capacity of the \textit{g-th} technology}\quad \left[MW\right],\nonumber\\
+    \textbf{CAP}^S_g &= \text{ the storage capacity of the \textit{g-th} technology}\quad \left[MWh\right],\nonumber\\
+    \textbf{SOC}_{s,t} &= \text{ the state of charge of the \textit{g-th} technology at time \textit{t}}\quad \left[MWh\right]\nonumber,\\
+    \Delta\tau &= t_{i+1} - t_i \quad \forall \quad t_i \in T \quad \left[h\right],\nonumber\\
+    x_{g,t} &= \text{ the energy produced by generator, \textit{g}, at time, \textit{t}}\quad \left[MWh\right]\nonumber,\\
+    c_{s,t} &= \text{ the energy stored by storage technology, \textit{s}, at time, \textit{t}}\quad \left[MWh\right]\nonumber,\\
+    \rho_g &= \text{ the up/down ramp rate for technology, \textit{g}} \quad \left[-\right]\nonumber,\\
+    \pi &= \text{ A small penalty for simultaneous charging and discharging.}\nonumber
+\end{align}
+The second term in the objective function, Equation \ref{eq:dispatch-objective}, represents
+a small penalty to prevent the unphysical behavior of simultaneous charging and discharging
+from storage technologies. I used this approach because constraining this behavior requires a
+binary variable that makes the problem non-convex and therefore requires a more sophisticated solver. A small, but sufficiently large, $\pi$ will always nullify the penalty term. This dispatch model reflects the minimum physical constraints for an energy system without considering fine-scale operational details such as frequency control.

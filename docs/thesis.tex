@@ -5,13 +5,30 @@
 \usepackage{csquotes}
 \usepackage{microtype}
 \usepackage{amsmath,amsthm,amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
 \usepackage[bookmarksdepth=3,linktoc=all,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
 \usepackage[capitalize]{cleveref}
 \usepackage[style=ieee, backend=biber]{biblatex}
 
 \usepackage{lipsum}  % just for placeholder code
 
-\newcommand{\pygen}{\texttt{PyGenesys}}
+% \usepackage[acronym,toc]{glossaries}
+\setcounter{tocdepth}{2}
+\usepackage[printonlyused,withpage]{acronym}
+% \include{acros}
+
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{xltabular}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\graphicspath{figures/}
 
 % uncomment the below to show a grid on all pages
 % \usepackage[grid, gridunit=in, gridcolor=blue!40, subgridcolor=blue!20]{eso-pic}
@@ -75,41 +92,26 @@ process with me, always offering support and love.
 
 \chapter{List of Abbreviations}
 
-\begin{abbrevlist}
-\item[CA] Caffeine Addict.
-\item[CD] Coffee Drinker.
-\end{abbrevlist}
+\begin{acronym}
+\input{acros}
+\end{acronym}
 
-\chapter{List of Symbols}
+% \chapter{List of Symbols}
 
-\begin{symbollist}[0.7in]
-\item[$\tau$] Time taken to drink one cup of coffee.
-\item[$\mu$g] Micrograms (of caffeine, generally).
-\end{symbollist}
+% \begin{symbollist}[0.7in]
+% \item[$\tau$] Time taken to drink one cup of coffee.
+% \item[$\mu$g] Micrograms (of caffeine, generally).
+% \end{symbollist}
 
 \mainmatter
 
-\chapter{The first chapter}
-
-\section{A section}
-
-\lipsum[1-5]
-
-How does this relate to coffee? We direct the reader to Refs.~\cite{Trembly98,Childish07,Presso10}.
-
-Equations are numbered within chapters:
-\begin{align}
-    a
-    &= b + c \\
-    d
-    &= \frac{e}{f}.
-\end{align}
-
+\chapter{Motivation and Introduction}
 % input individual chapters files
 % \input{1-introduction}
 % \input{2-related}
-% \input{3-model}
-\input{4-methods/40-methods}
+
+\input{2-literature/20-literature}
+\input{3-methods/30-methods}
 
 \chapter{Conclusions}
 
