@@ -1,1 +1,105 @@
 \section{Genetic Algorithms and \acs{pymoo}}
+\label{section:genetic-algorithms}
+
+Rather than rely on \ac{lp} to model future capacity requirements, in this thesis, \acp{ga} assume the role of investment optimizer. \acp{ga} share a fundamental 
+algorithmic structure, which is \cite{blank_pymoo_2020}
+\begin{enumerate}
+    \item \textbf{Initialize} a starting population of $N_p$ individuals, where each 
+    individual has a set of ``genes'' that are randomly chosen from the bounds of the 
+    decision variables.
+    \item Each individual in the population is \textbf{evaluated} for ``fitness.'' 
+    \item The fittest, $N_f$ individuals ``survive'' and persist in the next generation.
+    \item A ``selection'' operator chooses among the surviving individuals to mate.
+    \item The parents are combined using a ``crossover'' operator, thereby filling the remaining $N_p - N_f$ individuals for the next generation.
+    \item The offspring are finally mutated with some probability, $\mu$, to improve
+    genetic diversity.
+\end{enumerate}
+\noindent
+Figure \ref{fig:genetic-alg} illustrates the flow of these steps applied to
+an energy systems model.
+
+\begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[node distance=1.7cm]
+                \tikzstyle{every node}=[font=\small]
+                \node (1) [lbblock] {\textbf{Create initial population\\ of capacity sets}};
+                \node (2) [lbblock, below of=1] {\textbf{Evaluate dispatch model and calculate objectives}};
+                \node (3) [lbblock, below of=2] {\textbf{Survival}}; 
+                \node (4) [lbblock, below of=3] {\textbf{Selection}};
+                \node (5) [lbblock, below of=4] {\textbf{Crossover}};
+                \node (6) [lbblock, below of=5] {\textbf{Mutation}};
+                \node (7) [lbblock, below of=6] {\textbf{Is the termination \\ criteria satisfied?}};
+                \node (8) [loblock, below of=7] {\textbf{Done}};
+                \draw [arrow] (1) -- (2);
+                \draw [arrow] (2) -- (3);
+                \draw [arrow] (3) -- (4);
+                \draw [arrow] (4) -- (5);
+                \draw [arrow] (5) -- (6);
+                \draw [arrow] (6) -- (7);
+                \draw [arrow] (7) -- (8);
+                \draw [arrow] (7) -- node[anchor=east] {yes} (8);
+                \draw [arrow] (7) -- ([shift={(0.5cm,0cm)}]7.east)-- node[anchor=west] {no} ([shift={(0.5cm,0cm)}]2.east)--(2);
+        \end{tikzpicture}
+        \caption{The basic flow of the \ac{ga} used in this thesis.}
+        \label{fig:genetic-alg}
+\end{figure}
+
+\subsection{Specific \Aclp{ga}}
+The variety of \acp{ga} comes from different types of operators being applied to 
+the selection, crossover, and mutation steps. Section \ref{section:moo-in-energy} 
+showed that \ac{nsga2} is a popular genetic algorithm choice. However, this algorithm
+performs poorly with greater than three objectives \cite{deb_fast_2002, seada_unified_2016}. In this thesis, I use a more modern algorithm, 
+\ac{unsga3}. \ac{unsga3} builds on its predecessors \ac{nsga2} and \ac{nsga3} by unifying
+efficient solutions of mono-, multi-, and many-objective problems in a single algorithm.
+
+
+\ac{nsga2} improves on the basic \ac{ga} by introducing a more sophisticated mating and 
+selection algorithms. Instead of random selection, the individuals are sorted by rank 
+(i.e. fitness) and crowding distance in binary tournament mating selection. The crowding 
+distance is simply the Manhattan distance between individuals. A greater crowding 
+distance is desirable to preserve diversity and since the extreme points are maximally 
+diverse they should always persist and are therefore assigned a crowding distance of 
+infinity \cite{deb_fast_2002}.
+
+The successor to \ac{nsga2}, \ac{nsga3}, enhances the many-objective capabilities of 
+the former by introducing reference directions. Reference directions are used for 
+initialization and the survival steps. In addition to fitness, individuals are chosen 
+based on their proximity to a reference line, thus ensuring population diversity which
+greatly important for many-objective problems. Since diversity is handled by reference
+directions, individuals are selected randomly for mating. References directions are 
+rays passing through uniformly spaced points on the unit simplex 
+\cite{seada_unified_2016, blank_generating_2021}. In this thesis, I use the Riesz s-
+Energy method described by Blank et al. to calculate these points for a problem with an 
+arbitrary number of objectives \cite{blank_generating_2021}. Figure \ref{fig:ref-dirs} 
+illustrates a set of initialized reference directions.
+
+\begin{figure}[h]
+  \centering
+  \resizebox{0.6\columnwidth}{!}{\input{figures/reference_directions.pgf}}
+  \caption{A set of reference directions for a three-objective problem.}
+  \label{fig:ref-dirs}
+\end{figure}
+
+\ac{nsga2} is useful for mono- and multi-objective functions while \ac{nsga3} is better
+for many-objective problems. \ac{unsga3} can handle any number of objectives by 
+introducing the binary tournament from \ac{nsga2} and reducing to the most efficient 
+algorithm for the problem at hand \cite{seada_unified_2016}. This thesis uses \ac{unsga3} due to its flexibility and efficiency.
+
+\subsection{Hyperparameter Tuning}
+Similar to other machine learning models, \acp{ga} have several hyperparameters that
+must be tuned for optimal behavior. These hyperparameters include probabilities for mutation, crossover, and selection, as well as the number of parents, number of offspring, and population size. Determining ideal hyperparameters is often 
+performed using either a grid search or random sampling \cite{bergstra_random_2012}. 
+This thesis adopts the approach from Blank and Deb \cite{blank_pymoo_2020} using
+a genetic algorithm to identify the ideal hyperparameters. A problem is converted into a single objective problem using the desired algorithm, and a second genetic algorithm drives the problem where the decision variables are hyperparameters of the desired algorithm.
+
+\subsection{\Acl{pymoo}}
+
+The \ac{esom} framework developed in this thesis is built on top of \ac{pymoo}. 
+\ac{pymoo} is an open-source library for \acp{ga} developed by the creators of 
+\ac{nsga2} and \ac{unsga3} \cite{blank_pymoo_2020}. This package implements several 
+\ac{ga} out-of-the-box and offers a set of visualization tools and hyperparameter 
+tuning.
+
+
+
+

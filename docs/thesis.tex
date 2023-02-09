@@ -27,8 +27,48 @@
 \usepackage{subcaption}
 \usepackage{graphics}
 \usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{xcolor}
 \graphicspath{figures/}
+
+
+\usetikzlibrary{positioning, arrows, decorations, shapes}
+\usetikzlibrary{shapes.geometric,arrows}
+\definecolor{illiniblue}{HTML}{B1C6E2}
+\definecolor{illiniorange}{HTML}{f8c2a2}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\tikzstyle{loblock} = [rectangle, draw, fill=illiniorange, 
+text width=15em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{lbblock} = [rectangle, draw, fill=illiniblue, 
+text width=15em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{oblock} = [rectangle, draw, fill=illiniorange, 
+text width=10em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{bblock} = [rectangle, draw, fill=illiniblue, 
+text width=10em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{bbblock} = [rectangle, draw, fill=illiniblue, 
+text width=1em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{boblock} = [rectangle, draw, fill=illiniorange, 
+text width=1em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{e72block} = [rectangle, fill=none, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{o72block} = [rectangle, draw, fill=illiniorange, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{p72block} = [rectangle, draw, fill=purple, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{g72block} = [rectangle, draw, fill=green, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{b72block} = [rectangle, draw, fill=illiniblue, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{e82block} = [rectangle, fill=none, 
+text width=8.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{e92block} = [rectangle, fill=none, 
+text width=9.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{b82block} = [rectangle, draw, fill=illiniblue, 
+text width=8em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{b223block} = [rectangle, draw, fill=illiniblue, 
+text width=22em, text centered, rounded corners, minimum height=3em]
 
 % uncomment the below to show a grid on all pages
 % \usepackage[grid, gridunit=in, gridcolor=blue!40, subgridcolor=blue!20]{eso-pic}
@@ -63,20 +103,15 @@ hundred doctoral students\ldots.
 \end{abstract}
 
 \begin{dedication}
-To Father and Mother.
+This thesis is dedicated to my parents, and to my 17 year-old self who would have never believed it possible.
 \end{dedication}
 
 \begin{acknowledgments}
-This project would not have been possible without the support of
-many people. Many thanks to my adviser, Lawrence T. Strongarm, who
-read my numerous revisions and helped make some sense of the
-confusion. Also thanks to my committee members, Reginald Bottoms,
-Karin Vegas, and Cindy Willy, who offered guidance and support.
-Thanks to the University of Illinois Graduate College for awarding
-me a Dissertation Completion Fellowship, providing me with the
-financial means to complete this project. And finally, thanks to
-my husband, parents, and numerous friends who endured this long
-process with me, always offering support and love.
+People to acknowledge
+\begin{itemize}
+    \item Denia Djoki\'c
+    \item Shannon Anderson
+\end{itemize}
 \end{acknowledgments}
 
 {
@@ -108,10 +143,9 @@ process with me, always offering support and love.
 \chapter{Motivation and Introduction}
 % input individual chapters files
 % \input{1-introduction}
-% \input{2-related}
 
 \input{2-literature/20-literature}
-\input{3-methods/30-methods}
+% \input{3-methods/30-methods}
 
 \chapter{Conclusions}
 
@@ -126,16 +160,16 @@ We conclude that graduate students like coffee.
 
 % the below lines are only needed if bibliography precedes appendices
 % uses https://tex.stackexchange.com/a/440212 to continue page numbering
-\clearpage
-\setcounter{counterforappendices}{\value{page}}
-\mainmatter
-\setcounter{page}{\value{counterforappendices}}
+% \clearpage
+% \setcounter{counterforappendices}{\value{page}}
+% \mainmatter
+% \setcounter{page}{\value{counterforappendices}}
 
-\appendix
+% \appendix
 
-\chapter{An appendix}
+% \chapter{An appendix}
 
-\lipsum[1-5]
+% \lipsum[1-5]
 
 % \input{Appendix.tex}
 

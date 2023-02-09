@@ -4,10 +4,57 @@ Energy systems are spatially, temporally, and topologically complex â€˜machinesâ
 that operate cohesively to supply energy where it is needed at the exact moment
 it is needed. Beyond the physical and engineering aspects of energy systems is a 
 social context that motivates choices at every layer of complexity 
-\cite{dotson_influence_2022}. \Acfp{esom} therefore have several possible purposes such as forecasting future quantities, generating insight for policy development, or energy system planning for scheduling and acquisition \cite{decarolis_using_2011, yue_review_2018}.
-\textcolor{red}{SIREN \cite{sustainable_energy_now_renewable_2016} can actually do multi-objective optimization with a GUI. It's not as flexible as mine will be, but it \textit{can} do it.}
+\cite{dotson_influence_2022}. \Acfp{esom} therefore have several possible purposes 
+such as forecasting future quantities, generating insight for policy development, or 
+energy system planning for scheduling and acquisition \cite{decarolis_using_2011, 
+yue_review_2018}. Table \ref{tab:esoms} summarizes the capabilities for a 
+comprehensive list of energy system analysis tools. These tools are approximately 
+sorted by mathematical formulation, e.g. explicit optimization or simulation. The 
+``\ac{milp}'' column indicates whether the framework uses a linear-programming 
+approach to optimize an objective function. The ``objective'' column specifies the 
+nature of the objective function if one exists. ``Cost'' objectives minimize total or 
+annual energy costs, while ``welfare'' maximizes social welfare. Some entries have more 
+than one objective listed. This means users may choose which objective to optimize. 
+None of the tools in Table \ref{tab:esoms} are designed to handle simultaneous 
+optimization (i.e. \ac{moo}). For those modeling frameworks that have an ``objective'' in 
+Table \ref{tab:esoms}, virtually all of them optimize system costs. EnergyScope is the 
+only exception to this, which allows users to optimize \ac{ghg} emissions. 
+\cite{limpens_energyscope_2019}. \textcolor{black}{The ``uncertainty'' column indicates 
+a feature to algorithmically generate model runs for testing either parametric or 
+structural uncertainties.  \textcolor{black}{For example, EnergyScope is \textit{suitable} for 
+uncertainty analysis (i.e. many runs are computationally tractable) but does not have any built-
+in capabilities \cite{limpens_energyscope_2019}.} Some tools, such as NEMS
+\cite{nalley_national_2019}, incorporate uncertainty into their calculations via 
+learning curves. However, these learning curves require assumptions about learning 
+factors and technological ``optimism'' --  which are themselves uncertain
+\cite{nalley_national_2019}.} Table \ref{tab:esoms} also indicates whether the tool is a 
+``public code.'' This simply means users can download and inspect the source code. Other 
+considerations for openness, such as licensing and development, vary among the listed 
+frameworks. \textcolor{black}{The other columns simply indicate the existence of particular 
+features rather than the relative maturity or sophistication of each feature.} 
 
-\textcolor{red}{EnergyScope is \textit{suitable} for uncertainty analysis (i.e. many runs are computationally tractable) but does not have any built-in capabilities \cite{limpens_energyscope_2019}.}
+Frameworks, such as MEDEAS \cite{capellan-perez_medeas_2020}, and MultiMod
+\cite{huppmann_market_2014}, are general equilibrium models which embed energy systems 
+within the macro-economy and facilitate the modeling of strategic behavior. The latter 
+formulates a non-linear problem with the Karush-Kuhn-Tucker optimality condition 
+\cite{huppmann_market_2014}, as opposed to more traditional linear programming methods. 
+Models of this type are helpful for analyzing the economy-wide influence of policies but 
+lack sufficient operational detail to be prescriptive for energy system planning.
+
+\textcolor{violet}{Agent-based models are useful for modeling the market behaviors of different actors, such as firms (which produce power), transmission operators, and consumers. The latter category is typically aggregated for tractability. Modeled behaviors include technology preferences \cite{anwar_modeling_2022, zade_quantifying_2020}, risk aversion \cite{anwar_modeling_2022}, financial characteristics \cite{anwar_modeling_2022, nitsch_economic_2021}, and information asymmetry among agents \cite{anwar_modeling_2022, nitsch_economic_2021}. Due to agent heterogeneity, agent-based models are considered useful for capturing social phenomena \cite{yue_review_2018,fattahi_systemic_2020}.}
+
+A further set of tools focus on simulating power flow and demand fluctuations. 
+\textcolor{black}{CAPOW \cite{su_open_2020} generates synthetic data with statistical 
+methods to explore uncertainties in energy dispatch and extreme demand events, but does 
+not include any investment optimization based on these uncertainties.}
+\textcolor{black}{CESAR-P, SAM, Demod, and DESSTinEE focus on modeling demand profiles
+\cite{leoniefierz_hues-platformcesar-p-core_2021,bosmann_shape_2015,barsanti_socio-technical_2021}. 
+CESAR-P models individual building demand for energy based on the physical parameters of 
+the building. However, it has no dispatch or investment optimization capabilities.} Other 
+tools such as Pandapower, GridCal, and SciGRID power model the infrastructure aspects of 
+electricity systems -- transmission and distribution -- rather than the optimal dispatch 
+of electricity producers \cite{thurner_pandapower_2018, vera_gridcal_2022,
+matke_structure_2017}.
 
 \begin{table}
     \centering
@@ -15,18 +62,6 @@ social context that motivates choices at every layer of complexity
     \label{tab:esoms}
     \resizebox*{\textwidth}{0.95\textheight}{\input{tables/esom_database.tex}}
 \end{table}
-
-
-
-These papers assume inelastic electricity demand
-\begin{enumerate}
-    \item Hueberger et al. 2017 \cite{heuberger_power_2017}
-\end{enumerate}
-
-These papers allow elastic electricity demand
-\begin{enumerate}
-    \item Leuthold et al. 2008 \cite{leuthold_elmod_2008}
-\end{enumerate}
 
 \begin{itemize}
     \item METIS has the following motivation \cite{sakellaris_metis_2018}
@@ -44,9 +79,125 @@ These papers allow elastic electricity demand
     \end{enumerate}
     \item GENESYS cannot \sout{can} do multi-objective optimization \cite{bussar_optimal_2014}. It uses a logical flow to model dispatch behavior for a genetic algorithm!
     \begin{enumerate}
-        \item One drawback of the "hierarchical system management" method (i.e. a logical flow chart) is the difficulty to model ramping rates... (test this).
+        \item One drawback of the "hierarchical system management" method (i.e. a logical flow chart) is the difficulty of modeling ramping rates... (test this).
     \end{enumerate}
 \end{itemize}
 
-Some models such as MEDEAS \cite{capellan-perez_medeas_2020} and MultiMod \cite{huppmann_market_2014} are general equilibrium models which embed energy
-systems within the macro-economy and facilitate modeling of strategic behavior 
+\subsection{Economic Dispatch and Social Welfare}
+\Ac{lp} or \ac{milp} are the dominant optimization approaches among the frameworks in 
+Table \ref{tab:esoms}. Economic dispatch models optimize the power output of 
+\textit{dispatchable} generators in a model system \cite{de_queiroz_repurposing_2019,
+neumann_near-optimal_2021}. They all share the same fundamental formulation.
+\begin{align}
+    \intertext{Minimize}
+    \label{eqn:generic_objective}
+    &F(x) = \sum_i C_i x_i\\
+    % &F(x) = \sum_t^T\left[\sum_i^{N_g}{C_i^g x_i} - \sum_j^{N_d}{C_j^d x_j}\right],\\
+    \intertext{subject to,}
+    % &\sum_i{x_i} - \sum_j{x_j} = 0\\
+    &g(x, p) \leq 0.\nonumber\\
+    &x \in \vec{X}\nonumber\\
+    \intertext{where}
+    &\vec{X} \text{ is the set of decision variables,}\nonumber\\
+    & C_i \text{ is the \textit{i-th} cost,}\nonumber\\
+    & g \text{ is some linear inequality constraint.}\nonumber
+\end{align}
+The exact formulation of Equation \ref{eqn:generic_objective} may vary slightly 
+across models, but the objective for most economic dispatch models is to minimize 
+total cost. The near universality of a cost-based objective function comes from 
+the concept of \textit{social welfare maximization}. This concept is illustrated 
+in Figure \ref{fig:social-max}.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\columnwidth}{!}{\input{figures/social_max.pgf}}
+  \caption{Demonstration of ``social welfare maximization.'' Plot a) shows the total surplus when the price is at equilibrium. Plot b)
+  shows the total surplus when the price is artificially depressed.}
+  \label{fig:social-max}
+\end{figure}
+
+In microeconomics, social welfare is identical to the sum of consumer and producer 
+surplus. Therefore social welfare is maximized when the sum of these two quantities is
+maximized. Figure \ref{fig:social-max} shows this case on the left panel. However, if an 
+economic policy capped the price of some product at a price lower than the equilibrium 
+price then the consumer surplus expands, and the producer surplus contracts, as shown in 
+the right panel of Figure \ref{fig:social-max}. Nobody receives the ``lost surplus'' 
+because suppliers do not produce more despite unmet demand for the product because the 
+price is capped. Typically, modeling tools consolidate the demand curve to a single 
+value. \textcolor{black}{In this case, social welfare maximization is approximated by 
+minimizing the total cost of energy \cite{richstein_cross-border_2014}}. This simplification 
+is valid because demand for energy is highly inelastic \cite{heuberger_power_2017,
+eia_price_2021, labandeira_meta-analysis_2017, csereklyei_price_2020}. Figure \ref{fig:inelastic}
+shows the impact of highly inelastic demand.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\columnwidth}{!}{\input{figures/elasticity.pgf}}
+  \caption{Demonstration of ``price elasticity.'' Plot a) shows a typical supply-demand curve where changes in price lead to proportional changes in demand. Plot b) shows an inelastic demand where consumption does not change proportionally with price.}
+  \label{fig:inelastic}
+\end{figure}
+
+For an elastic good supply and demand are in proportion with each other. An increase 
+in the supply leads to a proportional increase in demand via a reduced price, 
+eventually returning to an equilibrium price (shown in Figure \ref{fig:inelastic}a). 
+However, as Figure \ref{fig:inelastic}b demonstrates, an inelastic demand does not 
+respond proportionally to changes in price, such that consumers become ``price-
+takers,'' paying the price set by producers. Importantly, in the latter case 
+consumer surplus is infinite and minimizing the energy cost through policy 
+mechanisms does not create a lost surplus as shown in Figure \ref{fig:social-max}b. 
+Since electricity demand is highly inelastic, economic dispatch models minimize the 
+cost of generating electricity. \textcolor{black}{Although optimizing welfare, 
+rather than the total cost, is useful for disaggregating multiple demands for the 
+same commodity \cite{leuthold_elmod_2008}, this thesis adopts the former, simplified, approach 
+to economic dispatch.}
+
+\subsection{Accounting for Uncertainty}
+Due to the complexity of our energy system, handling uncertainty is one of the most 
+important features for \acp{esom} \cite{yue_review_2018,
+decarolis_using_2011}. There are broadly two types of uncertainties: parametric 
+and structural. The former method refers to uncertainty around the value of some 
+empirical quantity (e.g. price of fuel or the discount rate). In many cases, these 
+quantities are better represented by \textit{distributions} which may be sampled 
+using formal methods like \ac{mc} or \ac{pa} \cite{pfenninger_energy_2014, 
+yue_review_2018}. Deterministic codes such as TEMOA, TIMES, or ESME use these 
+techniques to generate many model runs. Another method for handling parametric 
+uncertainty is \ac{sp}, where parameters are replaced with non-linear risk 
+functions \cite{yue_review_2018, decarolis_multi-stage_2012}. Although parametric 
+uncertainty is important the analysis of uncertain values is not a focus of this 
+thesis.
+
+Structural uncertainty relates to \textit{unmodeled objectives} 
+\cite{yue_review_2018, decarolis_using_2011, decarolis_modelling_2016}. There are 
+few formal methods to address structural uncertainty due to its qualitative 
+nature. The most common approach to handling this type of uncertainty is using 
+\ac{mga} to probe the near-optimal decision space \cite{brill_mga_1990,
+jenkins_genx_2022, decarolis_using_2011, neumann_near-optimal_2021, 
+pfenninger_energy_2014}. DeCarolis wrote, ``[p]olicy-makers often have strong 
+concerns outside the scope of most models (e.g., political feasibility, permitting 
+and regulation, and timing of action), which implies that feasible, sub-optimal 
+solutions may be preferable for reasons that are difficult to quantify in energy 
+economy optimization models'' \cite{decarolis_using_2011}. Therefore, an ``optimal 
+solution'' may lie in the model's inferior space \cite{decarolis_using_2011}. 
+Section \ref{section:mga} details the implementation of \ac{mga}.
+\textcolor{red}{This perspective centers policy-makers as the beneficiaries of 
+modeling efforts. It also forces a high-level perspective where economics becomes 
+the overriding concern, when local municipalities may have a unique set of 
+interests, which may or may not include economics.}
+
+Another strategy to handle structural uncertainty is optimizing multiple objectives 
+simultaneously. However, some researchers dismissed this approach for the following 
+reasons \cite{decarolis_using_2011}:
+\begin{enumerate}
+    \item structural uncertainty will always exist, regardless of the number of 
+    modeled objectives;
+    \item traditional \ac{moo} enables the exploration of the Pareto-front, but not 
+    the near-optimal space;
+    \item analyzing tradeoffs for problems with many objectives is tedious.
+\end{enumerate}
+These critiques may explain the distinct lack of frameworks that apply \ac{moo} for 
+energy system problems. However, there are important benefits to \ac{moo}, and the
+lack of an energy system \textit{framework} to apply this technique is one of the
+gaps this thesis fulfills.
+
+
+

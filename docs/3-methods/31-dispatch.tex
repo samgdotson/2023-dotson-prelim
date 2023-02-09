@@ -1,58 +1,7 @@
 \section{Economic Dispatch}
 \label{section:dispatch}
 
-Economic dispatch models optimize the hourly power output of \textit{dispatchable} 
-generators in a model system \cite{de_queiroz_repurposing_2019,neumann_near-optimal_2021}.
-As shown in the previous chapter, there are many frameworks and tools
-that calculate economic dispatch using \ac{lp} or \ac{milp}. They all share the same fundamental
-formulation.
-\begin{align}
-    \intertext{Minimize}
-    &F(x) = \sum_i\sum_j{C_i x_j},\\
-    \intertext{subject to,}
-    &g(x, p) \leq 0.\nonumber\\
-    &x \in \vec{X}\nonumber\\
-    \intertext{where}
-    &\vec{X} \text{ is the set of decision variables,}\nonumber\\
-    & C_i \text{ is the \textit{i-th} cost,}\nonumber\\
-    & g \text{ is some linear inequality constraint.}
-\end{align}
-The objective for all economic dispatch models is to minimize total 
-cost. The universality of a cost-based objective function comes from the concept of 
-\textit{social welfare maximization}. This concept is illustrated in Figure \ref{fig:social-max}.
-
-\begin{figure}[H]
-  \centering
-  \resizebox{\columnwidth}{!}{\input{figures/social_max.pgf}}
-  \caption{Demonstration of ``social welfare maximization.'' Plot a) shows the total surplus when the price is at equilibrium. Plot b)
-  shows the total surplus when the price is artificially depressed.}
-  \label{fig:social-max}
-\end{figure}
-
-In microeconomics, social welfare is identical to the sum of consumer and producer surplus.
-Therefore social welfare is maximized when the sum of these two quantities is maximized. Figure 
-\ref{fig:social-max} shows this case on the left panel. However, if an economic policy capped
-the price of some product at a price lower than the equilibrium price then the consumer surplus
-expands, and the producer surplus contracts, as shown in the right panel of Figure \ref{fig:social-max}. 
-Nobody receives the ``lost surplus'' because suppliers do not produce more despite unmet demand 
-for the product because the price is capped. Typically, modeling tools consolidate the demand
-curve to a single value. This simplification is valid because demand for energy is highly 
-inelastic \cite{eia_price_2021, labandeira_meta-analysis_2017, csereklyei_price_2020}. Figure \ref{fig:inelastic} shows the impact of highly inelastic demand.
-
-\begin{figure}[H]
-  \centering
-  \resizebox{\columnwidth}{!}{\input{figures/elasticity.pgf}}
-  \caption{Demonstration of ``price elasticity.'' Plot a) shows a typical supply-demand curve where changes in price lead to proportional changes in demand. Plot b) shows an inelastic demand where consumption does not change proportionally with price.}
-  \label{fig:inelastic}
-\end{figure}
-
-For an elastic good supply and demand are in proportion with each other. An increase in the 
-supply leads to a proportional increase in demand via a reduced price, eventually returning to 
-an equilibrium price (shown in Figure \ref{fig:inelastic}a). However, as Figure 
-\ref{fig:inelastic}b demonstrates, an inelastic demand does not respond proportionally to 
-changes in price, such that consumers become ``price-takers,'' paying the price set by 
-producers. Since electricity demand is highly inelastic, economic dispatch models minimize the 
-cost of generating electricity. This is also the approach adopted in this thesis. The economic dispatch model minimizes the generation cost subject to physical constraints. The complete set of equations for the model is detailed below.
+ The economic dispatch model minimizes the generation cost subject to physical constraints but does not optimize capacity investments. The complete set of equations for the model is detailed below.
 \begin{align}
     \intertext{Minimize: }
     \label{eq:dispatch-objective}
@@ -94,6 +43,8 @@ cost of generating electricity. This is also the approach adopted in this thesis
     \pi &= \text{ A small penalty for simultaneous charging and discharging.}\nonumber
 \end{align}
 The second term in the objective function, Equation \ref{eq:dispatch-objective}, represents
-a small penalty to prevent the unphysical behavior of simultaneous charging and discharging
+a minor penalty to prevent the unphysical behavior of simultaneous charging and discharging
 from storage technologies. I used this approach because constraining this behavior requires a
-binary variable that makes the problem non-convex and therefore requires a more sophisticated solver. A small, but sufficiently large, $\pi$ will always nullify the penalty term. This dispatch model reflects the minimum physical constraints for an energy system without considering fine-scale operational details such as frequency control.
+binary variable that makes the problem non-convex and therefore requires a more sophisticated solver. A small but sufficiently large $\pi$ will always nullify the penalty term. This dispatch model reflects the minimum physical constraints for an energy system without considering fine-scale operational details such as frequency control. Equation \ref{eq:dispatch-objective} assumes that the retail cost for
+generating electricity is identical to the marginal cost of producing 
+electricity. 
