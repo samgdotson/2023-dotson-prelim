@@ -1,10 +1,6 @@
 \section{Modeling Energy Systems}
 
-Energy systems are spatially, temporally, and topologically complex ‘machines’
-that operate cohesively to supply energy where it is needed at the exact moment
-it is needed. Beyond the physical and engineering aspects of energy systems is a
-social context that motivates choices at every layer of complexity
-\cite{dotson_influence_2022}. \Acfp{esom} therefore have several possible
+\Acp{esom} have several possible
 purposes such as forecasting future quantities, generating insight for policy
 development, or energy system planning for scheduling and acquisition
 \cite{decarolis_using_2011, yue_review_2018}. Table \ref{tab:esoms} summarizes
@@ -77,31 +73,32 @@ and distribution -- rather than the optimal dispatch of electricity producers
     \resizebox*{\textwidth}{0.95\textheight}{\input{tables/esom_database.tex}}
 \end{table}
 
-\begin{itemize}
-    \item METIS has the following motivation \cite{sakellaris_metis_2018}
-    \begin{enumerate}
-        \item Close the gap between modellers and policy-makers, enabling
-        policy-makers to become modellers.
-        \item reconciles user-friendliness with powerful capabilities
-        \item modularity
-        \item \textcolor{red}{METIS does not support multi-objective
-        optimization!}    
-    \end{enumerate}
-    \item energyRt has similar motivations \cite{lugovoy_energyrt_2022}.
-    \begin{enumerate}
-        \item enhance reproducibility
-        \item reduce the learning curve
-        \item minimize model development time
-    \end{enumerate}
-    \item GENESYS cannot \sout{can} do multi-objective optimization
-    \cite{bussar_optimal_2014}. It uses a logical flow to model dispatch
-    behavior for a genetic algorithm!
-    \begin{enumerate}
-        \item One drawback of the "hierarchical system management" method (i.e.
-        a logical flow chart) is the difficulty of modeling ramping rates...
-        (test this).
-    \end{enumerate}
-\end{itemize}
+
+% \begin{itemize}
+%     \item METIS has the following motivation \cite{sakellaris_metis_2018}
+%     \begin{enumerate}
+%         \item Close the gap between modellers and policy-makers, enabling
+%         policy-makers to become modellers.
+%         \item reconciles user-friendliness with powerful capabilities
+%         \item modularity
+%         \item \textcolor{red}{METIS does not support multi-objective
+%         optimization!}    
+%     \end{enumerate}
+%     \item energyRt has similar motivations \cite{lugovoy_energyrt_2022}.
+%     \begin{enumerate}
+%         \item enhance reproducibility
+%         \item reduce the learning curve
+%         \item minimize model development time
+%     \end{enumerate}
+%     \item GENESYS cannot \sout{can} do multi-objective optimization
+%     \cite{bussar_optimal_2014}. It uses a logical flow to model dispatch
+%     behavior for a genetic algorithm!
+%     \begin{enumerate}
+%         \item One drawback of the "hierarchical system management" method (i.e.
+%         a logical flow chart) is the difficulty of modeling ramping rates...
+%         (test this).
+%     \end{enumerate}
+% \end{itemize}
 
 \subsection{Economic Dispatch and Social Welfare}
 \Ac{lp} or \ac{milp} are the dominant optimization approaches among the
