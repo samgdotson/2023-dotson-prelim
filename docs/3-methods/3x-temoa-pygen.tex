@@ -1,16 +1,19 @@
 \section{\acs{temoa} and \acs{pygen}}
 \label{section:temoa}
 
-This thesis uses the tools \ac{temoa} and \ac{pygen} 
-to establish benchmark results for a typical \acp{esom}.
-\ac{temoa} is an open-source \ac{esom} developed at North
-Carolina State University that uses \ac{milp} to develop
-capacity-expansion scenarios \cite{decarolis_temoa_2010}. The 
-key benefits of \ac{temoa} are its open-source code, open data, 
-and built-in uncertainty analysis capabilities. These features 
-address the need for greater transparency in \ac{esom} modeling 
-and robust assessment of future uncertainties \cite{hunter_modeling_2013, fattahi_systemic_2020}. \ac{pygen} is another open-source code that facilitates
-rapid development of \ac{temoa} models and enables sensitivity analyses using a templated approach \cite{dotson_influence_2022, dotson_python_2021}. These features of \ac{pygen} reduce the learning curve and the cost of producing unique models in \ac{temoa} \cite{dotson_influence_2022}.
+This thesis uses the tools \ac{temoa} and \ac{pygen} to establish benchmark
+results for a typical \acp{esom}. \ac{temoa} is an open-source \ac{esom}
+developed at North Carolina State University that uses \ac{milp} to develop
+capacity-expansion scenarios \cite{decarolis_temoa_2010}. The key benefits of
+\ac{temoa} are its open-source code, open data, and built-in uncertainty
+analysis capabilities. These features address the need for greater transparency
+in \ac{esom} modeling and robust assessment of future uncertainties
+\cite{hunter_modeling_2013, fattahi_systemic_2020}. \ac{pygen} is another
+open-source code that facilitates rapid development of \ac{temoa} models and
+enables sensitivity analyses using a templated approach
+\cite{dotson_influence_2022, dotson_python_2021}. These features of \ac{pygen}
+reduce the learning curve and the cost of producing unique models in \ac{temoa}
+\cite{dotson_influence_2022}.
 
 A single \ac{temoa} run minimizes total system cost \cite{decarolis_temoa_2010},
 
@@ -22,17 +25,25 @@ A single \ac{temoa} run minimizes total system cost \cite{decarolis_temoa_2010},
   C_{variable} &= \text{the sum of all variable operating costs}.\nonumber
 \end{align}
 
-Each of these terms is amortized over the model time horizon. The decision 
-variables include the generation from each technology at time, $t$, and 
-the capacity of each technology in year, $y$. The dispatch model deviates slightly from the model described in Section \ref{section:dispatch} by making the initial storage level for energy storage technologies a decision variable, whereas the dispatch model used in this thesis does not optimize initial storage and assumes energy storage starts at zero. The detailed formulation of \ac{temoa}'s constraints and equations are available online \cite{decarolis_temoa_2010} (\textcolor{red}{maybe in an appendix?}). 
-\subsection{\acl{mga}}
+Each of these terms is amortized over the model time horizon. The decision
+variables include the generation from each technology at time, $t$, and the
+capacity of each technology in year, $y$. The dispatch model deviates slightly
+from the model described in Section \ref{section:dispatch} by making the initial
+storage level for energy storage technologies a decision variable, whereas the
+dispatch model used in this thesis does not optimize initial storage and assumes
+energy storage starts at zero. The detailed formulation of \ac{temoa}'s
+constraints and equations are available online \cite{decarolis_temoa_2010}
+(\textcolor{red}{maybe in an appendix?}). \subsection{\acl{mga}}
 \label{section:mga}
-\ac{temoa}'s built-in method for uncertainty analysis is the \ac{hsj} formulation of \ac{mga}. This algorithm is designed to handle \textit{structural} uncertainty, which presumes to account for unmodeled objectives.
-The steps for \ac{hsj} are \cite{decarolis_using_2011, dotson_influence_2022}:
+\ac{temoa}'s built-in method for uncertainty analysis is the \ac{hsj}
+formulation of \ac{mga}. This algorithm is designed to handle
+\textit{structural} uncertainty, which presumes to account for unmodeled
+objectives. The steps for \ac{hsj} are \cite{decarolis_using_2011,
+dotson_influence_2022}:
 \begin{enumerate}
   \item obtain an optimal solution by any method,
-  \item add a user-specified amount of slack to the objective function value from the
-  first step,
+  \item add a user-specified amount of slack to the objective function value
+  from the first step,
   \item use the adjusted objective function value as an upper bound constraint,
   \item generate a new objective function that minimizes the sum of all decision
   variables,
@@ -54,4 +65,6 @@ The mathematical formulation of this algorithm is:
   X &= \text{the set of all feasible solutions}.\nonumber
 \end{align}
 This procedure results in a small set of maximally different solutions for
-modelers to interpret. In this way, \ac{mga} efficiently proposes alternatives that may capture unmodeled objectives, such as political expediency or social acceptance.
+modelers to interpret. In this way, \ac{mga} efficiently proposes alternatives
+that may capture unmodeled objectives, such as political expediency or social
+acceptance.
