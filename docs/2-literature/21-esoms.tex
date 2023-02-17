@@ -1,29 +1,30 @@
 \section{Modeling Energy Systems}
 
-\Acp{esom} have several possible
-purposes such as forecasting future quantities, generating insight for policy
-development, or energy system planning for scheduling and acquisition
-\cite{decarolis_using_2011, yue_review_2018}. Table \ref{tab:esoms} summarizes
-the capabilities for a comprehensive list of energy system analysis tools. These
-tools are approximately sorted by mathematical formulation, e.g. explicit
-optimization or simulation. The ``\ac{milp}'' column indicates whether the
-framework uses a linear-programming approach to optimize an objective function.
-The ``objective'' column specifies the nature of the objective function if one
-exists. ``Cost'' objectives minimize total or annual energy costs, while
-``welfare'' maximizes social welfare. Some entries have more than one objective
-listed. This means users may choose which objective to optimize. None of the
-tools in Table \ref{tab:esoms} are designed to handle simultaneous optimization
-(i.e. \ac{moo}). For those modeling frameworks that have an ``objective'' in
-Table \ref{tab:esoms}, virtually all of them optimize system costs. EnergyScope
-is the only exception to this, which allows users to optimize \ac{ghg}
-emissions. \cite{limpens_energyscope_2019}. \textcolor{black}{The
-``uncertainty'' column indicates a feature to algorithmically generate model
-runs for testing either parametric or structural uncertainties.
-\textcolor{black}{For example, EnergyScope is \textit{suitable} for uncertainty
-analysis (i.e. many runs are computationally tractable) but does not have any
-built- in capabilities \cite{limpens_energyscope_2019}.} Some tools, such as
-NEMS \cite{nalley_national_2019}, incorporate uncertainty into their
-calculations via learning curves. However, these learning curves require
+\Acp{esom} have several possible purposes such as forecasting future quantities,
+generating insight for policy development, or energy system planning for
+scheduling and acquisition \cite{decarolis_using_2011, yue_review_2018}.
+However, analyses using currently available \acp{esom} seldom consider the role
+of energy systems in creating and maintaining inequitable distributions of
+burdens. Table \ref{tab:esoms} summarizes the capabilities for a comprehensive
+list of energy system analysis tools. These tools are approximately sorted by
+mathematical formulation, e.g. explicit optimization or simulation. The
+``\ac{milp}'' column indicates whether the framework uses a linear-programming
+approach to optimize an objective function. The ``objective'' column specifies
+the nature of the objective function if one exists. ``Cost'' objectives minimize
+total or annual energy costs, while ``welfare'' maximizes social welfare. Some
+entries have more than one objective listed. This means users may choose which
+objective to optimize. None of the tools in Table \ref{tab:esoms} are designed
+to handle simultaneous optimization (i.e., \ac{moo}). For those modeling
+frameworks that have an ``objective'' in Table \ref{tab:esoms}, virtually all of
+them optimize system costs. EnergyScope is the only exception to this, which
+allows users to optimize \ac{ghg} emissions. \cite{limpens_energyscope_2019}.
+\textcolor{black}{The ``uncertainty'' column indicates a feature to
+algorithmically generate model runs for testing either parametric or structural
+uncertainties. \textcolor{black}{For example, EnergyScope is \textit{suitable}
+for uncertainty analysis (i.e., many runs are computationally tractable) but
+does not have any built- in capabilities \cite{limpens_energyscope_2019}.} Some
+tools, such as NEMS \cite{nalley_national_2019}, incorporate uncertainty into
+their calculations via learning curves. However, these learning curves require
 assumptions about learning factors and technological ``optimism'' --  which are
 themselves uncertain \cite{nalley_national_2019}.} Table \ref{tab:esoms} also
 indicates whether the tool is a ``public code.'' This simply means users can
@@ -41,7 +42,7 @@ linear programming methods. Models of this type are helpful for analyzing the
 economy-wide influence of policies but lack sufficient operational detail to be
 prescriptive for energy system planning.
 
-\textcolor{violet}{Agent-based models are useful for modeling the market
+\textcolor{black}{Agent-based models are useful for modeling the market
 behaviors of different actors, such as firms (which produce power), transmission
 operators, and consumers. The latter category is typically aggregated for
 tractability. Modeled behaviors include technology preferences
@@ -74,31 +75,21 @@ and distribution -- rather than the optimal dispatch of electricity producers
 \end{table}
 
 
-% \begin{itemize}
-%     \item METIS has the following motivation \cite{sakellaris_metis_2018}
-%     \begin{enumerate}
-%         \item Close the gap between modellers and policy-makers, enabling
-%         policy-makers to become modellers.
-%         \item reconciles user-friendliness with powerful capabilities
-%         \item modularity
-%         \item \textcolor{red}{METIS does not support multi-objective
-%         optimization!}    
-%     \end{enumerate}
-%     \item energyRt has similar motivations \cite{lugovoy_energyrt_2022}.
-%     \begin{enumerate}
-%         \item enhance reproducibility
-%         \item reduce the learning curve
-%         \item minimize model development time
-%     \end{enumerate}
-%     \item GENESYS cannot \sout{can} do multi-objective optimization
-%     \cite{bussar_optimal_2014}. It uses a logical flow to model dispatch
-%     behavior for a genetic algorithm!
-%     \begin{enumerate}
-%         \item One drawback of the "hierarchical system management" method (i.e.
-%         a logical flow chart) is the difficulty of modeling ramping rates...
-%         (test this).
-%     \end{enumerate}
-% \end{itemize}
+% \begin{itemize} \item METIS has the following motivation
+%     \cite{sakellaris_metis_2018} \begin{enumerate} \item Close the gap between
+%     modellers and policy-makers, enabling policy-makers to become modellers.
+%     \item reconciles user-friendliness with powerful capabilities \item
+%     modularity \item \textcolor{red}{METIS does not support multi-objective
+%     optimization!}    
+%     \end{enumerate} \item energyRt has similar motivations
+%     \cite{lugovoy_energyrt_2022}. \begin{enumerate} \item enhance
+%     reproducibility \item reduce the learning curve \item minimize model
+%     development time \end{enumerate} \item GENESYS cannot \sout{can} do
+%     multi-objective optimization \cite{bussar_optimal_2014}. It uses a logical
+%     flow to model dispatch behavior for a genetic algorithm! \begin{enumerate}
+%     \item One drawback of the "hierarchical system management" method (i.e. a
+%     logical flow chart) is the difficulty of modeling ramping rates... (test
+%     this). \end{enumerate} \end{itemize}
 
 \subsection{Economic Dispatch and Social Welfare}
 \Ac{lp} or \ac{milp} are the dominant optimization approaches among the
@@ -138,13 +129,13 @@ illustrated in Figure \ref{fig:social-max}.
 In microeconomics, social welfare is identical to the sum of consumer and
 producer surplus. Therefore social welfare is maximized when the sum of these
 two quantities is maximized. Figure \ref{fig:social-max} shows this case on the
-left panel. However, if an economic policy capped the price of some product at a
-price lower than the equilibrium price then the consumer surplus expands, and
-the producer surplus contracts, as shown in the right panel of Figure
-\ref{fig:social-max}. Nobody receives the ``lost surplus'' because suppliers do
-not produce more despite unmet demand for the product because the price is
-capped. Typically, modeling tools consolidate the demand curve to a single
-value. \textcolor{black}{In this case, social welfare maximization is
+left panel. However, suppose an economic policy capped the price of some product
+at a price lower than the equilibrium price. In that case, the consumer surplus
+expands, and the producer surplus contracts, as shown in the right panel of
+Figure \ref{fig:social-max}. Nobody receives the ``lost surplus'' because
+suppliers do not produce more despite unmet demand for the product because the
+price is capped. Typically, modeling tools consolidate the demand curve to a
+single value. \textcolor{black}{In this case, social welfare maximization is
 approximated by minimizing the total cost of energy
 \cite{richstein_cross-border_2014}}. This simplification is valid because demand
 for energy is highly inelastic \cite{heuberger_power_2017, eia_price_2021,
@@ -174,6 +165,7 @@ useful for disaggregating multiple demands for the same commodity
 to economic dispatch.}
 
 \subsection{Accounting for Uncertainty}
+\label{section:uncertainty}
 Due to the complexity of our energy system, handling uncertainty is one of the
 most important features for \acp{esom} \cite{yue_review_2018,
 decarolis_using_2011}. There are broadly two types of uncertainties: parametric
@@ -201,11 +193,11 @@ sub-optimal solutions may be preferable for reasons that are difficult to
 quantify in energy economy optimization models'' \cite{decarolis_using_2011}.
 Therefore, an ``optimal solution'' may lie in the model's inferior space
 \cite{decarolis_using_2011}. Section \ref{section:mga} details the
-implementation of \ac{mga}. \textcolor{red}{This perspective centers
-policy-makers as the beneficiaries of modeling efforts. It also forces a
-high-level perspective where economics becomes the overriding concern, when
-local municipalities may have a unique set of interests, which may or may not
-include economics.}
+implementation of \ac{mga}. \textcolor{black}{However, this approach still
+requires an objective function, and the sub-optimal space is still within some
+tolerance of the optimal value. Further, the solutions generated by \ac{mga}
+still admit bias from policy-makers and does not require users to consider the
+equity implications of these alternative solutions.} 
 
 Another strategy to handle structural uncertainty is optimizing multiple
 objectives simultaneously. However, some researchers dismissed this approach for

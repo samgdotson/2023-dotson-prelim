@@ -1,4 +1,4 @@
-\section{\Acl{moo} in Energy Systems}
+\section{\Acl{moo}}
 \label{section:moo-in-energy}
 A multi-objective problem may be formulated as
 \begin{align}
@@ -9,47 +9,40 @@ A multi-objective problem may be formulated as
 &x \in \vec{X}\nonumber
 \end{align}
 \noindent
-Where Equation \ref{eqn:generic_objective} had a single objective $F(x)$ to
-minimize, Equation \ref{eqn:generic-moop} has a \textit{set} of objectives,
-$\{F_i(x)\}$. Rather than identifying a global minimum point, the solution to
-Equation \ref{eqn:generic-moop} is a \textit{set} of non-dominated points along
-a non-inferior region called a Pareto-front. Each point on this frontier cannot
-improve one objective without making another objective worse, hence
-``non-dominated.'' Generally, for competing objectives, there will be an
-infeasible space that is not attainable by the given combination of objectives.
-For a minimization problem, the space above the Pareto-front is the sub-optimal
-feasible space. This is the space that \ac{mga} promises to search for a
-corresponding single-objective problem. Figure \ref{fig:truss-pareto}
-illustrates a set of solutions along a Pareto-front for an example problem from
-\ac{pymoo} \cite{blank_pymoo_2020,deb_omni-optimizer_2008}.
+Where Equation \ref{eqn:generic_objective} had a single objective $F(x)$ to 
+minimize, Equation \ref{eqn:generic-moop} has a \textit{set} of objectives, 
+$\{F_i(x)\}$. Rather than identifying a global minimum point, the solution to Equation 
+\ref{eqn:generic-moop} is a \textit{set} of non-dominated points along a non-inferior 
+region called a Pareto-front. Each point on this frontier cannot improve one 
+objective without making another objective worse, hence ``non-dominated.'' Generally, 
+for competing objectives, there will be an infeasible space that is not attainable by 
+the given combination of objectives. For a minimization problem, the space above the Pareto-front is the sub-optimal feasible space. This is the space that \ac{mga} promises to search for a corresponding single-objective problem. Figure \ref{fig:truss-pareto} illustrates a set of solutions along a Pareto-front for an example problem from \ac{pymoo} \cite{blank_pymoo_2020,deb_omni-optimizer_2008}.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.6\columnwidth}{!}{\input{figures/truss2d_pareto.pgf}} \caption{An
-  example \textit{convex} Pareto-front from \acs{pymoo} \cite{blank_pymoo_2020,
-  deb_omni-optimizer_2008}.}
+  % \resizebox{0.6\columnwidth}{!}{\input{figures/truss2d_pareto.pgf}}
+  \caption{An example \textit{convex} Pareto-front from \acs{pymoo} \cite{blank_pymoo_2020, deb_omni-optimizer_2008}.}
   \label{fig:truss-pareto}
 \end{figure}
 
- There are broadly two classes of \ac{moo} algorithms for solving Equation
-\ref{eqn:generic-moop}, \textit{scalarization} and \textit{population-based}
-\cite{gunantara_review_2018, emmerich_tutorial_2018}. Scalarization approaches
-map the multi-objective problem onto a set of single-objective problems using
-variation of parameters. In the \ac{ws} algorithm, the objectives are assigned
-weights, $w_i$, and the aggregated objective becomes
+ There are broadly two classes of \ac{moo} algorithms for solving Equation 
+\ref{eqn:generic-moop}, \textit{scalarization} and \textit{population-based} 
+\cite{gunantara_review_2018, emmerich_tutorial_2018}. Scalarization approaches map the 
+multi-objective problem onto a set of single-objective problems using variation of 
+parameters. In the \ac{ws} algorithm, the objectives are assigned weights, $w_i$,
+and the aggregated objective becomes
 \begin{align}
     \label{eqn:weighted-sum}
     \text{min}\quad J(x) = \sum_i w_i F_i(x)
 \end{align}
 \noindent
-subject to the same constraints as Equation \ref{eqn:generic_objective}
-\cite{gunantara_review_2018,emmerich_tutorial_2018}. These weights are varied in
-order to sample points along the Pareto-front. Alternatively, the \ac{ec}
-algorithm chooses one objective from $\{F_n\}$ to solve and converts the others
-into constraints, whose bounds are denoted by $\epsilon$. These bounds are
-varied until the desired number of points on the Pareto-front is reached
-\cite{gunantara_review_2018, emmerich_tutorial_2018}. This problem can be
-written as
+subject to the same constraints as Equation \ref{eqn:generic_objective} 
+\cite{gunantara_review_2018,emmerich_tutorial_2018}. These weights
+are varied in order to sample points along the Pareto-front. Alternatively, the \ac{ec}
+algorithm chooses one objective from $\{F_n\}$ to solve and converts the others into 
+constraints, whose bounds are denoted by $\epsilon$. These bounds are varied until the 
+desired number of points on the Pareto-front is reached \cite{gunantara_review_2018,
+emmerich_tutorial_2018}. This problem can be written as
 \begin{align}
 \label{eqn:epsilon-constraint}
     &\text{min}\quad F_1(x),
@@ -61,134 +54,102 @@ written as
 &x \in \vec{X}.\nonumber
 \end{align}
 \noindent
-The sub-problem, Equation \ref{eqn:epsilon-constraint}, must be repeated for
-each $\epsilon_i$.
+The sub-problem, Equation \ref{eqn:epsilon-constraint}, must be repeated for each 
+$\epsilon_i$.
 
-Scalarization is attractive due to its simplicity. However, this approach is
-sensitive to problem convexity. \ac{ws} will never be able to sample points in a
-concave region of the Pareto-front, and \ac{ec} will have poorly spaced samples
-along a concave region. Further, these algorithms can only sample points on the
-frontier, not the sub-optimal feasible space. Thus supporting the critique of
-using \ac{moo} for handling structural uncertainty \cite{decarolis_using_2011}.
-Fortunately, population-based algorithms, also called \textit{\ac{ga}} or
-\textit{evolutionary algorithms}, resolve some of these issues by solving
-Equation \ref{eqn:generic-moop} directly. \Acp{ga} are based on the principle of
-natural selection. In a \ac{ga}, such as \ac{nsga2}, an initial population is
-randomly generated using the problem's decision variables, the `fitness' of this
-population (i.e. performance on each objective) is calculated, then a new
-population is selected from the `fittest' (most optimal) individuals. This
-process continues until a convergence criterion is reached. The advantages of
-this method are
+Scalarization is attractive due to its simplicity. However, this approach is sensitive
+to problem convexity. \ac{ws} will never be able to sample points in a concave region 
+of the Pareto-front, and \ac{ec} will have poorly spaced samples along a concave 
+region. Further, these algorithms can only sample points on the frontier, not the 
+sub-optimal feasible space. Thus supporting the critique of using \ac{moo} for 
+handling structural uncertainty \cite{decarolis_using_2011}. Fortunately, 
+population-based algorithms, also called \textit{\ac{ga}} or \textit{evolutionary algorithms}, resolve some of these issues by solving Equation
+\ref{eqn:generic-moop} directly. \Acp{ga} are based on the principle of natural 
+selection. In a \ac{ga}, such as \ac{nsga2}, an initial population is randomly 
+generated using the problem's decision variables, the `fitness' of this population 
+(i.e., performance on each objective) is calculated, then a new population is selected 
+from the `fittest' (most optimal) individuals. This process continues until a 
+convergence criterion is reached. The advantages of this method are
 \begin{enumerate}
     \item a guaranteed solution, regardless of convexity,
-    \item no prior knowledge is required to initialize the problem, as with
-    \ac{ec},
-    \item greater diversity of solutions (i.e. spacing of points along the
-    Pareto-front),
-    \item the sub-optimal space is sampled through the iterative process (though
-    not uniformly).
+    \item no prior knowledge is required to initialize the problem, as with \ac{ec},
+    \item greater diversity of solutions (i.e., spacing of points along the Pareto-front),
+    \item the sub-optimal space is sampled through the iterative process (though not uniformly).
 \end{enumerate}
-Specifically, point four address one of the primary criticisms of using \ac{moo}
-to reduce structural uncertainty by obtaining points in the inferior region
-\cite{loughlin_genetic_2001,zechman_evolutionary_2004,
-zechman_evolutionary_2013}. An additional advantage of \acp{ga} is the ability
-to incorporate more physics and simulations into the optimization procedure than
-\ac{lp}, \ac{milp}, or scalarization allow \cite{loughlin_genetic_2001}. 
+Specifically, point four address one of the primary criticisms of using \ac{moo} to 
+reduce structural uncertainty by obtaining points in the inferior region \cite{loughlin_genetic_2001,zechman_evolutionary_2004, zechman_evolutionary_2013}. An additional advantage of \acp{ga} is the ability to incorporate more physics and simulations into the optimization procedure than \ac{lp}, \ac{milp}, or scalarization allow \cite{loughlin_genetic_2001}. 
 
-Previous work handled structural uncertainty using \ac{mga} which samples unique
-solutions from the sub-optimal space in a neighborhood around the global minimum
-for a single objective \cite{decarolis_using_2011}. Researchers argue that this
-approach is valid because there will always be structural uncertainty and
-sampling the inferior region may offer insight for decision-makers.
-\textcolor{red}{While structural uncertainty may persist it is not
-\textit{irreducible}.} By increasing the number of modeled objectives \ac{moo}
-reduces structural uncertainty. Further, ideas from \ac{mga} can be applied to
-\ac{moo} by efficiently sampling the near-optimal space
-\cite{loughlin_genetic_2001,
-zechman_evolutionary_2004,zechman_evolutionary_2013,pajares_comparison_2021}.
-The goal of \ac{mga} is to find a \textit{reduced} set of maximally different
-alternatives to provide insight, where analyzing the full set of alternatives
-would be overwhelming \cite{decarolis_using_2011, pajares_comparison_2021}.
-Figure \ref{fig:near-opt-pareto} shows the near-optimal space around the
-Pareto-front from Figure \ref{fig:truss-pareto}.
+Previous work handled structural uncertainty using \ac{mga} which samples unique 
+solutions from the sub-optimal space in a neighborhood around the global minimum for a single objective \cite{decarolis_using_2011}. Researchers argue that this approach is valid because there will always be structural uncertainty and sampling the inferior region may offer insight for decision-makers. \textcolor{black}{While structural uncertainty may persist it is not \textit{irreducible}.} By increasing the number of modeled objectives \ac{moo}
+reduces structural uncertainty. Further, ideas from \ac{mga} can be applied to \ac{moo} by efficiently sampling the near-optimal space \cite{loughlin_genetic_2001, zechman_evolutionary_2004,zechman_evolutionary_2013,pajares_comparison_2021}. The goal of \ac{mga} is to find a \textit{reduced} set of maximally different alternatives to provide insight, where analyzing the full set of alternatives would
+be overwhelming \cite{decarolis_using_2011, pajares_comparison_2021}. Figure \ref{fig:near-opt-pareto} shows the near-optimal space around the Pareto-front from
+Figure \ref{fig:truss-pareto}.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.6\columnwidth}{!}{\input{figures/near-optimal-pareto.pgf}}
+  % \resizebox{0.6\columnwidth}{!}{\input{figures/near-optimal-pareto.pgf}}
   \caption{The near-optimal space around the Pareto-front.}
   \label{fig:near-opt-pareto}
 \end{figure}
 
-For these reasons, this thesis explores energy systems optimization and the
-handling of structural uncertainty through \ac{moo} and \acp{ga}. Section
-\ref{section:genetic-algorithms} reviews the details of the \ac{ga} used in this
-thesis.
+For these reasons, this thesis explores energy systems optimization and the handling of structural uncertainty through \ac{moo} and \acp{ga}. Section \ref{section:genetic-algorithms} reviews the details of the \ac{ga} used in this thesis.
 
 
-\subsection{State-of-the-art (RENAME?)}
-It is well understood that engineering and policy problems, which include energy
-systems optimization, often require satisfying multiple antagonistic objectives
-\cite{loughlin_genetic_2001,zechman_evolutionary_2004,
-zechman_evolutionary_2013, chattopadhyay_need_2021}. However, the application of
-\ac{moo} to energy systems in the literature is limited. Table
-\ref{tab:moop-literature} summarizes the current body of work. As before, the
-``public code'' column only indicates if the source code is accessible.
-Additionally, the ``sector'' columns only indicate the presence of a feature,
-not the relative maturity or sophistication of the modeling. There are six
-``objective columns,'' indicating which objectives are considered the in the
-model or study. A ``technology'' objective might optimize a specific technology
-or set of technologies. For example, maximizing the percentage of renewable
-energy in a system. The ``reliability'' metric varies among studies, but
-generally refers to the potential for load loss. For all of the studies in Table
-\ref{tab:moop-literature}, the ``environmental'' objective refers to \ac{ghg} or
-``global warming potential'' \cite{de-leon_almaraz_deployment_2015}. Although it
-could refer to other environmental impacts such as land use, water use, or
-thermal pollution. 
+\subsection{Energy System Applications}
+It is well understood that engineering and policy problems, which include energy 
+systems optimization, often require satisfying multiple antagonistic objectives 
+\cite{loughlin_genetic_2001,zechman_evolutionary_2004, zechman_evolutionary_2013,
+chattopadhyay_need_2021}. However, the application of \ac{moo} to energy systems 
+in the literature is limited. Table \ref{tab:moop-literature} summarizes the 
+current body of work. As before, the ``public code'' column only indicates if the 
+source code is accessible. Additionally, the ``sector'' columns only indicate the 
+presence of a feature, not the relative maturity or sophistication of the modeling.
+There are six ``objective columns,'' indicating which objectives are considered
+the in the model or study. A ``technology'' objective might optimize a specific
+technology or set of technologies. For example, maximizing the percentage of 
+renewable energy in a system. The ``reliability'' metric varies among studies, but generally refers to the potential for load loss. For all of the studies in Table \ref{tab:moop-literature}, the ``environmental'' objective refers to \ac{ghg} or 
+``global warming potential'' \cite{de-leon_almaraz_deployment_2015}. Although it could
+refer to other environmental impacts such as land use, water use, or thermal 
+pollution. 
 
 \begin{table}[ht!]
     \centering
     \caption{\ac{moo} used with energy systems.}
     \label{tab:moop-literature}
-    \resizebox*{\textwidth}{!}{\input{tables/moop_literature.tex}}
+    % \resizebox*{\textwidth}{!}{\input{tables/moop_literature.tex}}
 \end{table}
-Most of the studies in Table \ref{tab:moop-literature} used \ac{nsga2} to
-identify the Pareto-front with a few using scalarization. Consistent with the
-trend shown in Table \ref{tab:esoms}, every study in Table
-\ref{tab:moop-literature} uses some economic or ``cost'' metric as one of the
-objectives. Also consistent, is that none of these studies identified a metric
-to optimize over social concerns. Laha et al. \cite{laha_low_2021} used
-fatalities per GWh and employment per GWh as criteria for social sustainability,
-but these were not objectives in their model, rather they were calculated
-\textit{ex post facto} with scenario analysis. Riou et al.
-\cite{riou_multi-objective_2021} investigated the tradeoffs among renewable
-share, reliability, and total cost. Their findings were consistent with single
-objective scenario analysis \cite{de_sisternes_value_2016}, that greater
-renewable penetration leads to greater costs and less reliable energy with a
-100\% renewable energy system being the least reliable or incurring the greatest
-costs \cite{riou_multi-objective_2021}. 
+Most of the studies in Table \ref{tab:moop-literature} used \ac{nsga2} to identify
+the Pareto-front with a few using scalarization.
+Consistent with the trend shown in Table \ref{tab:esoms}, every study in Table 
+\ref{tab:moop-literature} uses some economic or ``cost'' metric as one of the 
+objectives. Also consistent, is that none of these studies identified a metric to 
+optimize over social concerns. Laha et al. \cite{laha_low_2021} used fatalities per 
+GWh and employment per GWh as criteria for social sustainability, but these were not
+objectives in their model, rather they were calculated \textit{ex post facto}
+with scenario analysis. Riou et al. \cite{riou_multi-objective_2021} investigated
+the tradeoffs among renewable share, reliability, and total cost. Their findings were
+consistent with single objective scenario analysis \cite{de_sisternes_value_2016},
+that greater renewable penetration leads to greater costs and less reliable energy 
+with a 100\% renewable energy system being the least reliable or incurring the 
+greatest costs \cite{riou_multi-objective_2021}. 
 
-Although previous work demonstrated the applicability of \ac{moo} to energy
-systems optimization, there are significant limitations. 
+Although previous work demonstrated the applicability of \ac{moo} to energy systems
+optimization, there are significant limitations. 
 \begin{itemize}
-    \item{There are at most three modeled objectives
-    \cite{riou_multi-objective_2021,de-leon_almaraz_deployment_2015,
-    de-leon_almaraz_assessment_2013}.}
-    \item{Where traditional \acp{esom} have many mature frameworks (as shown in
-    Table \ref{tab:esoms}, there are no frameworks that use \ac{moo}.
-    Simultaneously, none of the studies in Table \ref{tab:moop-literature}
-    developed a framework. Prina et al. developed a bespoke and unlicensed model
-    called ``Oemof-moea,'' however this does not constitute a framework.}
-    \item{None of the studies in Table \ref{tab:moop-literature} allow
-    user-defined objectives, because none of them have \textit{users}.}
+    \item{There are at most three modeled objectives \cite{riou_multi-objective_2021,de-leon_almaraz_deployment_2015, de-leon_almaraz_assessment_2013}.}
+    \item{Where traditional \acp{esom} have many mature frameworks (as shown in Table \ref{tab:esoms}, there are no frameworks that use \ac{moo}. Simultaneously, none of the studies in Table \ref{tab:moop-literature} developed a framework. Prina et al. developed a bespoke and unlicensed model called ``Oemof-moea,'' however this does not constitute a framework.}
+    \item{None of the studies in Table \ref{tab:moop-literature} allow user-defined objectives, because none of them have \textit{users}.}
     \item{None of the studies incorporate social metrics into the modeled objectives.}
 \end{itemize}
 
-This thesis develops, \ac{osier}, a novel energy systems framework using
-\ac{moo} that fills these gaps by using \acp{ga} that allows for efficient
-modeling of many objectives, enabling user-defined objectives, providing the
-option to make metrics of interest either objectives or constraints, and
-incorporating ideas from \ac{mga} to provide insight from the sub-optimal
-objective space.
+This thesis develops, \ac{osier}, a novel energy systems framework using \ac{moo} 
+that fills these gaps by using \acp{ga} that allows for efficient modeling of many 
+objectives, enabling user-defined objectives, providing the option to make metrics 
+of interest either objectives or constraints, and incorporating ideas from \ac{mga} 
+to provide insight from the sub-optimal objective space.
 
 
-\textcolor{red}{If carbon emissions should not be considered an objective, but rather a constraint, because there are hard emissions budgets why can't the same argument be made with respect to cost? Some places might have limited funds to allocate for energy infrastructure. }
+% \textcolor{red}{If carbon emissions should not be considered an objective, but rather a constraint, because there are hard emissions budgets why can't the same argument be made with respect to cost? Some places might have limited funds to allocate for energy infrastructure. }
+
+The next section outlines attempts to incorporate social justice concerns with energy
+system models.
