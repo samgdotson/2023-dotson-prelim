@@ -24,3 +24,10 @@ Since I don't trust these values, I want to run it again.
 (due to my failure to convert units). Thus, the most expensive result has a total cost of ~1e8 million dollars.
 Which is utterly nonsensical. The demand is in GWh, power is in GW. I need to make sure that the data are all 
 in the correct units.
+
+12-18-22
+- The dispatch model now includes stronger unit handling which should have solved the problem of extremely high
+costs. However, the results of this run show that the high end costs are still ~1e6, which is far too high. 
+
+12-27-22
+- This run turns off the "allow_blackout" flag, which forces the model to balance energy exactly.
