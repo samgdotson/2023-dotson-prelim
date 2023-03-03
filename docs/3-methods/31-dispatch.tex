@@ -1,0 +1,50 @@
+\section{Economic Dispatch}
+\label{section:dispatch}
+
+ The economic dispatch model minimizes the generation cost subject to physical constraints but does not optimize capacity investments. The complete set of equations for the model is detailed below.
+\begin{align}
+    \intertext{Minimize: }
+    \label{eq:dispatch-objective}
+    &\left(\sum_t^T\sum_g^G \left[C_{g,t}^{fuel} + C_{g,t}^{vom}\right]x_{g,t}
+    \right)+\left(\sum_t^T\sum_g^S x_{g,t}c_{g,t}\pi\right)\\
+    \intertext{such that,}
+    \intertext{1. The generation meets demand, less the amount of energy stored or curtailed, 
+    within a user-specified tolerance (undersupply and oversupply),}
+    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\geq \left(1-\text{undersupply}\right)\text{D}_t\quad \forall \quad t \in T, S\subset G, \\
+    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\leq \left(1+\text{oversupply}\right)\text{D}_t \quad \forall \quad t \in T, S\subset G,
+    \intertext{2. A generator's production, $x_{g}$ does not exceed its capacity at any time, $t$}
+    x_{g,t} &\leq \textbf{CAP}_{g}\Delta \tau \quad \forall \quad g,t \in G,T
+    \intertext{3. A generator's ramping rate is never exceeded,}
+    \frac{x_{r,t} - x_{r,t-1}}{\Delta \tau} = \Delta P_{r,t} &\leq
+        \rho^{up}_g\textbf{CAP}_g\Delta\tau \quad \forall \quad r,t
+        \in R \subset G, T,\\
+    \frac{x_{r,t} - x_{r,t-1}}{\Delta \tau} = \Delta P_{r,t} &\leq
+        -\rho^{down}_g\textbf{CAP}_g\Delta\tau \quad \forall \quad r,t
+        \in R \subset G, T,
+    \intertext{4. Storage capacity for each storage technology is never exceeded}
+    \textbf{SOC}_{s,t} &\leq \textbf{CAP}^S_{s} \quad \forall \quad s,t \in S\subset G,T,
+    \intertext{5. Storage discharge cannot exceed stored energy.}
+    x_{s,t} &\leq \textbf{SOC}_{s,t} \quad \forall \quad s,t \in S\subset G,T,
+    \intertext{6. Storage charge rate cannot exceed unit capacity}
+    c_{s,t} &\leq \textbf{CAP}_{s}\Delta \tau \quad \forall \quad s,t \in S\subset G,T.
+    \intertext{Where,}
+    G &= \text{ the set of all generating technologies},\nonumber\\
+    R &= \text{ the set of all ramping technologies},\nonumber\\
+    S &= \text{ the set of all storage technologies},\nonumber\\
+    T &= \text{ the set of all time periods in the model},\nonumber\\
+    D_t &= \text{ the demand at each time period, \textit{t}},\nonumber\\
+    \textbf{CAP}_g &= \text{ the capacity of the \textit{g-th} technology}\quad \left[MW\right],\nonumber\\
+    \textbf{CAP}^S_g &= \text{ the storage capacity of the \textit{g-th} technology}\quad \left[MWh\right],\nonumber\\
+    \textbf{SOC}_{s,t} &= \text{ the state of charge of the \textit{g-th} technology at time \textit{t}}\quad \left[MWh\right]\nonumber,\\
+    \Delta\tau &= t_{i+1} - t_i \quad \forall \quad t_i \in T \quad \left[h\right],\nonumber\\
+    x_{g,t} &= \text{ the energy produced by generator, \textit{g}, at time, \textit{t}}\quad \left[MWh\right]\nonumber,\\
+    c_{s,t} &= \text{ the energy stored by storage technology, \textit{s}, at time, \textit{t}}\quad \left[MWh\right]\nonumber,\\
+    \rho_g &= \text{ the up/down ramp rate for technology, \textit{g}} \quad \left[-\right]\nonumber,\\
+    \pi &= \text{ A small penalty for simultaneous charging and discharging.}\nonumber
+\end{align}
+The second term in the objective function, Equation \ref{eq:dispatch-objective}, represents
+a minor penalty to prevent the unphysical behavior of simultaneous charging and discharging
+from storage technologies. I used this approach because constraining this behavior requires a
+binary variable that makes the problem non-convex and therefore requires a more sophisticated solver. A small but sufficiently large $\pi$ will always nullify the penalty term. This dispatch model reflects the minimum physical constraints for an energy system without considering fine-scale operational details such as frequency control. Equation \ref{eq:dispatch-objective} assumes that the retail cost for
+generating electricity is identical to the marginal cost of producing 
+electricity. 
