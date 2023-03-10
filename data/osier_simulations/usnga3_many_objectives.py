@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sb
+import functools
 from sklearn.preprocessing import normalize
 from pymoo.core.problem import Problem
 from pymoo.core.problem import ElementwiseProblem
@@ -96,25 +97,31 @@ def percent_nonrenewable(technology_list, solved_dispatch_model):
     by everything else.
     """
     
-    columns = get_tech_names([t for t in techs
-                              if not (t.renewable)])
-    renewables = ['SolarPanel', 'WindTurbine', 'Biomass']
-    
-    non_renewable_energy = solved_dispatch_model.results[columns].sum().sum()
-    load = solved_dispatch_model.net_demand.sum()
-    
-    percent_non_re = non_renewable_energy / load * 100
-    
-    return percent_non_re
+    all_nonre = get_tech_names([t for t in techs
+                              if not (t.renewable)
+                              and not hasattr(t, 'storage_duration')])
+    all_nonstorage = get_tech_names([t for t in techs
+                              if not hasattr(t, 'storage_duration')])
+    non_renewable_energy = solved_dispatch_model.results[all_nonre].sum().sum()
+    non_storage_energy = solved_dispatch_model.results[all_nonstorage].sum().sum()
+
+    fraction_non_re = non_renewable_energy/non_storage_energy
+
+    return fraction_non_re
 
 
 from osier.models.capacity_expansion import CapacityExpansion
 problem = CapacityExpansion(technology_list=techs,
-                            objectives=[total_cost, annual_emission, percent_nonrenewable],
+                            objectives=[total_cost, 
+                                        functools.partial(annual_emission, 
+                                                          emission='lifecycle_co2_rate'), 
+                                        percent_nonrenewable],
                             demand=ddf,
                             solar=sdf,
                             wind=wdf,
-                            allow_blackout=False)
+                            power_units=GW,
+                            allow_blackout=False,
+                            verbosity=None)
 
 print("Problem initialized... ")
 
