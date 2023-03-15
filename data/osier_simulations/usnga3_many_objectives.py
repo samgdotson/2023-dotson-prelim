@@ -22,6 +22,8 @@ from pymoo.core.parameters import set_params, hierarchical
 from pygenesys.utils.tsprocess import aggregate
 from unyt import kW, MW, GW, hour, unyt_array
 
+from tech_library import *
+
 from copy import deepcopy
 import time
 import dill
@@ -30,7 +32,7 @@ print("Modules imported...")
 
 # # Import solar, wind, demand
 n_hours = 24
-n_days = 365
+n_days = 2
 N = n_hours*n_days
 scale = 1
 total_demand = 187e3 * n_days/365 * GW
@@ -87,6 +89,9 @@ techs = [nuclear,
          wind
          ]
 
+with open("../2022-12-31-techset.pkl", "rb") as file:
+    techs = dill.load(file)
+
 # percent renewable energy 
 
 def percent_nonrenewable(technology_list, solved_dispatch_model):
@@ -109,19 +114,26 @@ def percent_nonrenewable(technology_list, solved_dispatch_model):
 
     return fraction_non_re
 
+# objs = [total_cost, 
+# functools.partial(annual_emission, 
+#                     emission='lifecycle_co2_rate'), 
+# percent_nonrenewable]
+
+objs = [total_cost, 
+functools.partial(annual_co2, 
+                  emission='lifecycle_co2_rate'),
+        # annualized_capital_cost
+        ]
 
 from osier.models.capacity_expansion import CapacityExpansion
 problem = CapacityExpansion(technology_list=techs,
-                            objectives=[total_cost, 
-                                        functools.partial(annual_emission, 
-                                                          emission='lifecycle_co2_rate'), 
-                                        percent_nonrenewable],
+                            objectives=objs,
                             demand=ddf,
                             solar=sdf,
                             wind=wdf,
                             power_units=GW,
                             allow_blackout=False,
-                            verbosity=None)
+                            verbosity=10)
 
 print("Problem initialized... ")
 
@@ -140,6 +152,26 @@ class PortfolioRepair(Repair):
         I = np.eye(problem.n_var, problem.n_var) * problem.capacity_credit
         X = ((X.T)/(I@X.T).sum(axis=0, keepdims=True)).T      
         return X
+
+# class CapacityCredit(Repair):
+
+#     def _do(self, problem, X, **kwargs):
+#         # zero out small numbers
+#         # make sure the portfolio equals one
+        
+#         C = problem.capacity_credit
+# #         print("CAPACITY REQUIREMENT\n",C)
+# #         print("INITIAL \n",X)
+#         X = X/X.sum(axis=1, keepdims=True)
+# #         print("NORMALIZATION\n",X)
+#         X[X<1e-2] = 0
+# #         print("REMOVE SMALL NUMBERS\n",X)
+#         X = X/C
+# #         print("DIVIDE BY CAPACITY CREDIT\n",X)
+#         X = np.around(X, 3)
+# #         print(X)
+#         return X
+
 
 with open('../2022-12-10-optimal_hyperparams_UNSGA3.pkl', 'rb') as file:
     hyperparams = dill.load(file)
@@ -164,9 +196,9 @@ algorithm = UNSGA3(
     repair = PortfolioRepair()
 )
 set_params(algorithm, hierarchical(hyperparams))
-termination = RobustTermination(
-    MultiObjectiveSpaceTermination(tol=1e-2, n_skip=20), period=10)
-# termination = get_termination("n_gen", 5)
+# termination = RobustTermination(
+#     MultiObjectiveSpaceTermination(tol=1e-2, n_skip=20), period=10)
+termination = get_termination("n_gen", 5)
 
 print("Algorithm Initialized! Begin optimization:")
 
@@ -186,16 +218,22 @@ X = res.X
 
 print("Simulation took", res.exec_time/3600, " hours")
 
-with open("../2023-03-12-USNGA3-results.pkl", "wb+") as file:
-    dill.dump(res, file)
+save = False
 
-with open("../2023-03-12-optimal_hyperparams.pkl", "wb") as hp:
-    dill.dump(hyperparams, hp)
-with open("../2023-03-12-optimal_objective_F.pkl", "wb") as obj_F:
-    dill.dump(F, obj_F)
-with open("../2023-03-12-optimal_design_X.pkl", "wb") as des_X:
-    dill.dump(X, des_X)
-with open("../2023-03-12-techset.pkl", "wb") as ts:
-    dill.dump(techs, ts)
+if save:
+    with open("../2023-03-12-USNGA3-results.pkl", "wb+") as file:
+        dill.dump(res, file)
 
-print("Simulation results saved!")
+    with open("../2023-03-12-optimal_hyperparams.pkl", "wb") as hp:
+        dill.dump(hyperparams, hp)
+    with open("../2023-03-12-optimal_objective_F.pkl", "wb") as obj_F:
+        dill.dump(F, obj_F)
+    with open("../2023-03-12-optimal_design_X.pkl", "wb") as des_X:
+        dill.dump(X, des_X)
+    with open("../2023-03-12-techset.pkl", "wb") as ts:
+        dill.dump(techs, ts)
+
+    print("Simulation results saved!")
+
+with open("../2023-03-13-DEBUGGING.pkl", "wb+") as file:
+        dill.dump(res, file)
