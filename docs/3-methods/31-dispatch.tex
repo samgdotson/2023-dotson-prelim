@@ -10,27 +10,27 @@
     \intertext{such that,}
     \intertext{1. The generation meets demand, less the amount of energy stored or curtailed, 
     within a user-specified tolerance (undersupply and oversupply),}
-    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\geq \left(1-\text{undersupply}\right)\text{D}_t\quad \forall \quad t \in T, S\subset G, \\
-    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\leq \left(1+\text{oversupply}\right)\text{D}_t \quad \forall \quad t \in T, S\subset G,
+    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\geq \left(1-\text{undersupply}\right)\text{D}_t\quad \forall \quad t \in T, S, \\
+    \left[\sum_g^Gx_{g,t}-\sum_g^S c_{g,t}\right] &\leq \left(1+\text{oversupply}\right)\text{D}_t \quad \forall \quad t \in T, S,
     \intertext{2. A generator's production, $x_{g}$ does not exceed its capacity at any time, $t$}
     x_{g,t} &\leq \textbf{CAP}_{g}\Delta \tau \quad \forall \quad g,t \in G,T
     \intertext{3. A generator's ramping rate is never exceeded,}
     \frac{x_{r,t} - x_{r,t-1}}{\Delta \tau} = \Delta P_{r,t} &\leq
         \rho^{up}_g\textbf{CAP}_g\Delta\tau \quad \forall \quad r,t
-        \in R \subset G, T,\\
+        \in R, T,\\
     \frac{x_{r,t} - x_{r,t-1}}{\Delta \tau} = \Delta P_{r,t} &\leq
         -\rho^{down}_g\textbf{CAP}_g\Delta\tau \quad \forall \quad r,t
-        \in R \subset G, T,
+        \in R, T,
     \intertext{4. Storage capacity for each storage technology is never exceeded}
-    \textbf{SOC}_{s,t} &\leq \textbf{CAP}^S_{s} \quad \forall \quad s,t \in S\subset G,T,
+    \textbf{SOC}_{s,t} &\leq \textbf{CAP}^S_{s} \quad \forall \quad s,t \in S,T,
     \intertext{5. Storage discharge cannot exceed stored energy.}
-    x_{s,t} &\leq \textbf{SOC}_{s,t} \quad \forall \quad s,t \in S\subset G,T,
+    x_{s,t} &\leq \textbf{SOC}_{s,t} \quad \forall \quad s,t \in S,T,
     \intertext{6. Storage charge rate cannot exceed unit capacity}
-    c_{s,t} &\leq \textbf{CAP}_{s}\Delta \tau \quad \forall \quad s,t \in S\subset G,T.
+    c_{s,t} &\leq \textbf{CAP}_{s}\Delta \tau \quad \forall \quad s,t \in S,T.
     \intertext{Where,}
     G &= \text{ the set of all generating technologies},\nonumber\\
-    R &= \text{ the set of all ramping technologies},\nonumber\\
-    S &= \text{ the set of all storage technologies},\nonumber\\
+    R &= \text{ the set of all ramping technologies}, \quad R \subset G,\nonumber\\
+    S &= \text{ the set of all storage technologies}, \quad S \subset G,\nonumber\\
     T &= \text{ the set of all time periods in the model},\nonumber\\
     D_t &= \text{ the demand at each time period, \textit{t}},\nonumber\\
     \textbf{CAP}_g &= \text{ the capacity of the \textit{g-th} technology}\quad \left[MW\right],\nonumber\\

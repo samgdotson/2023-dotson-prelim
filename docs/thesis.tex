@@ -4,13 +4,15 @@
 \usepackage[english]{babel}
 \usepackage{csquotes}
 \usepackage{microtype}
+\usepackage{listings}
 \usepackage{amsmath,amsthm,amssymb}
+\usepackage{minted}
+\usepackage{relsize}
 \usepackage[normalem]{ulem}
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
-\usepackage[bookmarksdepth=3,linktoc=all,colorlinks=true,urlcolor=blue,
-linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[bookmarksdepth=3,linktoc=all,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
 \usepackage[capitalize]{cleveref}
 \usepackage[style=ieee, backend=biber]{biblatex}
 
@@ -23,15 +25,17 @@ linkcolor=blue,citecolor=blue]{hyperref}
 
 \usepackage{float}
 \usepackage{booktabs}
-\usepackage{xltabular}
 \usepackage{colortbl}
+\usepackage{xltabular}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{graphics}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{rotating}
 \usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.9}
 \graphicspath{figures/}
 
 
@@ -104,11 +108,9 @@ stages of completing their doctoral degrees. A study group of six
 hundred doctoral students\ldots.
 \end{abstract}
 
-
 % \begin{dedication}
 % This thesis is dedicated to my parents, and to my 17 year-old self who would have never believed it possible.
 % \end{dedication}
-
 
 % \begin{acknowledgments}
 % People to acknowledge
@@ -149,7 +151,8 @@ hundred doctoral students\ldots.
 % \input{1-introduction}
 
 \input{2-literature/20-literature}
-% \input{3-methods/30-methods}
+\input{3-methods/30-methods}
+% \input{4-benchmark-results/40-benchmark}
 
 \chapter{Conclusions}
 

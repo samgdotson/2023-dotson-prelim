@@ -1,0 +1,29 @@
+\begin{tabular}{lllllllllll}
+\toprule
+technology\_name & Battery & Biomass & Coal\_Conv & Coal\_Adv & NaturalGas\_Conv & NaturalGas\_Adv & Nuclear & Nuclear\_Adv & SolarPanel & WindTurbine \\
+\midrule
+technology\_category & base & thermal & thermal & thermal & thermal & thermal & thermal & thermal & base & base \\
+technology\_type & storage & production & production & production & production & production & production & production & production & production \\
+dispatchable & True & True & True & True & True & True & True & True & False & False \\
+renewable & False & True & False & False & False & False & False & False & True & True \\
+fuel\_type & None & None & None & None & None & None & None & None & solar & wind \\
+lifetime & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 \\
+capacity (MW) & 815 & 0 & 0 & 0 & 8.38e+03 & 0 & 1.86e+04 & 0 & 2.81e+03 & 0 \\
+capacity\_factor & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+capacity\_credit & 0.5 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0.19 & 0.35 \\
+efficiency & 0.85 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+capital\_cost (1/kW) & 0.000613 & 0.00344 & 0.001 & 0.00492 & 0.00096 & 0.00189 & 5e-05 & 0.00492 & 0.000673 & 0.00118 \\
+om\_cost\_fixed (1/kW) & 1.53e-05 & 0.000123 & 4.07e-05 & 5.82e-05 & 1.12e-05 & 2.7e-05 & 0.000178 & 0.000119 & 8.05e-06 & 3.31e-05 \\
+om\_cost\_variable (1/(MW*hr)) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+fuel\_cost (1/(MW*hr)) & 0 & 4.7e-05 & 2.14e-05 & 3.66e-05 & 2.24e-05 & 2.75e-05 & 5.81e-06 & 9.16e-06 & 0 & 0 \\
+co2\_rate (megatonnes/(MW*hr)) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+lifecycle\_co2\_rate (megatonnes/(GW*hr)) & 2.32e-05 & 0.00023 & 0.00082 & 0.00022 & 0.00049 & 4.9e-05 & 1.2e-05 & 1.2e-05 & 4.8e-05 & 1.1e-05 \\
+land\_intensity (km/MW**2) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+storage\_duration (hr) & 4 & nan & nan & nan & nan & nan & nan & nan & nan & nan \\
+initial\_storage (MW*hr) & 0 & nan & nan & nan & nan & nan & nan & nan & nan & nan \\
+land\_use (km**2/GW) & 0.006 & 0.006 & 0.0051 & 0.0051 & 0.0032 & 0.0032 & 0.0044 & 0.0044 & 4.4 & 12.3 \\
+ramp\_up\_rate (1/hr) & nan & 1 & 0.5 & 0.5 & 1 & 1 & 0 & 0.25 & nan & nan \\
+ramp\_down\_rate (1/hr) & nan & 1 & 0.5 & 0.5 & 1 & 1 & 0 & 0.25 & nan & nan \\
+heat\_rate & nan & None & None & None & None & None & None & None & nan & nan \\
+\bottomrule
+\end{tabular}
