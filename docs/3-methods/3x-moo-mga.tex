@@ -1,44 +1,52 @@
 \section{\acs{mga} with \acl{moo}}
 \label{section:mga-moo}
 
-This thesis applies some ideas from \ac{mga} to the analysis of the
-sub-optimal space from a \acl{moo} problem. Due to their iterative process, 
-\acp{ga} naturally generate many samples in a problem's feasible space. However, this does not lead to a ``limited set'' of solutions but rather a potentially infinite set. Some literature developed \acp{ga} that directly use \ac{mga} in the iterative process \cite{zechman_evolutionary_2004,zechman_evolutionary_2013}. However, existing Python libraries such as \ac{pymoo} and \ac{deap} do not implement these methods, and the challenge
-is not an inability to sample the sub-optimal space, but rather to provide a comprehensible
-subset of solutions. The algorithm I developed in this thesis to search the near-feasible space is the following:
+This thesis applies some ideas from \ac{mga} to the analysis of the sub-optimal
+space from a \acl{moo} problem. Due to their iterative process, \acp{ga}
+naturally generate many samples in a problem's feasible space. However, this
+does not lead to a ``limited set'' of solutions but rather a potentially
+infinite set. Some literature developed \acp{ga} that directly use \ac{mga} in
+the iterative process
+\cite{zechman_evolutionary_2004,zechman_evolutionary_2013}. However, existing
+Python libraries such as \ac{pymoo} and \ac{deap} do not implement these
+methods, and the challenge is not an inability to sample the sub-optimal space,
+but rather to provide a comprehensible subset of solutions. The algorithm I
+developed in this thesis to search the near-feasible space is the following:
 
 \begin{enumerate}
     \item Identify a slack value (e.g., 10\% or 0.1). 
-    \item Create a ``near-feasible front'' where the coordinates of each point are multiplied by unity plus the slack value.
+    \item Create a ``near-feasible front'' where the coordinates of each point
+    are multiplied by unity plus the slack value.
     \item Every individual is checked if all of its coordinates are
     \begin{itemize}
-        \item below all of the coordinates for at least one point on the near-feasible front
-        and
-        \item above all of the coordinates for at least one point on the Pareto front.
+        \item below all of the coordinates for at least one point on the
+        near-feasible front and
+        \item above all of the coordinates for at least one point on the Pareto
+        front.
     \end{itemize}  
-    \item Lastly, a subset of points may be randomly sampled from the interior points for analysis.
+    \item Lastly, a subset of points may be randomly sampled from the interior
+    points for analysis.
 \end{enumerate}
 \noindent
-Figure \ref{fig:nd-mga} and Figure \ref{fig:3d-mga} demonstrate this 
-algorithm with 10 percent slack for a 2-D and 3-D Pareto front, 
-respectively. Figure \ref{fig:nd-mga} shows clearly that only points 
-within the near-optimal space (gray) are considered. Illustrating this
-behavior in three dimensions (and above) is considerably more 
-difficult. The 3-D interior points should be covered by both surfaces,
-obstructing their view. Figure \ref{fig:3d-mga} shows that this is the
-case in three panels. First, a top view of an opaque Pareto front 
-(green) where no interior points can be observed. Second, the same 
-view with a translucent Pareto front, revealing interior points and 
-the near-optimal front (blue). Finally, the view from underneath the 
-near-optimal front once again obscures the interior points, except 
-for two near the edges of the sub-optimal space. The tested points are
-omitted for clarity.
+Figure \ref{fig:nd-mga} and Figure \ref{fig:3d-mga} demonstrate this algorithm
+with 10 percent slack for a 2-D and 3-D Pareto front, respectively. Figure
+\ref{fig:nd-mga} shows clearly that only points within the near-optimal space
+(gray) are considered. Illustrating this behavior in three dimensions (and
+above) is considerably more difficult. The 3-D interior points should be covered
+by both surfaces, obstructing their view. Figure \ref{fig:3d-mga} shows that
+this is the case in three panels. First, a top view of an opaque Pareto front
+(green) where no interior points can be observed. Second, the same view with a
+translucent Pareto front, revealing interior points and the near-optimal front
+(blue). Finally, the view from underneath the near-optimal front once again
+obscures the interior points, except for two near the edges of the sub-optimal
+space. The tested points are omitted for clarity.
  
 
 \begin{figure}[h]
   \centering
   \resizebox{0.6\columnwidth}{!}{\input{figures/nd-mga-paretofront.pgf}}
-  \caption{All of the alternative points inside the near-feasible space selected using the algorithm described in Section \ref{section:mga-moo}.}
+  \caption{All of the alternative points inside the near-feasible space selected
+  using the algorithm described in Section \ref{section:mga-moo}.}
   \label{fig:nd-mga}
 \end{figure}
 
