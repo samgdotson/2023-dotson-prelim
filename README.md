@@ -9,10 +9,10 @@ This repository holds my preliminary exam document. The style guide comes from t
 The document style must be compiled using `biber`. Doing this from the command line is more reliable than modifying TeXworks or other editor (I have experienced issues with Windows blocking a biber.exe call from TeXworks). **Make sure your LaTeX installation is up-to-date.**
 
 ```bash
-C:\Users\samgd\Research\2023-dotson-prelim\docs>pdflatex thesis.tex
+C:\Users\samgd\Research\2023-dotson-prelim\docs>pdflatex -shell-escape thesis.tex
 C:\Users\samgd\Research\2023-dotson-prelim\docs>biber thesis  # This is not a typo. Do not include a file extension.
-C:\Users\samgd\Research\2023-dotson-prelim\docs>pdflatex thesis.tex
-C:\Users\samgd\Research\2023-dotson-prelim\docs>pdflatex thesis.tex
+C:\Users\samgd\Research\2023-dotson-prelim\docs>pdflatex -shell-escape thesis.tex
+C:\Users\samgd\Research\2023-dotson-prelim\docs>pdflatex -shell-escape thesis.tex
 ```
 
 ## Linux

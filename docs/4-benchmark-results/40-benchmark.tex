@@ -1,10 +1,15 @@
 \chapter{Benchmark Results}
 \label{chapter:benchmark-results}
 
-This chapter shows that solutions calculated by \ac{osier} agree with a more
-established \ac{esom}, \ac{temoa}, and demonstrates some \ac{osier}'s advanced
-features, such as many-objective objective problems and combining \ac{moo} with
-\ac{mga}.
+This chapter first illustrates some of the differences among three evolutionary
+algorithms: \ac{nsga2}, \ac{nsga3}, and \ac{unsga3}. Second, this chapter shows 
+that solutions calculated by \ac{osier} agree with a more established \ac{esom}, 
+\ac{temoa}. Lastly, this chapter demonstrates some of \ac{osier}'s advanced features, 
+such as many-objective objective problems and combining \ac{moo} with \ac{mga}.
+
+\section{Exercise 0: Deciding Among Evolutionary Algorithms}
+
+\textit{[This section shows the two-objective problem]}
 
 \section{Exercise 1: Exploring objective space}
 In the first benchmark exercise, I used \ac{temoa} to calculate the least-cost
@@ -59,7 +64,7 @@ still useful. Figure \ref{fig:temoa-benchmark-02} shows a set of solutions in
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht!]
   \centering
   \resizebox{\columnwidth}{!}{\input{figures/results/temoa_osier_mga_comparison1x3.pgf}}
   \caption{The design spaces for a) points on the Pareto-front in Figure
@@ -78,20 +83,42 @@ significant natural gas resources might seek to maintain their influence by
 developing low-carbon technology that still uses natural gas.
 
 
-
-
-
-
 \section{Exercise 2: Four Simultaneous Objectives}
-This exercise optimized four objectives simultaneously.
+This exercise minimized four objectives simultaneously: total system cost, 
+lifecycle carbon emissions, land-use change, and percentage of total energy
+from non-renewable energy sources. Renewable energy sources include solar,
+wind, and biomass. Although batteries are often used in conjunction with
+\acp{vre}, they are not considered ``renewable'' (nor are they a true energy
+``source'' since they store energy from other sources rather than producing
+their own).
+
+\begin{noteBox}
+\textbf{Reading \Aclp{pcp}:}
+Visualizing the Pareto front for this problem presents a challenge due to its
+high dimensionality. Therefore, I present the results with a novel plot, called
+a \ac{pcp}. This plot is helpful for highlighting differences among a small set
+of solutions with a potentially large number of dimensions. Figure \ref{fig:4-obj-pareto} 
+and Figure \ref{fig:4-obj-design} are both \acp{pcp}. Although \acp{pcp} show continuous
+lines, they do not show a ``trend''. That is, for a given solution, each objective
+takes on a single value that is plotted on its respective vertical axis. The lines 
+connecting these points simply emphasize that these points belong to the same solution.
+Additionally, each objective axis has its own upper and lower bound because each objective
+is scaled differently.
+The \ac{mga} solutions presented in Figure \ref{fig:4-obj-design-mga} using a 
+``letter-value'' plot due to the larger number of solutions included in \ac{mga}. 
+\end{noteBox}
+
+Figure \ref{fig:4-obj-pareto} shows the Pareto front for this 4-dimensional problem.
+
 
 \begin{figure}[h]
   \centering
   \resizebox{\columnwidth}{!}{\input{figures/results/4_obj_objective_space.pgf}}
-  \caption{The objective space for a four objective problem.}
-  \label{fig:4-obj-design}
+  \caption{The Pareto front for a four objective problem. Extreme values for each
+  objective are colored. The gray lines represent solutions on the Pareto front 
+  that are not extremum.}
+  \label{fig:4-obj-pareto}
 \end{figure}
-
 
 
 \begin{figure}[h]
@@ -106,5 +133,5 @@ This exercise optimized four objectives simultaneously.
   \centering
   \resizebox{\columnwidth}{!}{\input{figures/results/4-obj-mga-design-space.pgf}}
   \caption{The design space for a four objective problem including alternative solutions suggested by MGA.}
-  \label{fig:4-obj-design}
+  \label{fig:4-obj-design-mga}
 \end{figure}
