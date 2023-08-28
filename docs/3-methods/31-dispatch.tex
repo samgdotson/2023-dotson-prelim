@@ -1,7 +1,9 @@
 \section{Economic Dispatch}
 \label{section:dispatch}
 
- The economic dispatch model minimizes the generation cost subject to physical constraints but does not optimize capacity investments. The complete set of equations for the model is detailed below.
+ The economic dispatch model minimizes the generation cost subject to physical
+ constraints but does not optimize capacity investments. The complete set of
+ equations for the model is detailed below.
 \begin{align}
     \intertext{Minimize: }
     \label{eq:dispatch-objective}
@@ -42,9 +44,13 @@
     \rho_g &= \text{ the up/down ramp rate for technology, \textit{g}} \quad \left[-\right]\nonumber,\\
     \pi &= \text{ A small penalty for simultaneous charging and discharging.}\nonumber
 \end{align}
-The second term in the objective function, Equation \ref{eq:dispatch-objective}, represents
-a minor penalty to prevent the unphysical behavior of simultaneous charging and discharging
-from storage technologies. I used this approach because constraining this behavior requires a
-binary variable that makes the problem non-convex and therefore requires a more sophisticated solver. A small but sufficiently large $\pi$ will always nullify the penalty term. This dispatch model reflects the minimum physical constraints for an energy system without considering fine-scale operational details such as frequency control. Equation \ref{eq:dispatch-objective} assumes that the retail cost for
-generating electricity is identical to the marginal cost of producing 
-electricity. 
+The second term in the objective function, Equation \ref{eq:dispatch-objective},
+represents a minor penalty to prevent the unphysical behavior of simultaneous
+charging and discharging from storage technologies. I used this approach because
+constraining this behavior requires a binary variable that makes the problem
+non-convex and therefore requires a more sophisticated solver. A small but
+sufficiently large $\pi$ will always nullify the penalty term. This dispatch
+model reflects the minimum physical constraints for an energy system without
+considering fine-scale operational details such as frequency control. Equation
+\ref{eq:dispatch-objective} assumes that the retail cost for generating
+electricity is identical to the marginal cost of producing electricity. 
