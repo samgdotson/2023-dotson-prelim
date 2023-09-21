@@ -3,17 +3,21 @@
 A multi-objective problem may be formulated as
 \begin{align}
 \label{eqn:generic-moop}
-&\text{min}\quad\{F_1(x), F_2(x), ... , F_i(x)\},
-\intertext{subject to}
+&\text{min}\{F_1(x), F_2(x), ... , F_i(x)\},
+\intertext{subject to:}
 &g(x, p) \leq 0.\nonumber\\
 &x \in \vec{X}\nonumber
+\intertext{where}
+&F_i \text{ is an arbitrary objective function,}\nonumber\\
+&g \text{ is a constraint,}\nonumber\\
+&p \text{ is an arbitrary parameter of $g$,}\nonumber\\
+&\vec{X} \text{ is the set of decision variables.}
 \end{align}
 \noindent
 Where Equation \ref{eqn:generic_objective} had a single objective $F(x)$ to
 minimize, Equation \ref{eqn:generic-moop} has a \textit{set} of objectives,
 $\{F_i(x)\}$. Rather than identifying a global minimum point, the solution to
-Equation \ref{eqn:generic-moop} is a \textit{set} of non-dominated points along
-a non-inferior region called a Pareto-front. Each point on this frontier cannot
+Equation \ref{eqn:generic-moop} is a \textit{set} of non-dominated points called a Pareto-front. Each point on this frontier cannot
 improve one objective without making another objective worse, hence
 ``non-dominated.'' Generally, for competing objectives, there will be an
 infeasible space that is not attainable by the given combination of objectives.
@@ -40,29 +44,39 @@ weights, $w_i$, and the aggregated objective becomes
 \begin{align}
     \label{eqn:weighted-sum}
     \text{min}\quad J(x) = \sum_i w_i F_i(x)
+    \intertext{subject to:}
+&g(x, p) \leq 0\nonumber\\
+&x \in \vec{X}\nonumber
+\intertext{where}
+&F_i \text{ is an arbitrary objective function,}\nonumber\\
+&w_i \text{ is the weight for objective function $F_i$}
+&J \text{ is the aggregated objective,}\nonumber\\
+&g \text{ is a constraint,}\nonumber\\
+&p \text{ is an arbitrary parameter of $g$,}\nonumber\\
+&\vec{X} \text{ is the set of decision variables.}
 \end{align}
 \noindent
-subject to the same constraints as Equation \ref{eqn:generic_objective}
-\cite{gunantara_review_2018,emmerich_tutorial_2018}. These weights are varied in
-order to sample points along the Pareto-front. Alternatively, the \ac{ec}
-algorithm chooses one objective from $\{F_n\}$ to solve and converts the others
+These weights are varied in order to sample points along the Pareto-front. 
+
+Alternatively, the \ac{ec}
+algorithm for scalarization chooses one objective from $\{F_n\}$ to solve and converts the others
 into constraints, whose bounds are denoted by $\epsilon$. These bounds are
 varied until the desired number of points on the Pareto-front is reached
 \cite{gunantara_review_2018, emmerich_tutorial_2018}. This problem can be
 written as
 \begin{align}
 \label{eqn:epsilon-constraint}
-    &\text{min}\quad F_1(x),
-    \intertext{subject to,}
-    &F_2(x) - \epsilon_1 \leq 0\nonumber\\
+    &\text{min}\quad F_j(x),
+    \intertext{subject to:}
+    &F_2(x) - \epsilon_j \leq 0\nonumber\\
     &\vdots\nonumber\\
-    &F_i(x) - \epsilon_1 \leq 0\nonumber\\
+    &F_i(x) - \epsilon_j \leq 0\nonumber\\
     &g(x, p) \leq 0,\nonumber\\
     &x \in \vec{X}.\nonumber
 \end{align}
 \noindent
 The sub-problem, Equation \ref{eqn:epsilon-constraint}, must be repeated for
-each $\epsilon_i$.
+each $F_j(x)$ and corresponding $\epsilon_j$ in $\{F_n\}$.
 
 Scalarization is attractive due to its simplicity. However, this approach is
 sensitive to problem convexity. \ac{ws} will never be able to sample points in a
@@ -70,6 +84,7 @@ concave region of the Pareto-front, and \ac{ec} will have poorly spaced samples
 along a concave region. Further, these algorithms can only sample points on the
 frontier, not the sub-optimal feasible space. Thus supporting the critique of
 using \ac{moo} for handling structural uncertainty \cite{decarolis_using_2011}.
+
 Fortunately, population-based algorithms, also called \textit{\ac{ga}} or
 \textit{evolutionary algorithms}, resolve some of these issues by solving
 Equation \ref{eqn:generic-moop} directly. \Acp{ga} are based on the principle of
@@ -93,7 +108,8 @@ to reduce structural uncertainty by obtaining points in the inferior region
 \cite{loughlin_genetic_2001,zechman_evolutionary_2004,
 zechman_evolutionary_2013}. An additional advantage of \acp{ga} is the ability
 to incorporate more physics and simulations into the optimization procedure than
-\ac{lp}, \ac{milp}, or scalarization allow \cite{loughlin_genetic_2001}. 
+\ac{lp}, \ac{milp}, or scalarization allow \cite{loughlin_genetic_2001} because 
+\acp{moo} can incorporate data from external models. 
 
 Previous work handled structural uncertainty using \ac{mga} which samples unique
 solutions from the sub-optimal space in a neighborhood around the global minimum
@@ -179,7 +195,7 @@ systems optimization, there are significant limitations.
     developed a framework. Prina et al. developed a bespoke and unlicensed model
     called ``Oemof-moea,'' however this does not constitute a framework.}
     \item{None of the studies in Table \ref{tab:moop-literature} allow
-    user-defined objectives, because none of them have \textit{users}.}
+    arbitrary user-defined objectives.}
     \item{None of the studies incorporate social metrics into the modeled objectives.}
 \end{itemize}
 
