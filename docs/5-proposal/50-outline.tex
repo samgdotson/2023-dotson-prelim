@@ -2,11 +2,34 @@
 
 
 \begin{enumerate}
-    \item How will I expand the theoretical basis of this work?
+    \item How will I expand the theoretical basis of this work? Or, rather, what
+    theoretical areas will my dissertation explore and expand?
+    \begin{itemize}
+        \item Provide a detailed outline of the nuclear energy debate.
+        \item Give a case study on the ways traditional decision making processes in 
+        nuclear energy (e.g., Yucca Mountain) led to poor outcomes, and show positive
+        examples of inclusive processes (i.e., consent-based siting) producing superior
+        outcomes.
+        \item Provide a detailed outline for the challenges associated with solar and wind.
+        \item How does the literature answer the question of ``what drives opposition to new 
+        energy projects?'' (It's not \ac{nimybism}).
+        \item Social movement theory and democratic processes
+    \end{itemize}
     \item What technical features have yet to be implemented into \ac{osier}?
     \begin{itemize}
         \item Issue: The current code is unacceptably slow for many-objective
-        problems. The four objective model took 26.5 days to run.
+        problems. The four objective model took 26.5 days to run. \textbf{Solution}:
+        More work needs to be done on investigating the parallelizability of \texttt{CPLEX}.
+        Alternatively, rather than using a \ac{milp} model to operate dispatch, using
+        hiearchical model (i.e., a ``rules'' based model) to dispatch energy could enable
+        multiple processes, reducing the computational cost of the problem. Additionally,
+        this type of model is conceptually simpler than \ac{milp} and would make \ac{osier}
+        more accessible.
+        \item Issue: Data transparency and quality assurance. \textbf{Solution}: Quality data
+        is essential to generating trustworthy results. The \ac{atb} produced by \ac{nrel} is 
+        considered the gold standard for cost projections for electricity generating technologies.
+        \ac{osier} will directly integrate data from the \ac{atb}.
+        \item \textcolor{red}{Note: You should emphasize the novelty of your MGA algorithm during your prelim.}
     \end{itemize}
     \item What will I do to ``validate'' framework I created (\ac{osier})?
 \end{enumerate}
