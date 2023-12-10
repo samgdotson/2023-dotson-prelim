@@ -6,30 +6,73 @@
     theoretical areas will my dissertation explore and expand?
     \begin{itemize}
         \item Provide a detailed outline of the nuclear energy debate.
-        \item Give a case study on the ways traditional decision making processes in 
-        nuclear energy (e.g., Yucca Mountain) led to poor outcomes, and show positive
-        examples of inclusive processes (i.e., consent-based siting) producing superior
-        outcomes.
-        \item Provide a detailed outline for the challenges associated with solar and wind.
-        \item How does the literature answer the question of ``what drives opposition to new 
-        energy projects?'' (It's not \ac{nimybism}).
+        \item Give a case study on the ways traditional decision making
+        processes in nuclear energy (e.g., Yucca Mountain) led to poor outcomes,
+        and show positive examples of inclusive processes (i.e., consent-based
+        siting) producing superior outcomes.
+        \item Provide a detailed outline for the challenges associated with
+        solar and wind.
+        \item How does the literature answer the question of ``what drives
+        opposition to new energy projects?'' (It's not \ac{nimybism}).
         \item Social movement theory and democratic processes
+        \item \textcolor{red}{Constructing a ``normative premise'' that situates
+        and clearly articulates the usefulness of this work.}
     \end{itemize}
     \item What technical features have yet to be implemented into \ac{osier}?
     \begin{itemize}
         \item Issue: The current code is unacceptably slow for many-objective
-        problems. The four objective model took 26.5 days to run. \textbf{Solution}:
-        More work needs to be done on investigating the parallelizability of \texttt{CPLEX}.
-        Alternatively, rather than using a \ac{milp} model to operate dispatch, using
-        hiearchical model (i.e., a ``rules'' based model) to dispatch energy could enable
-        multiple processes, reducing the computational cost of the problem. Additionally,
-        this type of model is conceptually simpler than \ac{milp} and would make \ac{osier}
-        more accessible.
-        \item Issue: Data transparency and quality assurance. \textbf{Solution}: Quality data
-        is essential to generating trustworthy results. The \ac{atb} produced by \ac{nrel} is 
-        considered the gold standard for cost projections for electricity generating technologies.
-        \ac{osier} will directly integrate data from the \ac{atb}.
-        \item \textcolor{red}{Note: You should emphasize the novelty of your MGA algorithm during your prelim.}
+        problems. The four objective model took 26.5 days to run.
+        \textbf{Solution}: More work needs to be done on investigating the
+        parallelizability of \texttt{CPLEX}. Alternatively, rather than using a
+        \ac{milp} model to operate dispatch, using hiearchical model (i.e., a
+        ``rules'' based model) to dispatch energy could enable multiple
+        processes, reducing the computational cost of the problem. Additionally,
+        this type of model is conceptually simpler than \ac{milp} and would make
+        \ac{osier} more accessible.
+        \item Issue: Data transparency and quality assurance. \textbf{Solution}:
+        Quality data is essential to generating trustworthy results. The
+        \ac{atb} produced by \ac{nrel} is considered the gold standard for cost
+        projections for electricity generating technologies. \ac{osier} will
+        directly integrate data from the \ac{atb}.
+        \item \textcolor{red}{Note: You should emphasize the novelty of your MGA
+        algorithm during your prelim.}
     \end{itemize}
     \item What will I do to ``validate'' framework I created (\ac{osier})?
+    \begin{itemize}
+        \item One use of \ac{osier} is to develop an energy future for a given
+        community. 
+        \item I propose validating \ac{osier}'s usefulness with a counterfactual
+        case study of the energy visioning processes of three municipalities:
+        Urbana, Champaign, and the \ac{uiuc}.
+        \item The questions of interest are:
+        \begin{itemize}
+            \item Would these municipalities use this tool?
+            \item What are the energy priorities of these municipalities?
+            \item How would employing this tool differ from existing visioning
+            strategies or processes?
+            \item What are the existing planning practices?
+            \item Should there be more collective planning among
+        \end{itemize}
+        \item The results of this analysis could take the form of:
+        \begin{itemize}
+            \item ``These are the stated energy goals of this municipality.''
+            \item ``This is how the results from \ac{osier} would change the
+            results.'' (Results in this case includes the ``optimal'' solutions
+            for an energy future \textit{and} the ways the process itself would
+            change.)
+        \end{itemize}
+        \item The methodology for this study includes:
+        \begin{itemize}
+            \item Interviewing public facing figures at each municipality
+            involved in the respective planning processes. These subjects could
+            include:
+            \begin{itemize}
+                \item director of energy planning and public engagement
+                \item organizations such as \ac{isee}, SECS, and SSC. 
+            \end{itemize}
+            \item Reviewing published documents related to their energy visions.
+            Such as \ac{uiuc}'s \ac{icap}.
+        \end{itemize}
+        
+    \end{itemize}
 \end{enumerate}
