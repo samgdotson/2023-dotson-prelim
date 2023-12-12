@@ -165,9 +165,9 @@ def osier_objective(technology_list, solved_dispatch_model):
     """
 
     total_capacity = np.array([t.capacity for t in technology_list]).sum()
-                               objective_value =
-                               np.array([t.readiness*t.capacity for t in
-                               technology_list]).sum()
+    
+    objective_value = np.array([t.readiness*t.capacity 
+                                for t in technology_list]).sum()
 
     return objective_value / total_capacity
 \end{minted}

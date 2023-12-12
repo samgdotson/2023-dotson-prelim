@@ -43,13 +43,13 @@ variation of parameters. In the \ac{ws} algorithm, the objectives are assigned
 weights, $w_i$, and the aggregated objective becomes
 \begin{align}
     \label{eqn:weighted-sum}
-    \text{min}\quad J(x) = \sum_i w_i F_i(x)
+    \text{min}\quad J(x) &= \sum_i w_i F_i(x)
     \intertext{subject to:}
 &g(x, p) \leq 0\nonumber\\
 &x \in \vec{X}\nonumber
 \intertext{where}
 &F_i \text{ is an arbitrary objective function,}\nonumber\\
-&w_i \text{ is the weight for objective function $F_i$}
+&w_i \text{ is the weight for objective function $F_i$}\\
 &J \text{ is the aggregated objective,}\nonumber\\
 &g \text{ is a constraint,}\nonumber\\
 &p \text{ is an arbitrary parameter of $g$,}\nonumber\\

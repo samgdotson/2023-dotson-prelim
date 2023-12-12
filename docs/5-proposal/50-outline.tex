@@ -45,7 +45,7 @@ motivators for this work. Further, in instances where action is being taken ---
 such as the construction of renewable energy projects following government
 subsidies, for instance --- what drives public opposition? I will elucidate this
 question by incorporating literature from social movement theory
-\cite{mcadam_social_2017} into this thesis. Importantly, the literature shows
+\cite{mcadam_social_2017,mcadam_putting_2012} into this thesis. Importantly, the literature shows
 that \ac{nimbyism} is not the primary driver of public opposition to energy
 projects \cite{konisky_proximity_2021}, rather, support for these energy
 projects is more strongly conditioned on genuine public participation in the
@@ -72,40 +72,131 @@ What technical features have yet to be implemented into \ac{osier}?
     data from the \ac{atb}.
     \item \textcolor{red}{Note: You should emphasize the novelty of your MGA
     algorithm during your prelim.}
+    \item Issue: The \ac{mga} algorithm could yet be improved by developing a selection
+    strategy that more accurately captures the spirit of \ac{mga} by identifying 
+    \textit{maximally different solutions in the design space.} \textbf{Solution}:
+    This could be accomplished through an algorithm known as greedy permutation, or 
+    farthest-first-search, from computational geometry that is frequently used in 
+    topological data analysis \cite{cavanna_geometric_2015,eppstein_approximate_2020}.
 \end{enumerate}
 
 \section{Validating \ac{osier}}
 
-\ac{osier}'s primary purpose is to translate policy preferences of the lay-public into
-actionable energy visions for a given municipality. The idea is that if decision-makers 
-used a tool like \ac{osier} to support their decisions and incorporate ideas from their 
-constituents --- ideas that may be distinct from the preconceptions of decision-makers
-themselves --- then stronger actions toward addressing climate change may be taken with 
-more just outcomes. The last, and arguably most important, component of this thesis is 
-to validate \ac{osier}'s usefulness in this regard. I propose validating \ac{osier}'s 
-usefulness with a counterfactual case study of the energy visioning processes of three 
+\ac{osier}'s primary purpose is to translate policy preferences of the
+lay-public into actionable energy visions for a given municipality. The idea is
+that if decision-makers used a tool like \ac{osier} to support their decisions
+and incorporate ideas from their constituents --- ideas that may be distinct
+from the preconceptions of decision-makers themselves --- then stronger actions
+toward addressing climate change may be taken with more just outcomes. The last,
+and arguably most important, component of this thesis is to validate
+\ac{osier}'s usefulness in this regard. I propose validating \ac{osier}'s
+usefulness with a case study of the energy visioning processes of three
 municipalities: Urbana, Champaign, and the \ac{uiuc}.
 
-\subsection{Step 1: Reviewing the energy visions for each municipality}
+\subsection{Reviewing the energy visions for each municipality}
 
-Reviewing published documents related to their energy visions. Such as \ac{uiuc}'s \ac{icap}.
+Reviewing published documents related to their energy visions. Such as
+\ac{uiuc}'s \ac{icap}
+\cite{institute_for_sustainability_energy_and_environment_illinois_2020}.
 
-Compare the stated energy visions for each community with the literature \cite{elmallah_frontlining_2022}.
+Compare the stated energy visions for each community with the literature
+\cite{elmallah_frontlining_2022}.
+
+In addition to energy \textit{visions}, I may evaluate the decision making
+process for specific energy projects. Such as the microreactor project at
+\ac{uiuc} or the recent solar farm being constructed on Market Street in
+Champaign. How do these projects fit with the stated energy visions for their
+respective communities? How involved was the lay-public in making these
+decisions? Who were the stakeholders?
+
+\subsection{Develop the hypothetical \ac{osier} procedure}
+
+Before interviewing decision-makers and asking if \ac{osier} would be useful to
+them I need to formulate a hypothetical decision-making process that includes
+\ac{osier}.
+
+\subsection{Determining the right set of interviewees}
+
+In order to gauge the \ac{osier}'s usability, I will interview public facing
+figures from each municipality involved in the energy or community planning
+processes for their respective communities.
 
 
+\begin{table}[ht!]
+    \centering
+    \caption{Potential interviewees to evaluate the usefulness of \ac{osier}.}
+    \input{tables/subjects-table.tex}
+    \label{table:subjects}
+\end{table}
+
+
+\subsection{Conducting the Interviews}
+
+This section outlines the proposed interview questions and 
+
+\textit{Interviews will be conducted and analyzed with the awareness that the
+questions I ask, my choice of wording, and my demeanor when asking, all have an
+affect on the answers generated by interviewees.}
+
+\subsubsection{Questions about current planning processes}
+The following questions are aimed at interviewees responsible for guiding the
+planning process in each community. For example, they may be urban planners or
+in charge of public engagement. These questions are not appropriate for an
+external party that may be involved in the execution of an specific energy goal
+but are nonetheless excluded from the initial decision making process.
+
+\begin{enumerate}
+    \item How would you describe your community's energy vision or priorities?
+    \item How did your community develop these priorities (or this vision)?
+    \item Does your community have current best practices for making planning
+    decisions?
+    \item How does your community use modeling software to support its vision,
+    if at all?
+    \item What are the pain points you experience in developing these visions?
+    \item What is the role of expert testimony/consultation/input in creating an
+    energy vision?
+    \item How do you percieve the dialogue between community members and its
+    decision-makers?
+    \item Does it seem like preferences or concerns from the community are
+    incorporated? 
+    \item Do members of your community understand why a particular decision was
+    reached?
+    \item How does the energy visioning process in your community consider the
+    impact on its neighbors?
+    \item Should there be more collective planning among the three communities?
+\end{enumerate}
+
+\subsubsection{Questions and discussion about modeling tools and \ac{osier}} The
+previous set of questions set a foundation for energy planning from the
+perspective of a decision-maker or planner. 
+
+\begin{enumerate}
+    \item (After presenting results from this model in two ways) Which
+    presentation do you think would best facilitate dialogue between the
+    lay-public and decision-makers?
+    \item What objectives do you think would be important to model in designing
+    an energy vision for your community?
+    \item Would your municipality use this tool? 
+    \item If not this specific tool, is there a tool that exists/doesn't exist
+    that is/would be useful?
+    \item What changes would need to be made to \ac{osier} for it to be useful
+    to you?
+    \item How would employing this tool differ from existing visioning
+    strategies or processes?
+\end{enumerate}
+
+\textit{\textcolor{red}{Insert a table or list of questions and describe what
+information will be gleaned from each.}}
+
+The interviews will be recorded and I will use the responses from interviewees
+to conduct a thematic analysis
+\cite{braun_toward_2023,maguire_doing_2017,scharp_what_2019}.
 
 What will I do to ``validate'' framework I created (\ac{osier})?
 \begin{enumerate}
     \item The questions of interest are (\textcolor{red}{for each question, what
     information would I gain by asking it?}):
-    \begin{itemize}
-        \item Would these municipalities use this tool?
-        \item What are the energy priorities of these municipalities?
-        \item How would employing this tool differ from existing visioning
-        strategies or processes?
-        \item What are the existing planning practices?
-        \item Should there be more collective planning among the three communities?
-    \end{itemize}
+
     \item The results of this analysis could take the form of:
     \begin{itemize}
         \item ``These are the stated energy goals of this municipality.''
@@ -129,5 +220,12 @@ What will I do to ``validate'' framework I created (\ac{osier})?
     \item What is outside the scope of this study? Although the intention behind
     \ac{osier} is to help translate policy preferences of the lay-public into
     actionable energy visions for a given municipality, interviewing and
-    surveying members of the public is out-of-scope for this project.
+    surveying members of the public is out-of-scope for this project. Further,
+    it goes without saying that developing an effective framework for the
+    purposes of procedural justice that determining the needs of a group before
+    developing the code in earnest.
+    \item Also outside the scope of this project is determining which form of
+    the results is most accessible to lay-audiences. Ideally with a much larger
+    number of participants I could do a/b testing to tease out an answer to this
+    question.
 \end{enumerate}
