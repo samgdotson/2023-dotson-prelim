@@ -9,7 +9,15 @@ such as many-objective objective problems and combining \ac{moo} with \ac{mga}.
 
 \section{Exercise 0: Deciding Among Evolutionary Algorithms}
 
-\textit{[This section shows the two-objective problem]}
+\ac{osier} allows users to choose among a variety of \acp{moo}.
+
+\begin{figure}[h]
+  \centering
+  \resizebox{0.6\columnwidth}{!}{\input{figures/results/algorithm_comparison.pgf}}
+  \caption{Compares the \ac{moo} algorithms.}
+  \label{fig:algorithm-comparison}
+\end{figure}
+
 
 \section{Exercise 1: Exploring objective space}
 In the first benchmark exercise, I used \ac{temoa} to calculate the least-cost
@@ -63,7 +71,7 @@ still useful. Figure \ref{fig:temoa-benchmark-02} shows a set of solutions in
   \label{fig:temoa-benchmark-02}
 \end{figure}
 
-
+\newpage
 \begin{figure}[ht!]
   \centering
   \resizebox{\columnwidth}{!}{\input{figures/results/temoa_osier_mga_comparison1x3.pgf}}
@@ -90,7 +98,7 @@ from non-renewable energy sources. Renewable energy sources include solar,
 wind, and biomass. Although batteries are often used in conjunction with
 \acp{vre}, they are not considered ``renewable'' (nor are they a true energy
 ``source'' since they store energy from other sources rather than producing
-their own).
+their own). Figure \ref{fig:4-obj-pareto} shows the Pareto front for this 4-dimensional problem.
 
 \begin{noteBox}
 \textbf{Reading \Aclp{pcp}:}
@@ -108,8 +116,6 @@ The \ac{mga} solutions presented in Figure \ref{fig:4-obj-design-mga} using a
 ``letter-value'' plot due to the larger number of solutions included in \ac{mga}. 
 \end{noteBox}
 
-Figure \ref{fig:4-obj-pareto} shows the Pareto front for this 4-dimensional problem.
-
 
 \begin{figure}[h]
   \centering
@@ -120,6 +126,15 @@ Figure \ref{fig:4-obj-pareto} shows the Pareto front for this 4-dimensional prob
   \label{fig:4-obj-pareto}
 \end{figure}
 
+Each of the colored lines in Figure \ref{fig:4-obj-pareto} belongs to a solution with an
+`extreme' value on the Pareto-front. For instance, the blue line labeled ``Highest Renewable''
+has the lowest percentage of non-renewable energy sources of any solution. The gray lines 
+are simply other points along the Pareto-front. Figure \ref{fig:4-obj-pareto} shows that minimizing 
+land-use change and renewable energy maximization are strongly competing objectives, since the
+other three extremum are grouped together on those two axes and diametrically opposed to the 
+``highest renewable'' solution. Figure \ref{fig:4-obj-design} illustrates the design space for
+each extreme solution. 
+
 
 \begin{figure}[h]
   \centering
@@ -128,6 +143,11 @@ Figure \ref{fig:4-obj-pareto} shows the Pareto front for this 4-dimensional prob
   \label{fig:4-obj-design}
 \end{figure}
 
+Figure \ref{fig:4-obj-design-mga} extends the design space results to include the \ac{mga} solutions. 
+This plot indicates the design preferences for a middling solution, but hides the relationship among
+energy technologies. The most popular technologies in Figure \ref{fig:4-obj-design-mga} are conventional
+nuclear, battery storage, and solar panels. The least popular technologies are wind turbines and ``advanced''
+coal plants.
 
 \begin{figure}[h]
   \centering
