@@ -1,0 +1,37 @@
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+            \tikzstyle{every node}=[font=\small]
+            \tikzstyle{vertex} = [circle, draw=black, fill=illiniblue]
+            \tikzstyle{hidden} = [draw=none]
+            \tikzstyle{edge} = [<->, very thick]
+            
+            \node[vertex](v1) at (0,5) {\textbf{Normative}};
+            \node[vertex](v2) at (4,0) {\textbf{Structural}};
+            \node[vertex](v3) at (-4,0) {\textbf{Parametric}};
+
+            \draw[edge] (v1) -- (v2);
+            \draw[edge] (v2) -- (v3);
+            \draw[edge] (v1) -- (v3);
+
+            % hidden nodes for v1
+            \node[hidden](h1) at (-0.75, 5) {};
+            \node[hidden](h2) at (0.75, 5) {};
+
+            % hidden nodes for v2
+            \node[hidden](h3) at (4, 0.75) {};
+            \node[hidden](h4) at (4, -0.7) {};
+
+            % hidden nodes for v3
+            \node[hidden](h5) at (-4, -0.7) {};
+            \node[hidden](h6) at (-4, 0.75) {};
+
+            \draw[draw=none] (h4) -- (h5) node[anchor=mid, midway, sloped]{\textbf{Descriptive}};
+            \draw[draw=none] (h6) -- (h1) node[anchor=mid, midway, sloped]{\textbf{Pre-descriptive}};
+            \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway, sloped]{\textbf{Prescriptive}};
+
+
+    \end{tikzpicture}
+    \caption{Types of uncertainties and how their relationships inform modeling practice.}
+    \label{fig:triarchic-uncertainty}
+\end{figure}

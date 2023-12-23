@@ -27,6 +27,59 @@
 \usepackage{microtype} % if using PDF
 \usepackage{bigints}
 \usepackage{minted}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+
+\definecolor{LightGray}{gray}{0.9}
+\definecolor{illiniblue}{HTML}{B1C6E2}
+\definecolor{illiniorange}{HTML}{f8c2a2}
+\graphicspath{figures/}
+
+% \newtcolorbox{noteBox}[1][]{
+%     width=\textwidth,
+%     fonttitle=\bfseries,
+%     breakable,
+%     fonttitle=\bfseries\color{Black},
+%     colframe=illiniblue,
+%     colback=illiniblue!10
+%     #1}
+
+\usetikzlibrary{positioning, arrows, decorations, shapes}
+\usetikzlibrary{shapes.geometric,arrows}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\tikzstyle{loblock} = [rectangle, draw, fill=illiniorange, 
+text width=15em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{lbblock} = [rectangle, draw, fill=illiniblue, 
+text width=15em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{oblock} = [rectangle, draw, fill=illiniorange, 
+text width=10em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{bblock} = [rectangle, draw, fill=illiniblue, 
+text width=10em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{bbblock} = [rectangle, draw, fill=illiniblue, 
+text width=1em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{boblock} = [rectangle, draw, fill=illiniorange, 
+text width=1em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{e72block} = [rectangle, fill=none, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{o72block} = [rectangle, draw, fill=illiniorange, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{p72block} = [rectangle, draw, fill=purple, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{g72block} = [rectangle, draw, fill=green, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{b72block} = [rectangle, draw, fill=illiniblue, 
+text width=7.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{e82block} = [rectangle, fill=none, 
+text width=8.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{e92block} = [rectangle, fill=none, 
+text width=9.3em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{b82block} = [rectangle, draw, fill=illiniblue, 
+text width=8em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{b223block} = [rectangle, draw, fill=illiniblue, 
+text width=22em, text centered, rounded corners, minimum height=3em]
 
 \newcommand{\units}[1] {\:\text{#1}}%
 \newcommand{\SN}{S$_N$}%{S$_\text{N}$}%{$S_N$}%
@@ -35,6 +88,7 @@
 \DeclareMathOperator{\erfc}{erfc}
 %Those icons in the references are terrible looking
 \setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]
 
 %%%% Acronym support
 
@@ -93,16 +147,14 @@
 \end{frame}
 }
 
-\section{Motivation}
-\subsection{Cat Behavior}
-\input{cat_behavior}
-\subsection{Cat Appearance}
-\input{cat_appearance}
-\subsection{Cat Math}
-\input{cat_math}
-\section{Methods}
-\subsection{Illinois Colors}
-\input{fierce}
+\section{Introduction}
+\subsection{Overview}
+\input{overview.tex}
+\section{Motivating Observations}
+\input{motivation/00-motivation.tex}
+\section{Tale of Three Uncertainties}
+\input{uncertainty/00-uncertainty.tex}
+
 \section{Conclusion}
 \input{conclusion}
 \input{acks}
@@ -111,7 +163,7 @@
 \begin{frame}[allowframebreaks]
   \frametitle{References}
   \bibliographystyle{plain}
-  {\footnotesize \bibliography{bibliography.bib} }
+  {\footnotesize \bibliography{../docs/2023-dotson-prelim.bib} }
 
 \end{frame}
 
