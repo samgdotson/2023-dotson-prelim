@@ -1,0 +1,40 @@
+\begin{frame}
+    \frametitle{Descriptive: Parametric-Structural}
+
+    \begin{itemize}
+        \item Climate change is happening!
+    \end{itemize}
+
+
+    \begin{figure}
+        \centering
+        \resizebox{0.60\columnwidth}{!}{
+        \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+                \tikzstyle{every node}=[font=\small]
+                \tikzstyle{vertex} = [circle, draw=black, fill=illiniblue]
+                \tikzstyle{hidden} = [draw=none]
+                \tikzstyle{edge} = [<->, very thick]
+                
+                % \node[vertex](v1) at (0,5) {\textbf{Normative}};
+                \node[vertex](v2) at (4,0) {\textbf{Structural}};
+                \node[vertex](v3) at (-4,0) {\textbf{Parametric}};
+    
+                % \draw[edge] (v1) -- (v2);
+                \draw[edge] (v2) -- (v3);
+
+                \node[hidden](h4) at (4, -0.7) {};
+    
+                % % hidden nodes for v3
+                \node[hidden](h5) at (-4, -0.7) {};
+                % \node[hidden](h6) at (-4, 0.75) {};
+    
+                \draw[draw=none] (h4) -- (h5) node[anchor=mid, midway, sloped]{\textbf{Descriptive}};
+    
+    
+        \end{tikzpicture}
+        }
+        % \caption{Parametric Uncertainty}
+        % \label{fig:triarchic-uncertainty}
+    \end{figure}
+
+\end{frame}

@@ -11,31 +11,8 @@
                     \tikzstyle{vertex} = [circle, draw=black, fill=illiniblue]
                     \tikzstyle{hidden} = [draw=none]
                     \tikzstyle{edge} = [<->, very thick]
-                    
-                    % \node[vertex](v1) at (0,5) {\textbf{Normative}};
-                    % \node[vertex](v2) at (4,0) {\textbf{Structural}};
+
                     \node[vertex](v3) at (-4,0) {\textbf{Parametric}};
-        
-                    % \draw[edge] (v1) -- (v2);
-                    % \draw[edge] (v2) -- (v3);
-                    % \draw[edge] (v1) -- (v3);
-        
-                    % % hidden nodes for v1
-                    % \node[hidden](h1) at (-0.75, 5) {};
-                    % \node[hidden](h2) at (0.75, 5) {};
-        
-                    % % hidden nodes for v2
-                    % \node[hidden](h3) at (4, 0.75) {};
-                    % \node[hidden](h4) at (4, -0.7) {};
-        
-                    % % hidden nodes for v3
-                    % \node[hidden](h5) at (-4, -0.7) {};
-                    % \node[hidden](h6) at (-4, 0.75) {};
-        
-                    % \draw[draw=none] (h4) -- (h5) node[anchor=mid, midway, sloped]{\textbf{Descriptive}};
-                    % \draw[draw=none] (h6) -- (h1) node[anchor=mid, midway, sloped]{\textbf{Pre-descriptive}};
-                    % \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway, sloped]{\textbf{Prescriptive}};
-        
         
             \end{tikzpicture}
             }
@@ -44,18 +21,74 @@
         \end{figure}
 
         \column[t]{6cm}
-        Deals with empirical values
+        \begin{definition}[Parametric Uncertainty]
+            Related to uncertainty in model inputs (empirical values). The most commonly
+            addressed type of uncertainty in science and engineering 
+            \cite{yue_review_2018,decarolis_using_2011,morgan_uncertainty_1990}.    
+        \end{definition}
+        
+        May be classified as either \boldorange{aleatory} or 
+        \boldorange{epistemic} \cite{pfenninger_energy_2014,kiureghian_aleatory_2009}. 
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Examples of Parametric Uncertainty}
+
+    \begin{columns}
+        \column[t]{5cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{
+                \input{../docs/figures/multiple-distributions.pgf}
+            }
+            \caption{Possible distributions of several parameters.}
+            \label{fig:multi-distributions}
+        \end{figure}
+
+        \column[t]{5cm}
 
         \begin{itemize}
-            \item Climate change is happening!
-            \item ESOM modeling struggles with the human dimension \cite{pfenninger_energy_2014} because
-            unlike parametric and structural uncertainties, there are no ``formal'' methods for addressing
-            normative uncertainties. Unlike engineering, however, social science is equipped to handle 
-            normative uncertainties with formal methods using human subjects, such as case studies, surveys,
-            interviews, and mixed-methods.
+            \item \textcolor{black}{Rates (e.g., interest, learning, growth),}
+            \item \textcolor{black}{costs (e.g., fuel, capital, O\&M),}
+            \item \textcolor{black}{aggregated energy demand,}
+            \item \textcolor{black}{spent fuel burnup \cite{feng_sensitivity_2020},}
+            \item \textcolor{black}{nuclear cross-section data \cite{eades_influence_2016,radaideh_combining_2019},}
+            \item \textcolor{black}{likelihood and magnitude of consequences (i.e., probabilistic risk assessment).}
         \end{itemize}
 
-        
+        % Note: \textbf{\textcolor{illiniblue}{aleatory}} and \textbf{\textcolor{illiniorange}{epistemic}}
+    \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Addressing parametric uncertainty}
+
+    \begin{columns}
+        \column[t]{5cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{
+                \input{../pres/images/confidence-int.pgf}
+            }
+            \caption{Addressing parametric uncertainty produces confidence intervals.}
+            \label{fig:confidence-intervals}
+        \end{figure}
+
+        \column[t]{5cm}
+        \boldblue{Idea}: Rerun a simulation until you reach a large enough sample size to do statistics.\\~\\
+        Formal methods to address parametric uncertainty$^*$:
+        \begin{itemize}
+            \item ``Monte Carlo'' (i.e., statistical sampling)\pause
+            \item Sensitivity analysis (specific or global)\pause
+            \item Stochastic optimization\pause
+        \end{itemize}
+
+
+        \small{$^*$These methods are appropriate for \boldorange{aleatory} uncertainties.}
     \end{columns}
 
 \end{frame}

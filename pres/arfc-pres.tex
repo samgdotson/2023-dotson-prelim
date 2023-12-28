@@ -33,8 +33,14 @@
 
 \definecolor{LightGray}{gray}{0.9}
 \definecolor{illiniblue}{HTML}{B1C6E2}
+\definecolor{trueilliniblue}{HTML}{13294B}
 \definecolor{illiniorange}{HTML}{f8c2a2}
+\definecolor{trueilliniorange}{HTML}{E84A27}
 \graphicspath{figures/}
+
+\newcommand{\boldblue}[1]{\textcolor{trueilliniblue}{\textbf{#1}}}
+\newcommand{\boldorange}[1]{\textcolor{trueilliniorange}{\textbf{#1}}}
+
 
 % \newtcolorbox{noteBox}[1][]{
 %     width=\textwidth,
@@ -148,7 +154,6 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 }
 
 \section{Introduction}
-\subsection{Overview}
 \input{overview.tex}
 \section{Motivating Observations}
 \input{motivation/00-motivation.tex}

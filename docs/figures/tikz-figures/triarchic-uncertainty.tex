@@ -31,6 +31,12 @@
             \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway, sloped]{\textbf{Prescriptive}};
 
 
+            % objectivity scale
+            \node[hidden](u1) at (6,5) {\textbf{Subjective}};
+            \node[hidden](u2) at (6,0) {\textbf{Objective}};
+            \draw[edge] (u1) -- (u2);
+
+
     \end{tikzpicture}
     \caption{Types of uncertainties and how their relationships inform modeling practice.}
     \label{fig:triarchic-uncertainty}
