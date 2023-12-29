@@ -47,6 +47,79 @@
 \begin{frame}
     \frametitle{Addressing Structural Uncertainty}
 
+    \begin{columns}
+        \column[t]{4cm}
+        \boldblue{Idea:} Look for alternatives in the ``near-optimal'' space.\\~\\
+
+        How? Modeling-to-generate-alternatives (MGA)
+        \begin{enumerate}
+            \item \boldorange{Relax} the objective function.
+            \item \boldorange{Search} for maximally different solutions in the design space.
+            \item \boldorange{Iterate} until enough solutions have been generated.
+        \end{enumerate}
     
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{../docs/figures/standard-mga.pgf}}
+            \caption{Illustration of the MGA algorithm.}
+            \label{fig:standard-mga}
+        \end{figure}
+    \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{How \texttt{Osier} handles structural uncertainty}
+
+    \begin{columns}
+        \column[t]{4cm}
+        \begin{enumerate}
+            \item \boldorange{Reduce} uncertainty by introducing more objectives.
+        \end{enumerate}
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/near-optimal-pareto-pres.pgf}}
+            \caption{Near optimal space for a multi-objective problem.}
+            \label{fig:near-opt}
+        \end{figure}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{How \texttt{Osier} handles structural uncertainty}
+
+    \begin{columns}
+        \column[t]{4cm}
+
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/near-optimal-pareto-mga-pres.pgf}}
+            \caption{Near optimal space for mono- and multi-objective problems. The light blue area shows
+            a vertically truncated near-optimal space around the f1 objective.}
+            \label{fig:near-opt-mga}
+        \end{figure}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{How \texttt{Osier} handles structural uncertainty}
+
+    \begin{columns}
+        \column[t]{4cm}
+
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/nd-mga-paretofront-pres.pgf}}
+            \caption{Alternative solutions identified in the near optimal space.}
+            \label{fig:nd-alt-points}
+        \end{figure}
+    \end{columns}
 
 \end{frame}

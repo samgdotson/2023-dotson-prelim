@@ -3,14 +3,29 @@
     \begin{columns}
         \column[t]{6cm}
         
-        Generating prescriptive conclusions is the primary reason to model energy systems.\\~\\
+        Generating prescriptive conclusions is the primary reason to model
+        energy systems.\\~\\
 
-        If the solution to structural uncertainty was identifying alternative, ``sub-optimal'' 
-        solutions, then the prescriptive stage means deciding among these diverse alternatives.
+        If the solution to structural uncertainty was identifying alternative,
+        ``sub-optimal'' solutions, then the prescriptive stage means deciding
+        among these diverse alternatives.\\~\\
+
+        What are the consequences of Arrow's Theorem?
+        \begin{enumerate}
+            \item There is no one-size-fits-all method for public engagement or
+            decision-making.
+            \item The methods of engagement must ``open up'' debate rather than
+            ``close it down'' \cite{wilsdon_see-through_2004}. Expanding on this
+            idea, multiobjective optimization ``help people to understand the
+            problem better, explore their feelings, form a coherent, defensible
+            set of values, and understand the implications of those values for
+            the decision'' \cite{hobbs_optimization_1995}. 
+        \end{enumerate}
 
         \begin{theorem}[Arrow's Impossibility Theorem]
-            It is impossible to construct a utility function that maps individual preferences 
-            onto a global preference order without imposition or dictating \cite{kasprzyk_many_2013,
+            It is impossible to construct a utility function that maps
+            individual preferences onto a global preference order without
+            imposition or dictating \cite{kasprzyk_many_2013,
             franssen_arrows_2005,arrow_difficulty_1950}.
         \end{theorem}
 
@@ -19,10 +34,9 @@
             \centering
             \resizebox{\columnwidth}{!}{
             \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
-                    \tikzstyle{every node}=[font=\small]
-                    \tikzstyle{vertex} = [circle, draw=black, fill=illiniblue]
-                    \tikzstyle{hidden} = [draw=none]
-                    \tikzstyle{edge} = [<->, very thick]
+                    \tikzstyle{every node}=[font=\small] \tikzstyle{vertex} =
+                    [circle, draw=black, fill=illiniblue] \tikzstyle{hidden} =
+                    [draw=none] \tikzstyle{edge} = [<->, very thick]
                     
                     \node[vertex](v1) at (0,5) {\textbf{Normative}};
                     \node[vertex](v2) at (4,0) {\textbf{Structural}};
@@ -34,15 +48,34 @@
                     % % hidden nodes for v2
                     \node[hidden](h3) at (4, 0.75) {};
 
-                    \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway, sloped]{\textbf{Prescriptive}};
+                    \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway,
+                    sloped]{\textbf{Prescriptive}};
         
         
             \end{tikzpicture}
             }
-            % \caption{Parametric Uncertainty}
-            % \label{fig:triarchic-uncertainty}
+            % \caption{Parametric Uncertainty} \label{fig:triarchic-uncertainty}
         \end{figure}
         
     \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Purpose of Multiobjective Methods}
+
+    \textit{The second purpose of multiobjective methods is to help participants
+    in the planning process define and articulate their values, apply them
+    rationally and consistently, and document the resuits. The object is to
+    inspire confidence in the soundness of the decision without being
+    unnecessarily difficult. Multiobjective methods used in this manner can also
+    help negotiation, by quantifying and communicating the priorities held by
+    different interests \cite{hobbs_optimization_1995}.} \\~\\
+
+    Although the usefulness of these methods were recognized long ago, the
+    application of these methods was stunted by computational tools and data
+    visualization capabilities.\\~\\
+
+    Prior articulation methods vs interactive methods. 
 
 \end{frame}
