@@ -36,6 +36,11 @@
             \node[hidden](u2) at (6,0) {\textbf{Objective}};
             \draw[edge] (u1) -- (u2);
 
+            % uncertainty scale
+            \node[hidden](u1) at (-6,5) {\textbf{Epistemic}};
+            \node[hidden](u2) at (-6,0) {\textbf{Aleatory}};
+            \draw[edge] (u1) -- (u2);
+
 
     \end{tikzpicture}
     \caption{Types of uncertainties and how their relationships inform modeling practice.}

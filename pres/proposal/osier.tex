@@ -1,0 +1,136 @@
+\begin{frame}
+    \frametitle{Proposal \#2: Building a flexible ESOM}
+
+    \begin{enumerate}
+        \item Create an open-source multi-objective energy system model (\texttt{osier}) that can allow modelers to address
+        \begin{itemize}
+            \item parametric,
+            \item structural,
+            \item and normative uncertainties.
+        \end{itemize}
+        \item Develop an MGA algorithm for use with genetic algorithms in higher dimensional spaces.
+    \end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{How \texttt{Osier} handles structural uncertainty}
+
+    \begin{columns}
+        \column[t]{4cm}
+        \begin{enumerate}
+            \item \boldorange{Reduce} uncertainty by introducing more objectives.
+            \item \boldorange{}
+        \end{enumerate}
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/near-optimal-pareto-pres.pgf}}
+            \caption{Near optimal space for a multi-objective problem.}
+            \label{fig:near-opt}
+        \end{figure}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{How \texttt{Osier} handles structural uncertainty}
+
+    \begin{columns}
+        \column[t]{4cm}
+
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/near-optimal-pareto-mga-pres.pgf}}
+            \caption{Near optimal space for mono- and multi-objective problems. The light blue area shows
+            a vertically truncated near-optimal space around the f1 objective.}
+            \label{fig:near-opt-mga}
+        \end{figure}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{How \texttt{Osier} handles structural uncertainty}
+
+    \begin{columns}
+        \column[t]{4cm}
+
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/nd-mga-paretofront-pres.pgf}}
+            \caption{Alternative solutions identified in the near optimal space.}
+            \label{fig:nd-alt-points}
+        \end{figure}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demonstration on a real problem}
+
+    \begin{figure}
+        \centering 
+        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
+        \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/osier_mga_subset_01.pgf}}
+        \caption{Comparing the results from \texttt{Osier} with another ESOM, \texttt{Temoa}.}
+        \label{fig:osier-temoa-benchmark-1}
+    \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Demonstration on a real problem}
+
+    \begin{figure}
+        \centering 
+        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
+        \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/temoa_osier_benchmark_01.pgf}}
+        \caption{Comparing the results from \texttt{Osier} with another ESOM, \texttt{Temoa}.}
+        \label{fig:osier-temoa-benchmark-2}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demonstration on a real problem}
+
+    \begin{figure}
+        \centering 
+        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
+        \resizebox{0.9\columnwidth}{!}{\input{../docs/figures/4_obj_objective_space_MGA.pgf}}
+        \caption{Pareto front and near-optimal solutions for the same problem with 4 objectives.}
+        \label{fig:4-obj-objective-space}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demonstration on a real problem}
+
+    \begin{figure}
+        \centering 
+        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
+        \resizebox{0.9\columnwidth}{!}{\input{../docs/figures/4_obj_design_space_MGA.pgf}}
+        \caption{Design space for the 4-objective problem with near-optimal solutions.}
+        \label{fig:4-obj-design-space}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demonstration on a real problem}
+
+    \begin{figure}
+        \centering 
+        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
+        \resizebox{0.9\columnwidth}{!}{\input{../docs/figures/4_obj_design_space_total_cost.pgf}}
+        \caption{The five lowest cost solutions. Darker shade corresponds to lower cost.}
+        \label{fig:4-obj-design-space-total-cost}
+    \end{figure}
+
+\end{frame}

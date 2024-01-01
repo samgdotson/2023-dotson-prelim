@@ -7,28 +7,27 @@
             \centering
             \resizebox{\columnwidth}{!}{
             \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
-                    \tikzstyle{every node}=[font=\small]
-                    \tikzstyle{vertex} = [circle, draw=black, fill=illiniblue]
-                    \tikzstyle{hidden} = [draw=none]
-                    \tikzstyle{edge} = [<->, very thick]
+                    \tikzstyle{every node}=[font=\small] \tikzstyle{vertex} =
+                    [circle, draw=black, fill=illiniblue] \tikzstyle{hidden} =
+                    [draw=none] \tikzstyle{edge} = [<->, very thick]
 
                     \node[vertex](v3) at (-4,0) {\textbf{Parametric}};
         
             \end{tikzpicture}
             }
-            % \caption{Parametric Uncertainty}
-            % \label{fig:triarchic-uncertainty}
+            % \caption{Parametric Uncertainty} \label{fig:triarchic-uncertainty}
         \end{figure}
 
         \column[t]{6cm}
-        \begin{definition}[Parametric Uncertainty]
-            Related to uncertainty in model inputs (empirical values). The most commonly
-            addressed type of uncertainty in science and engineering 
+        \begin{block}{Parametric Uncertainty}
+            Related to uncertainty in model inputs (empirical values). The most
+            commonly addressed type of uncertainty in science and engineering
             \cite{yue_review_2018,decarolis_using_2011,morgan_uncertainty_1990}.    
-        \end{definition}
+        \end{block}
         
-        May be classified as either \boldorange{aleatory} or 
-        \boldorange{epistemic} \cite{pfenninger_energy_2014,kiureghian_aleatory_2009}. 
+        May be classified as either \boldorange{aleatory} or
+        \boldorange{epistemic}
+        \cite{pfenninger_energy_2014,kiureghian_aleatory_2009}. 
     \end{columns}
 
 \end{frame}
@@ -53,16 +52,35 @@
             \item \textcolor{black}{Rates (e.g., interest, learning, growth),}
             \item \textcolor{black}{costs (e.g., fuel, capital, O\&M),}
             \item \textcolor{black}{aggregated energy demand,}
-            \item \textcolor{black}{spent fuel burnup \cite{feng_sensitivity_2020},}
-            \item \textcolor{black}{nuclear cross-section data \cite{eades_influence_2016,radaideh_combining_2019},}
-            \item \textcolor{black}{likelihood and magnitude of consequences (i.e., probabilistic risk assessment).}
+            \item \textcolor{black}{spent fuel burnup
+            \cite{feng_sensitivity_2020},}
+            \item \textcolor{black}{nuclear cross-section data
+            \cite{eades_influence_2016,radaideh_combining_2019},}
+            \item \textcolor{black}{likelihood and magnitude of consequences
+            (i.e., probabilistic risk assessment).}
         \end{itemize}
 
-        % Note: \textbf{\textcolor{illiniblue}{aleatory}} and \textbf{\textcolor{illiniorange}{epistemic}}
+        % Note: \textbf{\textcolor{illiniblue}{aleatory}} and
+        % \textbf{\textcolor{illiniorange}{epistemic}}
     \end{columns}
 
 \end{frame}
 
+\begin{frame}
+    \frametitle{Consequences of not addressing parametric uncertainty}
+
+    A majority of ESOM articles use \textit{scenario analysis} to weakly ddress
+    parametric uncertainty \cite{yue_review_2018}. \\~\\
+
+    Leading to: 
+    \begin{enumerate}
+        \item Overconfidence in results
+        \item Cognitive myopia
+        \item Implicit normative biases
+    \end{enumerate}
+
+
+\end{frame}
 
 \begin{frame}
     \frametitle{Addressing parametric uncertainty}
@@ -74,12 +92,13 @@
             \resizebox{\columnwidth}{!}{
                 \input{../pres/images/confidence-int.pgf}
             }
-            \caption{Addressing parametric uncertainty produces confidence intervals.}
+            \caption{Systematically addressing parametric uncertainty produces confidence intervals.}
             \label{fig:confidence-intervals}
         \end{figure}
 
         \column[t]{5cm}
-        \boldblue{Idea}: Rerun a simulation until you reach a large enough sample size to do statistics.\\~\\
+        \boldblue{Idea}: Rerun a simulation until you reach a large enough
+        sample size to do statistics.\\~\\
         Formal methods to address parametric uncertainty$^*$:
         \begin{itemize}
             \item ``Monte Carlo'' (i.e., statistical sampling)\pause
@@ -88,7 +107,8 @@
         \end{itemize}
 
 
-        \small{$^*$These methods are appropriate for \boldorange{aleatory} uncertainties.}
+        \small{$^*$These methods are appropriate for \boldorange{aleatory}
+        uncertainties.}
     \end{columns}
 
 \end{frame}

@@ -23,9 +23,9 @@
         \end{figure}
 
         \column[t]{6cm}
-        \begin{definition}[Structural Uncertainty]
+        \begin{block}{Structural Uncertainty}
             [R]efers to the imperfect and incomplete nature of the equations describing the system \cite{decarolis_using_2011}.
-        \end{definition}
+        \end{block}
         
         This type of uncertainty will \textit{always} persist.
     \end{columns}
@@ -33,14 +33,30 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Examples of Structural Uncertainty}
+    \frametitle{Examples Sources of Structural Uncertainty}
 
-    \begin{itemize}
-        \item Objective functions (most typical)\pause
-        \item Spatiotemporal resolution\pause
-        \item Physics fidelity\pause
-        \item Solution method
-    \end{itemize}
+    Unmodeled or unmodelable aspects of the model related to:
+
+    \begin{enumerate}
+        \item Objective functions
+        \item Physics fidelity, for example
+        \begin{itemize}
+            \item optimal power flow,
+            \item turbulence (air flow, water flow, etc.),
+            \item thermodynamics (e.g., weather impacting a power plant's ultimate heat sink)
+        \end{itemize} 
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Consequences of unhandled structural uncertainty}
+
+    \begin{enumerate}
+        \item Overconfidence in results
+        \item Cognitive myopia
+        \item Missed acceptable alternatives
+    \end{enumerate}
 
 \end{frame}
 
@@ -64,61 +80,6 @@
             \resizebox{\columnwidth}{!}{\input{../docs/figures/standard-mga.pgf}}
             \caption{Illustration of the MGA algorithm.}
             \label{fig:standard-mga}
-        \end{figure}
-    \end{columns}
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{How \texttt{Osier} handles structural uncertainty}
-
-    \begin{columns}
-        \column[t]{4cm}
-        \begin{enumerate}
-            \item \boldorange{Reduce} uncertainty by introducing more objectives.
-        \end{enumerate}
-        \column[t]{6cm}
-        \begin{figure}
-            \centering
-            \resizebox{\columnwidth}{!}{\input{images/near-optimal-pareto-pres.pgf}}
-            \caption{Near optimal space for a multi-objective problem.}
-            \label{fig:near-opt}
-        \end{figure}
-    \end{columns}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{How \texttt{Osier} handles structural uncertainty}
-
-    \begin{columns}
-        \column[t]{4cm}
-
-        \column[t]{6cm}
-        \begin{figure}
-            \centering
-            \resizebox{\columnwidth}{!}{\input{images/near-optimal-pareto-mga-pres.pgf}}
-            \caption{Near optimal space for mono- and multi-objective problems. The light blue area shows
-            a vertically truncated near-optimal space around the f1 objective.}
-            \label{fig:near-opt-mga}
-        \end{figure}
-    \end{columns}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{How \texttt{Osier} handles structural uncertainty}
-
-    \begin{columns}
-        \column[t]{4cm}
-
-        \column[t]{6cm}
-        \begin{figure}
-            \centering
-            \resizebox{\columnwidth}{!}{\input{images/nd-mga-paretofront-pres.pgf}}
-            \caption{Alternative solutions identified in the near optimal space.}
-            \label{fig:nd-alt-points}
         \end{figure}
     \end{columns}
 

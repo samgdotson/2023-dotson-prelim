@@ -96,6 +96,8 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]
 
+\newcommand{\mathdefault}[1][]{}
+
 %%%% Acronym support
 
 % \usepackage[acronym,toc]{glossaries}
@@ -147,7 +149,7 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 
 %%--------------------------------%%
 \AtBeginSection[]{
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \frametitle{Outline}
   \tableofcontents[currentsection]
 \end{frame}
@@ -157,11 +159,18 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 \input{00-overview.tex}
 \section{Motivating Observations}
 \input{motivation/00-motivation.tex}
+% \section{Technical Gap \#1}
+\input{tech-gaps/01-gap.tex}
+% \section{Proposal \#1}
+\input{proposal/norm-premise.tex}
 \section{Tale of Three Uncertainties}
 \input{uncertainty/00-uncertainty.tex}
+% \section{Technical Gap \#3}
+\input{tech-gaps/03-gap.tex}
+\input{proposal/case-study.tex}
 
-\section{Conclusion}
-\input{conclusion}
+% \section{Conclusion}
+% \input{conclusion}
 \input{acks}
 %%--------------------------------%%
 %%--------------------------------%%

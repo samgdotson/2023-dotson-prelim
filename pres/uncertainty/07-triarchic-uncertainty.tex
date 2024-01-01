@@ -32,6 +32,17 @@
                 \draw[draw=none] (h4) -- (h5) node[anchor=mid, midway, sloped]{\textbf{Descriptive}};
                 \draw[draw=none] (h6) -- (h1) node[anchor=mid, midway, sloped]{\textbf{Pre-descriptive}};
                 \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway, sloped]{\textbf{Prescriptive}};
+
+                % objectivity scale
+                \node[hidden](u1) at (-6,5) {\textbf{Epistemic}};
+                \node[hidden](u2) at (-6,0) {\textbf{Aleatory}};
+                \draw[edge] (u1) -- (u2);
+
+
+                % objectivity scale
+                \node[hidden](u1) at (6,5) {\textbf{Subjective}};
+                \node[hidden](u2) at (6,0) {\textbf{Objective}}; \draw[edge]
+                (u1) -- (u2);
     
     
         \end{tikzpicture}
