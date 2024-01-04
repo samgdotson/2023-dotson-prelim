@@ -8,9 +8,11 @@ capacity-expansion scenarios \cite{decarolis_temoa_2010}. The key benefits of
 \ac{temoa} are its open-source code, open data, and built-in uncertainty
 analysis capabilities. These features address the need for greater transparency
 in \ac{esom} modeling and robust assessment of future uncertainties
-\cite{hunter_modeling_2013, fattahi_systemic_2020}. \ac{pygen} is another
-open-source code that facilitates rapid development of \ac{temoa} models and
-enables sensitivity analyses using a templated approach
+\cite{hunter_modeling_2013, fattahi_systemic_2020}. 
+\ac{pygen} is another
+open-source code, developed by this thesis' author, that wraps around \ac{temoa} 
+facilitating rapid development of \ac{temoa} models and
+enabling sensitivity analyses using a templated approach
 \cite{dotson_influence_2022, dotson_python_2021}. These features of \ac{pygen}
 reduce the learning curve and the cost of producing unique models in \ac{temoa}
 \cite{dotson_influence_2022}.
@@ -32,8 +34,8 @@ from the model described in Section \ref{section:dispatch} by making the initial
 storage level for energy storage technologies a decision variable, whereas the
 dispatch model used in this thesis does not optimize initial storage and assumes
 energy storage starts at zero. The detailed formulation of \ac{temoa}'s
-constraints and equations are available online \cite{decarolis_temoa_2010}
-(\textcolor{red}{maybe in an appendix?}). 
+constraints and equations are available online \cite{decarolis_temoa_2010}.
+% (\textcolor{red}{maybe in an appendix?}). 
 
 \subsection{\acl{mga}}
 \label{section:mga}
@@ -52,11 +54,11 @@ dotson_influence_2022}:
   \item iterate the procedure,
   \item stop the \ac{mga} when no significant changes are observed.
 \end{enumerate}
-The mathematical formulation of this algorithm is
+The mathematical formulation of this algorithm is to
 \begin{align}
-  \intertext{Minimize:}
+  \intertext{minimize:}
   p &= \sum_{k\in K} x_k,
-  \intertext{Subject to:}
+  \intertext{subject to:}
   f_j\left(\vec{x}\right) &\leq T_j \quad\forall \quad j,\\
   \vec{x}&\in X,
   \intertext{where}
@@ -70,6 +72,13 @@ This procedure results in a small set of maximally different solutions for
 modelers to interpret. In this way, \ac{mga} efficiently proposes alternatives
 that may capture unmodeled objectives, such as political expediency or social
 acceptance. However, this method depends on a single objective function which
-does not guarantee that these alternative solutions will be close to any other
-measurable objective.
+does not guarantee that these alternative solutions will be optimal or 
+near-optimal for any other measurable objective.
+
+
+I created \ac{pygen} as an initial exploration on repeatable analysis and
+extending the functionality of an existing \ac{esom}. While successful in
+that regard, \ac{pygen} could not overcome \ac{temoa}'s inherent limitations
+on optimizing multiple objectives and the inability to modify its objective 
+function. Addressing these limits led to my developing \ac{osier}.
 

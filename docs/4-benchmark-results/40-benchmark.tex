@@ -1,32 +1,64 @@
 \chapter{Benchmark Results}
 \label{chapter:benchmark-results}
-
-This chapter first illustrates some of the differences among three evolutionary
-algorithms: \ac{nsga2}, \ac{nsga3}, and \ac{unsga3}. Second, this chapter shows 
-that solutions calculated by \ac{osier} agree with a more established \ac{esom}, 
-\ac{temoa}. Lastly, this chapter demonstrates some of \ac{osier}'s advanced features, 
-such as many-objective objective problems and combining \ac{moo} with \ac{mga}.
+\ac{osier} is a key tool that will be leveraged in the analysis of subsequent
+work. Accordingly, it must be shown that \ac{osier} generates reproducible and
+reliable, results consistent with the results from an established framework.
+This chapter has three objectives, the first is to illustrate some of the
+differences among three evolutionary algorithms: \ac{nsga2}, \ac{nsga3}, and
+\ac{unsga3}. Second, it shows that solutions calculated by \ac{osier} agree with
+a more established \ac{esom}, \ac{temoa}. Lastly, it demonstrates some of
+\ac{osier}'s advanced features, such as many-objective objective problems and
+combining \ac{moo} with \ac{mga}.
 
 \section{Exercise 0: Deciding Among Evolutionary Algorithms}
 
-\ac{osier} allows users to choose among a variety of \acp{moo}.
+\ac{osier} allows users to choose among a variety of \ac{moo} methods. This is
+motivated by the desire for flexibility. However, Exercises 1 and 2 use just one
+algorithm, \ac{unsga3} as implemented by \ac{pymoo}, which should be justified
+by comparing the results against different algorithms. As an important aside,
+although I used the \ac{deap} implementations of \ac{nsga2} and \ac{nsga3},
+these algorithms are not exclusive to \ac{deap}. \ac{pymoo} also implements
+them, I simply wanted to show the breadth of support for different tools in
+\ac{osier}. Figure \ref{fig:algorithm-comparison} provides the justification for
+choosing \ac{unsga3} by comparing the results of three \ac{moo} algorithms by
+showing the respective scatter plots and a density plot of the points on each
+axis. Since it took \ac{unsga3} 128 generations to reach its convergence
+criterion, the other two algorithms were also stopped after 128 generations,
+before converging. The density plot above the scatter plot shows the density of
+points along the ``total cost'' objective. Similarly, the density plot to the
+right shows the distribution of points for the ``emissions'' objective.
 
-\begin{figure}[h]
+There are a few notable features of Figure \ref{fig:algorithm-comparison}.
+First, all three algorithms identified very similar Pareto fronts, the main
+differences involve the distribution of points and the extent of their
+respective solution sets. Second, the two \ac{deap} algorithms have a greater
+number of points along the bottom part of the Pareto front, indicating a greater
+sampling over the cost objective. This is further supported by the higher
+concentration of points along the lower half of the emission objective's range.
+Third, the algorithms implemented by \ac{deap} both have more extreme values
+along both axes. All of these features can be attributed to the fact that
+neither \ac{nsga2} nor \ac{nsga3} fully converged. Thus, choosing \ac{unsga3}
+will be used for the remaining exercises for its faster convergence.
+
+\begin{figure}[ht]
   \centering
-  \resizebox{0.6\columnwidth}{!}{\input{figures/results/algorithm_comparison.pgf}}
+  \resizebox{0.75\columnwidth}{!}{\input{figures/results/algorithm_comparison_kde.pgf}}
   \caption{Compares the \ac{moo} algorithms.}
   \label{fig:algorithm-comparison}
 \end{figure}
 
 
+
 \section{Exercise 1: Exploring objective space}
-In the first benchmark exercise, I used \ac{temoa} to calculate the least-cost
-solution. Then I generated 30 alternative solutions with \ac{mga} as described
-in Section \ref{section:mga} with a 10\% slack variable added to \ac{temoa}'s
-objective function. Figure \ref{fig:temoa-benchmark-01} shows the points from
-\ac{temoa} in red and \ac{osier}'s Pareto-front for the same problem in blue.
-The red- and blue-shaded regions are the sub-optimal spaces (i.e., within 10\%
-of any objective) for \ac{temoa} and \ac{osier}, respectively.
+Since structural uncertainty persists regardless of the number of objectives
+used, it's important to check the near-optimal objective space for alternative
+solutions. In the first benchmark exercise, I used \ac{temoa} to calculate the
+least-cost solution. Then I generated 30 alternative solutions with \ac{mga} as
+described in Section \ref{section:mga} with a 10\% slack variable added to
+\ac{temoa}'s objective function. Figure \ref{fig:temoa-benchmark-01} shows the
+points from \ac{temoa} in red and \ac{osier}'s Pareto-front for the same problem
+in blue. The red- and blue-shaded regions are the sub-optimal spaces (i.e.,
+within 10\% of any objective) for \ac{temoa} and \ac{osier}, respectively.
 
 \begin{figure}[h]
   \centering
@@ -45,9 +77,13 @@ particular, the initial storage value for energy storage technologies is a
 decision variable in \ac{temoa} and not in \ac{osier}. A second reason for this
 discrepancy has to do with convergence. \ac{osier}'s Pareto-front could likely
 be improved with a lower convergence tolerance, but this would use additional
-computational resources.
+computational resources. Although, \ac{temoa} calculated an optimal solution
+with slightly lower cost than \ac{osier}, modelers should not place too much
+importance on this fact because \acp{esom} should be used to generate insight
+rather than answers, due to the nature of the systems being modeled
+\cite{decarolis_using_2011}.
 
-Next, the sub-optimal spaces partially overlap, indicating that \ac{temoa} could
+Next, the sub-optimal spaces mostly overlap, indicating that \ac{temoa} could
 find a solution with lower carbon emissions after sufficient iterations.
 However, none of \ac{temoa}'s \ac{mga} solutions fall within \ac{osier}'s
 sub-optimal space. This point highlights the necessity for \acl{moo}. The
@@ -56,13 +92,16 @@ sub-optimal region. \ac{mga} may capture appealing alternatives for some
 unmodeled objective in the original problem, but it cannot guarantee that those
 solutions will be an improvement along any other objective axis. This is
 especially apparent here, where the least-cost solution happens also to be the
-lowest carbon solution. Even though \ac{moo} reduces structural uncertainty, it
-will always exist, as discussed in Section \ref{section:uncertainty}. Therefore,
-identifying alternative solutions by sampling points in the inferior region is
-still useful. Figure \ref{fig:temoa-benchmark-02} shows a set of solutions in
-\ac{osier}'s inferior region and some randomly selected points.
+lowest carbon solution, for \ac{temoa}. The relatively small area where the two
+\acp{esom} do not overlap is fully explained by the difference in their
+least-cost solutions.
 
-
+Even though \ac{moo} reduces structural uncertainty, it will always exist, as
+discussed in Section \ref{section:uncertainty}. Therefore, identifying
+alternative solutions by sampling points in the inferior region is still useful.
+Figure \ref{fig:temoa-benchmark-02} focuses on the near-optimal space presented
+in \ref{fig:temoa-benchmark-01} and shows both the complete set of near-optimal
+solutions (green) and some randomly selected points, highlighted in red.
 
 \begin{figure}[h]
   \centering
@@ -71,6 +110,26 @@ still useful. Figure \ref{fig:temoa-benchmark-02} shows a set of solutions in
   \caption{Points within \ac{osier}'s sub-optimal space.}
   \label{fig:temoa-benchmark-02}
 \end{figure}
+
+Both Figure \ref{fig:temoa-benchmark-01} and Figure \ref{fig:temoa-benchmark-02}
+present solutions in the objective space. However, in order to be prescriptive,
+the policy solutions must be formulated according to the decision space. In
+other words, described according to the mix of technologies that produced a
+solution. Figure \ref{fig:temoa-benchmark-03} presents the spread of results in
+the decision space for each model. Figure \ref{fig:temoa-benchmark-03}a shows
+the spread of each technology present in \ac{osier}'s Pareto front. Figure
+\ref{fig:temoa-benchmark-03}b shows the same, but also includes the randomly
+selected points from \ac{osier}'s near-optimal space. Lastly, Figure
+\ref{fig:temoa-benchmark-03}c shows the same kind of distribution for
+\ac{temoa}'s \ac{mga} solutions. Presented in this way, the design space results
+indicate which technologies are always or usually present. Technologies that are
+absent in all cases, including the near-optimal solutions, may be safely
+ignored. For \ac{osier}, these technologies include both types of coal, biomass,
+and largely ignores wind energy. In \ac{temoa}'s results, there are no
+technologies that are totally absent. This result is due to the imperative built
+into standard \ac{mga} to identify solutions that are maximally different in
+design space, whereas \ac{osier} randomly selected points in its inferior
+region. This suggests one avenue for improving \ac{osier}.
 
 \newpage
 \begin{figure}[ht!]
@@ -84,57 +143,69 @@ still useful. Figure \ref{fig:temoa-benchmark-02} shows a set of solutions in
   \label{fig:temoa-benchmark-03}
 \end{figure}
 
-Natural gas with \ac{ccs} shows up in the randomly selected points in
-\ac{osier}'s sub-optimal region. A geo-political locus for energy
-infrastructure, described in Section \ref{section:energy-system-boundaries}
-offers one possible explanation for this technology since states with
-significant natural gas resources might seek to maintain their influence by
-developing low-carbon technology that still uses natural gas.
+% Natural gas with \ac{ccs} shows up in the randomly selected points in
+% \ac{osier}'s sub-optimal region. A geo-political locus for energy
+% infrastructure, described in Section \ref{section:energy-system-boundaries}
+% offers one possible explanation for this technology since states with
+% significant natural gas resources might seek to maintain their influence by
+% developing low-carbon technology that still uses natural gas.
 
 
 \section{Exercise 2: Four Simultaneous Objectives}
-This exercise minimized four objectives simultaneously: total system cost, 
-lifecycle carbon emissions, land-use change, and percentage of total energy
-from non-renewable energy sources. Renewable energy sources include solar,
-wind, and biomass. Although batteries are often used in conjunction with
-\acp{vre}, they are not considered ``renewable'' (nor are they a true energy
-``source'' since they store energy from other sources rather than producing
-their own). Figure \ref{fig:4-obj-pareto} shows the Pareto front for this 4-dimensional problem.
+Chapter \ref{chapter:lit-review} showed that conventional \acp{esom} virtually
+always model a single objective and that objective is uniformly cost (or a
+similar aggregated economic indicator). Further, Section
+\ref{section:moo-in-energy} showed that the existing literature employing
+\ac{moo} never model more than three objectives simultaneously. The purpose of
+this final exercise is to demonstrate that \ac{osier} can optimize many
+objectives, thereby providing more context and confidence for the tool. This
+exercise minimized four objectives simultaneously: total system cost, lifecycle
+carbon emissions, land-use change, and percentage of total energy from
+non-renewable energy sources. Renewable energy sources include solar, wind, and
+biomass. Although batteries are often used in conjunction with \acp{vre}, they
+are not considered ``renewable'' (nor are they a true energy ``source'' since
+they store energy from other sources rather than producing their own). For
+clarity, the ``percent non-renewable'' objective refers to the penetration of
+non-renewable sources as a percentage of the energy produced rather than as a
+percentage of the systems total installed capacity. Figure
+\ref{fig:4-obj-pareto} shows the objective-space Pareto front for this
+4-dimensional problem.
 
 \begin{noteBox}
-\textbf{Reading \Aclp{pcp}:}
-Visualizing the Pareto front for this problem presents a challenge due to its
-high dimensionality. Therefore, I present the results with a novel plot, called
-a \ac{pcp}. This plot is helpful for highlighting differences among a small set
-of solutions with a potentially large number of dimensions. Figure \ref{fig:4-obj-pareto} 
-and Figure \ref{fig:4-obj-design} are both \acp{pcp}. Although \acp{pcp} show continuous
-lines, they do not show a ``trend''. That is, for a given solution, each objective
-takes on a single value that is plotted on its respective vertical axis. The lines 
-connecting these points simply emphasize that these points belong to the same solution.
-Additionally, each objective axis has its own upper and lower bound because each objective
-is scaled differently.
-The \ac{mga} solutions presented in Figure \ref{fig:4-obj-design-mga} using a 
-``letter-value'' plot due to the larger number of solutions included in \ac{mga}. 
+\textbf{Reading \Aclp{pcp}:} Visualizing the Pareto front for this problem
+presents a challenge due to its high dimensionality. Therefore, I present the
+results with a novel plot, called a \ac{pcp}. This plot is helpful for
+highlighting differences among a small set of solutions with a potentially large
+number of dimensions. Figure \ref{fig:4-obj-pareto} and Figure
+\ref{fig:4-obj-design} are both \acp{pcp}. Although \acp{pcp} show continuous
+lines, they do not show a ``trend''. That is, for a given solution, each
+objective takes on a single value that is plotted on its respective vertical
+axis. The lines connecting these points simply emphasize that these points
+belong to the same solution. Additionally, each objective axis has its own upper
+and lower bound because each objective is scaled differently. The \ac{mga}
+solutions presented in Figure \ref{fig:4-obj-design-mga} using a boxplot due to
+the larger number of solutions included in \ac{mga}. 
 \end{noteBox}
 
 
 \begin{figure}[h]
   \centering
   \resizebox{\columnwidth}{!}{\input{figures/results/4_obj_objective_space.pgf}}
-  \caption{The Pareto front for a four objective problem. Extreme values for each
-  objective are colored. The gray lines represent solutions on the Pareto front 
-  that are not extremum.}
+  \caption{The Pareto front for a four objective problem. Extreme values for
+  each objective are colored. The gray lines represent solutions on the Pareto
+  front that are not extremum.}
   \label{fig:4-obj-pareto}
 \end{figure}
 
-Each of the colored lines in Figure \ref{fig:4-obj-pareto} belongs to a solution with an
-`extreme' value on the Pareto-front. For instance, the blue line labeled ``Highest Renewable''
-has the lowest percentage of non-renewable energy sources of any solution. The gray lines 
-are simply other points along the Pareto-front. Figure \ref{fig:4-obj-pareto} shows that minimizing 
-land-use change and renewable energy maximization are strongly competing objectives, since the
-other three extremum are grouped together on those two axes and diametrically opposed to the 
-``highest renewable'' solution. Figure \ref{fig:4-obj-design} illustrates the design space for
-each extreme solution. 
+Each of the colored lines in Figure \ref{fig:4-obj-pareto} belongs to a solution
+with an `extreme' value on the Pareto-front. For instance, the blue line labeled
+``Highest Renewable'' has the lowest percentage of non-renewable energy sources
+of any solution. The gray lines are simply other points along the Pareto-front.
+Figure \ref{fig:4-obj-pareto} shows that minimizing land-use change and
+renewable energy maximization are strongly competing objectives, since the other
+three extremum are grouped together on those two axes and diametrically opposed
+to the ``highest renewable'' solution. Figure \ref{fig:4-obj-design} illustrates
+the design space for each extreme solution. 
 
 
 \begin{figure}[h]
@@ -144,11 +215,21 @@ each extreme solution.
   \label{fig:4-obj-design}
 \end{figure}
 
-Figure \ref{fig:4-obj-design-mga} extends the design space results to include the \ac{mga} solutions. 
-This plot indicates the design preferences for a middling solution, but hides the relationship among
-energy technologies. The most popular technologies in Figure \ref{fig:4-obj-design-mga} are conventional
-nuclear, battery storage, and solar panels. The least popular technologies are wind turbines and ``advanced''
-coal plants.
+Figure \ref{fig:4-obj-design} shows that conventional coal and advanced coal
+technologies are largely uninteresting because they make up at most 7\% and 4\%
+of a solution's peak demand, respectively. The ``highest renewable'' solution
+achieves its goal of reaching approximately 100\% renewable energy (by
+percentage of energy produced) with a significant overbuild of wind energy and
+batteries, with natural gas and a small amount of coal for reliability.
+Interestingly, this solution uses no solar energy, even though solar and wind
+are frequently assumed to complement each other.
+
+Figure \ref{fig:4-obj-design-mga} extends the design space results to include
+the \ac{mga} solutions. This plot indicates the design preferences for a
+middling solution, but hides the relationship among energy technologies. The
+most popular technologies in Figure \ref{fig:4-obj-design-mga} are conventional
+nuclear, battery storage, and solar panels. The least popular technologies are
+wind turbines, biomass, and ``advanced'' coal plants.
 
 \begin{figure}[h]
   \centering

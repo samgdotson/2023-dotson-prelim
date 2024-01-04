@@ -1,41 +1,50 @@
 \chapter{Proposed Work}
+\label{chapter:proposal}
 
 The literature review in Chapter \ref{chapter:lit-review} characterized the
-wicked problem of climate change, identified the current gaps in \ac{esom}
-methods, and motivated the need to incorporate ideas from a energy justice and
-other non-engineering discplines, in order to fully apprehend the challenge.
-Chapter \ref{chapter:methods} detailed the development of \ac{osier}, a novel
-\ac{esom} framework designed to incorporate conceptions of energy justice. This
-chapter outlines the future work to deepen the theoretical foundation of this
-thesis, improve \ac{osier}'s functionality, and validate \ac{osier} as a useful
-framework for enhancing decision-making processes for more just outcomes.
+``wicked'' problem of climate change \cite{grundmann_ozone_2018}, identified the
+current gaps in \ac{esom} methods, and motivated the need to incorporate ideas
+from a energy justice and other non-engineering discplines, in order to fully
+apprehend the challenge. Chapter \ref{chapter:methods} detailed the development
+of \ac{osier}, a novel \ac{esom} framework designed to incorporate conceptions
+of energy justice. This chapter outlines the future work to deepen the
+theoretical foundation of this thesis, improve \ac{osier}'s functionality, and
+validate \ac{osier} as a useful framework for enhancing decision-making
+processes for more just outcomes.
 
 \section{Expanding the theoretical basis of this work}
 
-This section elaborates on how I will expand the theoretical basis of this
-thesis.
-
-How will I expand the theoretical basis of this work? Or, rather, what
-theoretical areas will my dissertation explore and expand?
-\begin{enumerate}
-    \item Provide a detailed outline of the nuclear energy debate. What are the
-    normative assumptions at play on both sides?
-    \item Give a case study on the ways traditional decision making processes in
-    nuclear energy (e.g., Yucca Mountain) led to poor outcomes, and show
-    positive examples of inclusive processes (i.e., consent-based siting)
-    producing superior outcomes.
-    \item Provide a detailed outline for the challenges associated with solar
-    and wind.
-\end{enumerate}
+Chapter \ref{chapter:lit-review} introduced the concept of risk --- using an
+modified version of \ac{ipcc} risk framework: hazard, exposure, vulnerability,
+and response --- explained disproportionality, and discussed various
+conceptualizations of justice. Specifically, justice understood through
+Schlosberg's three faceted framework: distribution, procedure, and recognition
+\cite{schlosberg_environmental_2014}. Further, I looked to the social science
+literature on energy systems to develop a stronger definition of energy systems.
 
 
-\subsection{What drives opposition to new energy projects?}
-Observing the dissonance between the awareness of anthropogenic climate change
-and policy actions to mitigate the effects of climate change is one of the key
-motivators for this work. Further, in instances where action is being taken ---
-such as the construction of renewable energy projects following government
-subsidies, for instance --- what drives public opposition? I will elucidate this
-question by incorporating literature from social movement theory
+
+% This section elaborates on how I will expand the theoretical basis of this
+% thesis.
+
+% How will I expand the theoretical basis of this work? Or, rather, what
+% theoretical areas will my dissertation explore and expand? \begin{enumerate}
+% \item Provide a detailed outline of the nuclear energy debate. What are the
+% normative assumptions at play on both sides? \item Give a case study on the
+% ways traditional decision making processes in nuclear energy (e.g., Yucca
+% Mountain) led to poor outcomes, and show positive examples of inclusive
+% processes (i.e., consent-based siting) producing superior outcomes. \item
+% Provide a detailed outline for the challenges associated with solar and wind.
+% \end{enumerate}
+
+
+\subsection{How can \acp{esom} help or hinder fairness in decision-making
+processes?} Observing the dissonance between the awareness of anthropogenic
+climate change and policy actions to mitigate the effects of climate change is
+one of the key motivators for this work. Further, in instances where action is
+being taken --- such as the construction of renewable energy projects following
+government subsidies, for instance --- what drives public opposition? I will
+elucidate this question by incorporating literature from social movement theory
 \cite{mcadam_social_2017,mcadam_putting_2012} into this thesis. Importantly, the
 literature shows that \ac{nimbyism} is not the primary driver of public
 opposition to energy projects \cite{konisky_proximity_2021}, rather, support for
@@ -43,6 +52,12 @@ these energy projects is more strongly conditioned on genuine public
 participation in the decision-making process
 \cite{summers_influencing_2020,ottinger_procedural_2014,
 walker_procedural_2017,barragan-contreras_procedural_2022,gonyo_resident_2021}.
+For this proposed addition, I will develop a substantive theoretical basis for
+the argument I advance in this thesis --- that a flexible and transparent
+\ac{esom} is useful for improving procedural outcomes, whereas the current
+manner in which they are used and their results communicated  
+further alienates the public \cite{wynne_misunderstood_1992} and delegitimizes
+energy planning processes
 
 
 \subsection{A tale of three uncertainties}
@@ -60,47 +75,62 @@ prescriptive
 For example, although structural uncertainty acknowledges the existence of
 unmodeled (or unmodelable) objectives the nature of mathematical optimization
 requires modelers to choose at least one objective --- one success criterion ---
-to optimize. I contend that this choice is always normative. Further, articles
-identifying a pathway to ``100\% renewable energy'' make an implicit normative
-assertion without justification or recognition of the plurality of morally valid
-alternatives. This suggests the existence of another uncertainty: Normative
-uncertainty. ``Situations where there are different partially morally defensible
---- but incompatible --- options or courses of action, or ones where there is no
-fully morally defensible option''
-\cite{taebi_bridging_2017,van_uffelen_revisiting_2024}. There is a connection
-between structural and normative uncertainties. Choosing one or several
-objectives to optimize implies a normative premise --- even if the results are
-presented without a corresponding normative conclusion. The same could be said
-for any choice in the development of an \ac{esom}: Spatial scale, time scale,
-which technologies are included in the model, and more. Per the recommendations
-of van Uffelen et al. 2024 \cite{van_uffelen_revisiting_2024}, I will construct
-an explicit normative premise that undergirds the normative conclusions of this
-work to address normative uncertainty. In essence, defining what ``justice''
-means in the context of this thesis. 
+to optimize. This choice is always normative because this choice reflects the
+priorities of the modeler. Further, articles identifying a pathway to ``100\%
+renewable energy'' make an implicit normative assertion without justification or
+recognition of the plurality of morally valid alternatives. This suggests the
+existence of another uncertainty: Normative uncertainty. ``Situations where
+there are different partially morally defensible --- but incompatible ---
+options or courses of action, or ones where there is no fully morally defensible
+option'' \cite{taebi_bridging_2017,van_uffelen_revisiting_2024}. There is a
+connection between structural and normative uncertainties. Figure
+\ref{fig:triarchic-uncertainty} illustrates how these three uncertainties
+interrelate. Choosing one or several objectives to optimize implies a normative
+premise --- even if the results are presented without a corresponding normative
+conclusion. The same could be said for any choice in the development of an
+\ac{esom}: Spatial scale, time scale, which technologies are included in the
+model, and more. To address normative uncertainty, I will construct an explicit
+normative premise that undergirds the normative conclusions of this work per the
+recommendations of van Uffelen et al. 2024 \cite{van_uffelen_revisiting_2024}.
+In essence, defining what ``justice'' means in the context of this thesis.
+\textcolor{black}{Further, ESOM modeling struggles with the ``human dimension''
+\cite{pfenninger_energy_2014} because unlike parametric and structural
+uncertainties, there are no ``formal'' methods for addressing normative
+uncertainties. Unlike engineering, however, social science is equipped to handle
+normative uncertainties with formal methods using human subjects, such as case
+studies, surveys, interviews, and mixed-methods.} Articulating the relationships
+among these three uncertainties will illuminate how energy modellers can model
+energy systems with geniune consideration for energy justice.
 
-\textcolor{red}{ESOM modeling struggles with the human dimension \cite{pfenninger_energy_2014} because
-unlike parametric and structural uncertainties, there are no ``formal'' methods for addressing
-normative uncertainties. Unlike engineering, however, social science is equipped to handle 
-normative uncertainties with formal methods using human subjects, such as case studies, surveys,
-interviews, and mixed-methods.}
 
+% \textcolor{red}{The \ac{esom} literature acknowledges the significance and
+% challenge of incorporating the ``human dimension''
+% \cite{pfenninger_energy_2014} of energy systems and the policies that govern
+% them. There have been limited attempts to genuinely capture this dimension
+% within energy modeling practices. Most approaches either ignore it entirely or
+% develop specific narratives around different scenarios
+% \cite{alcamo_chapter_2008}. Geels et al. 2016 \cite{geels_bridging_2016}
+% identified three analytical approaches: Quantitative, socio-technical, and
+% initiative-based analyses --- which cannot be fully integrated due to
+% different foundational ontologies.}
 
-\textcolor{red}{The \ac{esom} literature acknowledges the significance and challenge of incorporating
-the ``human dimension'' \cite{pfenninger_energy_2014} of energy systems and the policies that govern them.
-There have been limited attempts to genuinely capture this dimension within energy modeling practices. Most
-approaches either ignore it entirely or develop specific narratives around different scenarios \cite{alcamo_chapter_2008}.
-Geels et al. 2016 \cite{geels_bridging_2016} identified three analytical approaches: Quantitative, socio-technical,
-and initiative-based analyses --- which cannot be fully integrated due to different foundational ontologies.}
-
-\textcolor{red}{The issue of using cost-optimization as the primary basis for energy system planning has been identified long ago 
-\cite{hobbs_optimization_1995,ribeiro_inclusion_2011}. Yet, the dearth of \acp{esom} that employ \ac{moo} indicates that this issue
-has not been adequately addressed.}
+% \textcolor{red}{The issue of using cost-optimization as the primary basis for
+% energy system planning has been identified long ago
+% \cite{hobbs_optimization_1995,ribeiro_inclusion_2011}. Yet, the dearth of
+% \acp{esom} that employ \ac{moo} indicates that this issue has not been
+% adequately addressed.}
 
 \input{figures/tikz-figures/triarchic-uncertainty.tex}
 
 \section{Technical improvements to \ac{osier}}
 
-What technical features have yet to be implemented into \ac{osier}?
+The current version of \ac{osier} achieved many of its goals for improving the
+state-of-the-art in energy modeling by enabling the co-optimization of many
+objectives simultaneously, ensuring that users are not forced to adhere to any
+specific set of objectives by providing an interface for adding or changing
+objectives that does not require modifying the source code, and extending the
+\ac{mga} algorithm into many dimensions. However, there are still many ways to
+improve \ac{osier}. This section outlines some priority areas for enhancement.
 
 
 \subsection{Parallelization}
@@ -142,18 +172,31 @@ directly integrate data from the \ac{atb} to its built-in technology classes.
 \section{Validating \ac{osier}}
 
 \ac{osier}'s primary purpose is to translate policy preferences of the
-lay-public into actionable energy visions for a given municipality. The idea is
+public into actionable energy visions for a given municipality. The idea is
 that if decision-makers used a tool like \ac{osier} to support their decisions
 and incorporate ideas from their constituents --- ideas that may be distinct
 from the preconceptions of decision-makers themselves --- then stronger actions
-toward addressing climate change may be taken with more just outcomes. The last,
-and arguably most important, component of this thesis is to validate
-\ac{osier}'s usefulness in this regard. I propose validating \ac{osier}'s
-usefulness with a case study of the energy visioning processes of three
-municipalities: Urbana, Champaign, and the \ac{uiuc}. The research question is
-then: ``Do decision-makers or energy planners perceive that \ac{osier}, or tools
-like it, would be useful in enhancing collaboration between decision-makers and
-their constituents?'' Although this case study focuses on a small sample, these
+toward addressing climate change may be taken with more just outcomes. Consider
+the following. If structural uncertainty is addressed by generating a set of
+solutions, either by searching the near-optimal space or considering the options
+along a Pareto Front, how should the ultimate solution be chosen? Answering this
+last question raises another source of normative uncertainty. Additionally, a
+result from social choice theory, Arrow's Impossibility theorem, states that one
+cannot construct a utility function that maps individual preferences onto a
+global preference order without violating principles of fairness
+\cite{arrow_difficulty_1950, kasprzyk_many_2013,franssen_arrows_2005}. Thus, the
+only way to address normative uncertainty produced by the process of deciding
+among equally valid alternatives, is to involve the public in a deliberative
+process \cite{dryzek_deliberative_2013}. Modelling energy systems with this
+understanding would allow energy system modelers to advance the causes of
+recognition and procedural justice, rather than hinder them. The last, and
+arguably most important, component of this thesis is to validate \ac{osier}'s
+usefulness in this regard. I propose validating \ac{osier}'s usefulness with a
+case study of the energy visioning processes of three municipalities: Urbana,
+Champaign, and the \ac{uiuc}. The research question is then: ``Do
+decision-makers or energy planners perceive that \ac{osier}, or tools like it,
+would be useful in enhancing collaboration between decision-makers and their
+constituents?'' Although this case study focuses on a small sample, these
 paradigmatic cases could be used to generalize the usefulness of \ac{osier} to
 other locales \cite{flyvbjerg_five_2006}. The precise formulation of this
 research question (or questions) is subject to change between now and the
@@ -162,10 +205,9 @@ be reviewed by an ethics board.
 
 \subsection{Reviewing the energy visions for each municipality}
 
-Before conducting interviews with people that may use a tool like \ac{osier}, I
-will research the background of each municipality considered by reviewing
+I will research the background of each municipality considered by reviewing
 published documents related to their energy visions, such as \ac{uiuc}'s
-\ac{icap}
+\ac{icap},
 \cite{institute_for_sustainability_energy_and_environment_illinois_2020},
 Utilities Master Plan \cite{affiliated_engineers_inc_utilities_2015} or the City
 of Champaign's Comprehensive and Sustainability Plans
@@ -175,7 +217,7 @@ stated energy visions for each community with the literature
 evaluate the decision making process for specific energy projects. Such as the
 microreactor project at \ac{uiuc} or the recent solar farm being constructed on
 Market Street in Champaign. How do these projects fit with the stated energy
-visions for their respective communities? How involved was the lay-public in
+visions for their respective communities? How involved was the public in
 making these decisions? Who were the stakeholders? This step is important for
 developing a grounded decision-making process that incorporates \ac{osier} or a
 similar decision support tool. 
@@ -184,7 +226,13 @@ similar decision support tool.
 
 Before interviewing decision-makers and asking if \ac{osier} would be useful to
 them I need to formulate a hypothetical decision-making process that includes
-\ac{osier}. Further, there are a few ways results (i.e., energy futures along
+\ac{osier}. This is necessary for creating a testable hypothesis about the nature
+of such a process, which can be tested against interview responses. Additionally,
+it is important to outline such a method to prevent \ac{osier}'s misuse. An example
+of such misuse would be eliminating the iterative component of the process and 
+treating results from \ac{osier} as an objective truth rather than a basis for
+deliberation.
+There are a few ways results (i.e., energy futures along
 the Pareto-front or in the near-optimal space, as described in Section
 \ref{section:mga-moo}) from \ac{osier} could be used in a decision-making
 process. The results could be presented in more of a raw, descriptive, form.
@@ -192,24 +240,31 @@ Similar to the presentation in Chapter \ref{chapter:benchmark-results}.
 Alternatively, whoever organizes the planning process (e.g., city councils,
 planning departments, etc.) could distill the complete set of results into a
 manageable subset accompanied by an explanatory narrative. \ac{mga} automates
-part of this option. The former presentation admits less normative uncertainty
-from pre-filtering the simulation results, but is arguably less understandable
-by the lay public. The latter is more explicit but an explanatory narrative
-presents more opportunity for politicization. Unfortunately, adequately
-addressing this question is out-of-scope for this study. However, I will present
-interviewees with both options to create a partial answer.
+part of this option. The former presentation admits less implicit bias from
+pre-filtering the simulation results, but is arguably less understandable by the
+public. The latter is more explicit but an explanatory narrative presents more
+opportunity for politicization. Unfortunately, adequately addressing the best
+way to communicate results to constituents is out-of-scope for this study
+because I will not be surveying the public.
+However, I will present interviewees with both options to create a partial
+answer from their perspective.
 
 \subsection{Deciding the interviewees}
 
 In order to gauge the \ac{osier}'s usability, I will interview public facing
 figures from each municipality involved in the energy or community planning
-processes for their respective communities. Table \ref{table:subjects} lists
-potential interviewees.
+processes for their respective communities. These interviewees should be able to
+speak to the energy visions of their community and the process by which those
+visions were created. Their experiences will inform how such processes may be
+helped or hindered by introducing a modeling tool (or a decision-support tool)
+such as \ac{osier} and what ways \ac{osier} could be modified to serve the goal
+of greater community participation in planning decisions. Table
+\ref{table:subjects} lists potential interviewees.
 
 \begin{table}[ht!]
     \centering
     \caption{Potential interviewees to evaluate the usefulness of \ac{osier}.}
-    \resizebox*{\textwidth}{!}{\input{tables/subjects-table.tex}}
+    \resizebox*{0.8\textwidth}{!}{\input{tables/subjects-table.tex}}
     \label{table:subjects}
 \end{table}
 
@@ -221,9 +276,12 @@ possible, in order to enhance the generalizability of this case study.
 
 \subsection{Conducting the Interviews}
 
-\textit{Interviews will be conducted and analyzed with the awareness that the
-questions I ask, my choice of wording, and my demeanor when asking, all have an
-affect on the answers generated by interviewees.}
+% \textit{Interviews will be conducted and analyzed with the awareness that the
+% questions I ask, my choice of wording, and my demeanor when asking, all have an
+% affect on the answers generated by interviewees.}
+This section describes some of the questions I may ask during an interview to 
+shed light on how an \ac{esom} like \ac{osier} could be incorporated into
+existing or novel energy planning processes.
 
 \subsubsection{Questions about current planning processes}
 The following questions are aimed at interviewees responsible for guiding the
@@ -261,7 +319,7 @@ specifically with the usefulness of \ac{osier}
 \begin{enumerate}
     \item (After presenting results from this model in two ways) Which
     presentation do you think would best facilitate dialogue between the
-    lay-public and decision-makers?
+    public and decision-makers?
     \item What objectives do you think would be important to model in designing
     an energy vision for your community?
     \item Would your municipality use this tool? 
@@ -294,16 +352,20 @@ The general process from Braun \& Clark 2006 \cite{braun_using_2006} is to
 \end{enumerate}
 
 
-\subsection{Draw conclusions}
+\subsection{Reflection}
 
-The conclusions of this study will have descriptive and normative components.
-The latter will be understood in the context of the normative premise
-constructed in light of the suggestion in Section
+After developing insights from the interviews, I will reflect on this work and
+what it means for a holistic analysis of energy systems. Then I will draw
+conclusions. The conclusions of this study will have descriptive and normative
+components. The latter will be understood in the context of the normative
+premise constructed in light of the suggestion in Section
 \ref{section:three-uncertainties}.
 
 The results of this analysis could take the form of:
     \begin{enumerate}
         \item ``These are the stated energy goals of this municipality.''
+        \item ``This is how \ac{osier} will change based on feedback from the
+        participants.''
         \item ``This is how the results from \ac{osier} would change
         decision-making procedures.'' (Results in this case includes the
         ``optimal'' solutions for an energy future \textit{and} the ways the
@@ -312,15 +374,17 @@ The results of this analysis could take the form of:
 
 \subsection{Research limitations}
 
-What is outside the scope of this study? Although the intention behind
-\ac{osier} is to help translate policy preferences of the lay-public into
-actionable energy visions for a given municipality, interviewing and surveying
-members of the public is out-of-scope for this project. Further, determining the
-needs of a group before developing code in earnest is essential for developing
-an effective and procedurally just framework. This co-design practice is
-important for future development of decision-support tools
+The proposed work is an attempt at a more holistic approach to modeling energy
+systems. However, there remain limitations to what is proposed. Although the
+intention behind \ac{osier} is to help translate policy preferences of the
+public into actionable energy visions for a given municipality, interviewing and
+surveying members of the public is out-of-scope for this project. Further,
+determining the needs of a group before developing code in earnest is essential
+for developing an effective and procedurally just framework. This co-design
+practice is important for future development of decision-support tools
 \cite{gonzalez_developing_2022,ryder_developing_2018}.
 
-Also outside the scope of this project is determining which form of the results
-is most accessible to lay-audiences. Ideally with a much larger number of
-participants I could do a/b testing to tease out an answer to this question.
+% Also outside the scope of this project is determining which form of the
+% results is most accessible to lay-audiences. Ideally with a much larger number
+% of participants I could do a/b testing to tease out an answer to this
+% question.

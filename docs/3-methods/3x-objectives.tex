@@ -143,8 +143,9 @@ and could be weighted by the capacity but is not a per-unit-capacity objective.
 The values of the readiness parameter must be passed to each \texttt{Technology}
 object, which can be accessed at run-time. Code listing
 \ref{listing:user-defined-objective} shows the basic approach to creating a new
-objective. Appendix \textbf{??} lists the default accessible attributes for the
-technology list and the solved dispatch model.
+objective. 
+% Appendix \textbf{??} lists the default accessible attributes for the
+% technology list and the solved dispatch model.
 
 \begin{listing}[!ht]
 \caption{The fundamental way to create a novel objective in \ac{osier}.}
@@ -182,8 +183,8 @@ Besides the physical constraints defined in Section \ref{section:dispatch},
 \ac{osier} does not have any default constraints. This is because each
 additional constraint corresponds to an additional assumption and will affect
 the trade-off analysis that makes \ac{moo} so powerful. However, there are some
-circumstances where the \textit{optimal} solutions are still
-\textit{infeasible}. For instance, if a community wants to determine the best
+circumstances where the optimal solutions are still
+infeasible in practice. For instance, if a community wants to determine the best
 energy mix according to their unique objectives, this community might not have
 the budget for even a least-cost solution because the capital requirements are
 too high. Therefore, they must constrain the capital cost for their modeling
@@ -192,7 +193,7 @@ problem. Thus, \ac{osier} enables the following:
     \item Users may define their own constraints.
     \item Any objective function may be transformed into a constraint.
 \end{enumerate}
-This feature makes \ac{osier} absolutely unique among \acp{esom}.
+This feature makes \ac{osier} unique among \acp{esom}.
 Single-objective \acp{esom} can never account for unique situations such as the
 one suggested above, nor any other bespoke considerations. In the case above,
 the capital cost may constrain the problem while still minimizing the total

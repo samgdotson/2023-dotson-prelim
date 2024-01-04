@@ -14,9 +14,12 @@ but rather to provide a comprehensible subset of solutions. The algorithm I
 developed in this thesis to search the near-feasible space is the following:
 
 \begin{enumerate}
-    \item Identify a slack value (e.g., 10\% or 0.1). 
+    \item Obtain a set of Pareto-optimal solutions \textit{using any \ac{ga}}.
+    \item Decide on a slack value (e.g., 10\% or 0.1), which represents an
+    acceptable deviation from the Pareto front.
     \item Create a ``near-feasible front'' where the coordinates of each point
-    are multiplied by unity plus the slack value.
+    are multiplied by unity plus the slack value. This is equivalent to relaxing
+    the objective functions and converting them to a constraint. 
     \item Every individual is checked if all of its coordinates are
     \begin{itemize}
         \item below all of the coordinates for at least one point on the
@@ -24,8 +27,8 @@ developed in this thesis to search the near-feasible space is the following:
         \item above all of the coordinates for at least one point on the Pareto
         front.
     \end{itemize}  
-    \item Lastly, a subset of points may be randomly sampled from the interior
-    points for analysis.
+    \item Lastly, the set of interior points may be randomly sampled to further
+    restrict the number of analyzed solutions.
 \end{enumerate}
 \noindent
 Figure \ref{fig:nd-mga} and Figure \ref{fig:3d-mga} demonstrate this algorithm

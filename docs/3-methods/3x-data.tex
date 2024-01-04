@@ -1,10 +1,21 @@
 \section{Model Data}
-
-Chapter \ref{chapter:benchmark-results} demonstrates \ac{osier} on a series of
-problems. The basic inputs for \ac{osier} are
+So far, this chapter introduced the open-source model I developed, \ac{osier},
+and discussed its motivations and structure. This chapter elaborated on the
+standard \ac{mga} algorithm used to handle structural uncertainty and
+established a method to extend \ac{mga} into higher dimensional spaces. In order
+to verify \ac{osier}'s accuracy, I analyze an energy system and compare the
+results against a representative \ac{esom}, \ac{temoa}. For this problem, I
+chose to model the state of Illinois broadly and using weather data from the
+Champaign-Urbana region due to its geographic centrality. Chapter
+\ref{chapter:benchmark-results} presents the results from this problem, with a
+variety of optimization criteria. This section describes the data used in both
+models. The basic inputs for \ac{osier} and \ac{temoa} are
 \begin{enumerate}
-    \item Demand time series data,
-    \item \ac{vre} time series data (e.g., solar or wind),
+    \item Time series data for
+    \begin{itemize}
+      \item electricity demand
+      \item \ac{vre} production (e.g., solar or wind),
+    \end{itemize} 
     \item and technology data.
 \end{enumerate}
 \noindent
@@ -12,10 +23,11 @@ The time series data for electricity demand, wind energy, and solar energy, come
 from \ac{uiuc}. All of the time series are averaged across several years to
 simulate a ``typical'' year. I re-scaled the demand data by the total energy
 demand for Illinois in order for the hourly demand to be on the same scale as
-the default power units (MW) for \ac{osier} technologies. However, this choice
-is somewhat arbitrary. \ac{osier} automatically normalizes the \ac{vre} time
-series because \ac{vre} capacity is a decision variable. Figure
-\ref{fig:normalized_ldc} shows the normalized demand and load duration curves.
+the default power units (MW) for \ac{osier} technologies. However, this
+normalization choice is somewhat arbitrary. \ac{osier} automatically normalizes
+the \ac{vre} time series because \ac{vre} capacity is a decision variable.
+Figure \ref{fig:normalized_ldc} shows the normalized demand and load duration
+curves.
 
 
  \begin{figure}[h]
