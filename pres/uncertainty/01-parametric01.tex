@@ -1,6 +1,5 @@
 \begin{frame}
     \frametitle{Parametric Uncertainty}
-
     \begin{columns}
         \column[t]{4cm}
         \begin{figure}
@@ -25,9 +24,9 @@
             \cite{yue_review_2018,decarolis_using_2011,morgan_uncertainty_1990}.    
         \end{block}
         
-        May be classified as either \boldorange{aleatory} or
-        \boldorange{epistemic}
-        \cite{pfenninger_energy_2014,kiureghian_aleatory_2009}. 
+        % May be classified as either \boldorange{aleatory} or
+        % \boldorange{epistemic}
+        % \cite{pfenninger_energy_2014,kiureghian_aleatory_2009}. 
     \end{columns}
 
 \end{frame}
@@ -66,49 +65,49 @@
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{Consequences of not addressing parametric uncertainty}
+% \begin{frame}
+%     \frametitle{Consequences of not addressing parametric uncertainty}
 
-    A majority of ESOM articles use \textit{scenario analysis} to weakly ddress
-    parametric uncertainty \cite{yue_review_2018}. \\~\\
+%     A majority of ESOM articles use \textit{scenario analysis} to weakly ddress
+%     parametric uncertainty \cite{yue_review_2018}. \\~\\
 
-    Leading to: 
-    \begin{enumerate}
-        \item Overconfidence in results
-        \item Cognitive myopia
-        \item Implicit normative biases
-    \end{enumerate}
-
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Addressing parametric uncertainty}
-
-    \begin{columns}
-        \column[t]{5cm}
-        \begin{figure}
-            \centering
-            \resizebox{\columnwidth}{!}{
-                \input{../pres/images/confidence-int.pgf}
-            }
-            \caption{Systematically addressing parametric uncertainty produces confidence intervals.}
-            \label{fig:confidence-intervals}
-        \end{figure}
-
-        \column[t]{5cm}
-        \boldblue{Idea}: Rerun a simulation until you reach a large enough
-        sample size to do statistics.\\~\\
-        Formal methods to address parametric uncertainty$^*$:
-        \begin{itemize}
-            \item ``Monte Carlo'' (i.e., statistical sampling)\pause
-            \item Sensitivity analysis (specific or global)\pause
-            \item Stochastic optimization\pause
-        \end{itemize}
+%     Leading to: 
+%     \begin{enumerate}
+%         \item Overconfidence in results
+%         \item Cognitive myopia
+%         \item Implicit normative biases
+%     \end{enumerate}
 
 
-        \small{$^*$These methods are appropriate for \boldorange{aleatory}
-        uncertainties.}
-    \end{columns}
+% \end{frame}
 
-\end{frame}
+% \begin{frame}
+%     \frametitle{Addressing parametric uncertainty}
+
+%     \begin{columns}
+%         \column[t]{5cm}
+%         \begin{figure}
+%             \centering
+%             \resizebox{\columnwidth}{!}{
+%                 \input{../pres/images/confidence-int.pgf}
+%             }
+%             \caption{Systematically addressing parametric uncertainty produces confidence intervals.}
+%             \label{fig:confidence-intervals}
+%         \end{figure}
+
+%         \column[t]{5cm}
+%         \boldblue{Idea}: Rerun a simulation until you reach a large enough
+%         sample size to do statistics.\\~\\
+%         Formal methods to address parametric uncertainty$^*$:
+%         \begin{itemize}
+%             \item ``Monte Carlo'' (i.e., statistical sampling)
+%             \item Sensitivity analysis (specific or global)
+%             \item Stochastic optimization
+%         \end{itemize}
+
+
+%         % \small{$^*$These methods are appropriate for \boldorange{aleatory}
+%         % uncertainties.}
+%     \end{columns}
+
+% \end{frame}

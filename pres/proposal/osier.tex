@@ -1,18 +1,78 @@
-\begin{frame}
-    \frametitle{Proposal \#2: Building a flexible ESOM}
+% \begin{frame}
+%     \frametitle{Proposal \#2: Building a flexible ESOM}
 
-    \begin{enumerate}
-        \item Create an open-source multi-objective energy system model (\texttt{osier}) that can allow modelers to address
-        \begin{itemize}
-            \item parametric,
-            \item structural,
-            \item and normative uncertainties.
-        \end{itemize}
-        \item Develop an MGA algorithm for use with genetic algorithms in higher dimensional spaces.
-    \end{enumerate}
+%     \begin{enumerate}
+%         \item Create an open-source multi-objective energy system model (\texttt{osier}) that can allow modelers to address
+%         \begin{itemize}
+%             \item parametric,
+%             \item structural,
+%             \item and normative uncertainties.
+%         \end{itemize}
+%         \item Develop an MGA algorithm for use with genetic algorithms in higher dimensional spaces.
+%     \end{enumerate}
+
+% \end{frame}
+\section{Component 1: Preliminary Results with \texttt{Osier}}
+\begin{frame}
+    \frametitle{\texttt{Osier}}
+    \begin{itemize}
+        \item Hybrid methods: linear programming \& evolutionary algorithms
+        \item Novel algorithm for high dimensional MGA
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth]{../docs/figures/osier_flow.png}
+        \caption{Flow of data through \texttt{Osier}.}
+        \label{fig:osier-flow}
+    \end{figure}
 
 \end{frame}
 
+\subsection{Methodology}
+\begin{frame}
+    \frametitle{Multi-objective Solutions}
+    \begin{columns}
+        \column[t]{4cm}
+        \begin{block}{Pareto Front}
+            Creates a \boldorange{set of solutions} rather than a single optimum.
+        \end{block}
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{../docs/figures/truss2d_pareto.pgf}}
+            \caption{Pareto front example.}
+            \label{fig:pareto-front}
+        \end{figure}
+    
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Evolutionary Algorithms}
+
+    \begin{block}{Evolutionary Algorithms for Energy System Optimization}
+        \begin{columns}
+            \column[t]{6cm}
+            \begin{itemize}
+            \item Inspired by natural selection
+            \item Parallelizable
+            \item Superior to pure linear programming methods for
+                \begin{itemize}
+                    \item independence from problem convexity
+                    \item good sampling/spacing of points along solution set.
+                \end{itemize}
+            \end{itemize}
+            
+            Right: Evolutionary algorithm flow \cite{deb_evolutionary_2014}.
+            \column[t]{4cm}
+            \centering
+            \begin{figure}
+            \includegraphics[width=0.8\linewidth]{images/ea-flow.png}  
+            \end{figure}
+        \end{columns}
+    \end{block}
+\end{frame}
 
 \begin{frame}
     \frametitle{How \texttt{Osier} handles structural uncertainty}
@@ -26,7 +86,7 @@
         % \column[t]{6cm}
         \begin{figure}
             \centering
-            \resizebox{0.8\columnwidth}{!}{\input{images/near-optimal-pareto-pres.pgf}}
+            \resizebox{0.75\columnwidth}{!}{\input{images/near-optimal-pareto-pres.pgf}}
             \caption{Near optimal space for a multi-objective problem.}
             \label{fig:near-opt}
         \end{figure}
@@ -42,7 +102,7 @@
         % \column[t]{6cm}
         \begin{figure}
             \centering
-            \resizebox{0.8\columnwidth}{!}{\input{images/near-optimal-pareto-mga-pres.pgf}}
+            \resizebox{0.75\columnwidth}{!}{\input{images/near-optimal-pareto-mga-pres.pgf}}
             \caption{Near optimal space for mono- and multi-objective problems. The light blue area shows
             a vertically truncated near-optimal space around the f1 objective.}
             \label{fig:near-opt-mga}
@@ -60,7 +120,7 @@
         % \column[t]{6cm}
         \begin{figure}
             \centering
-            \resizebox{0.8\columnwidth}{!}{\input{images/nd-mga-paretofront-pres.pgf}}
+            \resizebox{0.75\columnwidth}{!}{\input{images/nd-mga-paretofront-pres.pgf}}
             \caption{Alternative solutions identified in the near optimal space.}
             \label{fig:nd-alt-points}
         \end{figure}
@@ -68,22 +128,11 @@
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{Demonstration on a real problem}
 
-    \begin{figure}
-        \centering 
-        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
-        \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/osier_mga_subset_01.pgf}}
-        \caption{Comparing the results from \texttt{Osier} with another ESOM, \texttt{Temoa}.}
-        \label{fig:osier-temoa-benchmark-1}
-    \end{figure}
-
-\end{frame}
-
+\subsection{Preliminary Results}
 
 \begin{frame}
-    \frametitle{Demonstration on a real problem}
+    \frametitle{Validating \texttt{Osier}}
 
     \begin{figure}
         \centering 
@@ -96,7 +145,23 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Demonstration on a real problem}
+    \frametitle{Near-optimal Space for Cost and Carbon Emissions}
+
+    \begin{figure}
+        \centering 
+        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
+        \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/osier_mga_subset_01.pgf}}
+        \caption{Sampling the near-optimal space for \texttt{Osier}'s Pareto front.}
+        \label{fig:osier-temoa-benchmark-1}
+    \end{figure}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Optimizing four objectives}
 
     \begin{figure}
         \centering 
@@ -109,7 +174,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Demonstration on a real problem}
+    \frametitle{Optimizing four objectives}
 
     \begin{figure}
         \centering 
@@ -122,7 +187,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Demonstration on a real problem}
+    \frametitle{Optimizing four objectives}
 
     \begin{figure}
         \centering 

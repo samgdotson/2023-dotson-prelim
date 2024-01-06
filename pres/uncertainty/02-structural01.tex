@@ -49,14 +49,33 @@
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{Consequences of unhandled structural uncertainty}
+% \begin{frame}
+%     \frametitle{Consequences of unhandled structural uncertainty}
 
-    \begin{enumerate}
-        \item Overconfidence in results
-        \item Cognitive myopia
-        \item Missed acceptable alternatives
-    \end{enumerate}
+%     \begin{enumerate}
+%         \item Overconfidence in results
+%         \item Cognitive myopia
+%         \item Missed acceptable alternatives
+%     \end{enumerate}
+
+% \end{frame}
+
+\begin{frame}
+    \frametitle{Addressing Structural Uncertainty}
+
+        \begin{block}{Idea}
+            Look for alternatives in the ``near-optimal'' space.            
+        \end{block}
+
+        \begin{block}{Modeling-to-generate-alternatives (MGA)}
+            \begin{enumerate}
+                \item \boldorange{Relax} the objective function.
+                \item \boldorange{Search} for maximally different solutions in the design space.
+                \item \boldorange{Iterate} until enough solutions have been generated.
+            \end{enumerate}        
+        \end{block}
+        
+        
 
 \end{frame}
 
@@ -64,23 +83,40 @@
     \frametitle{Addressing Structural Uncertainty}
 
     \begin{columns}
-        \column[t]{4cm}
-        \boldblue{Idea:} Look for alternatives in the ``near-optimal'' space.\\~\\
-
-        How? Modeling-to-generate-alternatives (MGA)
-        \begin{enumerate}
-            \item \boldorange{Relax} the objective function.
-            \item \boldorange{Search} for maximally different solutions in the design space.
-            \item \boldorange{Iterate} until enough solutions have been generated.
-        \end{enumerate}
-    
-        \column[t]{6cm}
+        \column[t]{10cm}
         \begin{figure}
             \centering
-            \resizebox{\columnwidth}{!}{\input{../docs/figures/standard-mga.pgf}}
+            % \resizebox{\columnwidth}{!}{\input{../docs/figures/standard-mga.pgf}}
+            \resizebox{0.75\columnwidth}{!}{\input{images/naive_mga_lp.pgf}}
             \caption{Illustration of the MGA algorithm.}
             \label{fig:standard-mga}
         \end{figure}
     \end{columns}
 
 \end{frame}
+
+% \begin{frame}
+%     \frametitle{Addressing Structural Uncertainty}
+
+%     \begin{columns}
+%         \column[t]{4cm}
+%         \boldblue{Idea:} Look for alternatives in the ``near-optimal'' space.\\~\\
+
+%         How? Modeling-to-generate-alternatives (MGA)
+%         \begin{enumerate}
+%             \item \boldorange{Relax} the objective function.
+%             \item \boldorange{Search} for maximally different solutions in the design space.
+%             \item \boldorange{Iterate} until enough solutions have been generated.
+%         \end{enumerate}
+    
+%         \column[t]{6cm}
+%         \begin{figure}
+%             \centering
+%             % \resizebox{\columnwidth}{!}{\input{../docs/figures/standard-mga.pgf}}
+%             \resizebox{\columnwidth}{!}{\input{images/naive_mga_lp.pgf}}
+%             \caption{Illustration of the MGA algorithm.}
+%             \label{fig:standard-mga}
+%         \end{figure}
+%     \end{columns}
+
+% \end{frame}

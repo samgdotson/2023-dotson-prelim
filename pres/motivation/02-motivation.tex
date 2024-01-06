@@ -1,6 +1,27 @@
 \subsection{Observations}
+
 \begin{frame}
-    \frametitle{Climate change exists and \textit{we're causing it}!}
+    \frametitle{The Challenge at Hand}
+
+    \begin{block}{Purpose of Energy System Modeling}
+        \textit{Inform energy policy with prescriptive analyses \cite{decarolis_using_2011}.}
+        % \textit{Generating prescriptive conclusions to inform energy policy is the primary reason to
+        % model energy systems .}
+    \end{block}
+    \begin{block}{Problem}
+        Policies affect people --- energy systems models cannot adequately capture the ``human dimension''
+        \cite{pfenninger_energy_2014}.
+    \end{block}
+    \begin{block}{What is the ``human dimension?''}
+        \begin{enumerate}
+            \item People have preferences about their sources of energy that are ignored.
+            \item Models cannot describe policy outcomes related to fairness or justice.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Climate change highlights energy system injustices}
 
     \begin{columns}
         \column[t]{5cm}
@@ -15,27 +36,52 @@
         \column[t]{5cm}
         \begin{figure}
             \centering
-            \resizebox{\columnwidth}{!}{\input{../docs/figures/emissions-by-sector.pgf}}
-            \caption{Carbon emissions by economic sector
-            \cite{epa_inventory_2023}}
-            \label{figure:sector-emissions}
+            \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/emissions-by-source.pgf}}
+            \caption{Lifecycle carbon emissions by energy source
+            \cite{united_nations_economic_commission_for_europe_carbon_2022}.}
+            \label{figure:energy-emissions}
         \end{figure}
     \end{columns}
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{We have the technology to stop using fossil fuels}
+% \begin{frame}
+%     \frametitle{Climate change exists and \textit{we're causing it}!}
 
-    \begin{figure}
-        \centering
-        \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/emissions-by-source.pgf}}
-        \caption{Lifecycle carbon emissions by energy source
-        \cite{united_nations_economic_commission_for_europe_carbon_2022}.}
-        \label{figure:energy-emissions}
-    \end{figure}
+%     \begin{columns}
+%         \column[t]{5cm}
+%         \begin{figure}
+%             \centering
+%             \resizebox{\columnwidth}{!}{\input{../docs/figures/mauna-loa-co2.pgf}}            
+%             \caption{Observed increase in CO$_2$ levels at Mauna Loa Observatory
+%             \cite{kane_atmospheric_1996}.}
+%             \label{figure:mauna-loa}
+%         \end{figure}
+        
+%         \column[t]{5cm}
+%         \begin{figure}
+%             \centering
+%             \resizebox{\columnwidth}{!}{\input{../docs/figures/emissions-by-sector.pgf}}
+%             \caption{Carbon emissions by economic sector
+%             \cite{epa_inventory_2023}}
+%             \label{figure:sector-emissions}
+%         \end{figure}
+%     \end{columns}
 
-\end{frame}
+% \end{frame}
+
+% \begin{frame}
+%     \frametitle{We have the technology to stop using fossil fuels}
+
+%     \begin{figure}
+%         \centering
+%         \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/emissions-by-source.pgf}}
+%         \caption{Lifecycle carbon emissions by energy source
+%         \cite{united_nations_economic_commission_for_europe_carbon_2022}.}
+%         \label{figure:energy-emissions}
+%     \end{figure}
+
+% \end{frame}
 
 
 \begin{frame}
@@ -55,10 +101,10 @@
 \begin{frame}
     \frametitle{Motivating Questions}
 
-        \begin{block}{Question \#1}
+        \begin{block}{Question 1}
             What drives public opposition to clean energy projects?
         \end{block}
-        \begin{block}{Question \#2}
+        \begin{block}{Question 2}
             How does energy modeling contribute to this problem? 
             % public testimony is dismissed as non-technical.            
         \end{block}
@@ -68,29 +114,331 @@
 \begin{frame}
     \frametitle{What drives opposition? It's not NIMBY}
 
-    \begin{enumerate}
-        \item NIMBY is popularly understood to drive opposition.
-        \item However, several case studies and larger surveys have demonstrated
-        that this is not the case \cite{konisky_proximity_2021,aitken_why_2010}.
-        \item Instead, perceptions of legitimacy in decision-making processes
-        motivates this opposition
-        \cite{firestone_public_2012-1,stokes_prevalence_2023,
-        aitken_why_2010,walker_procedural_2017,liu_effects_2020}.
-        \item Public testimony may be dismissed for being nontechnical casting
-        doubt on legitimacy \cite{johnson_dakota_2021}.
-    \end{enumerate}
+        \begin{block}{Question \#1}
+            What drives public opposition to clean energy projects?
+        \end{block}
+        \begin{enumerate}
+            \item NIMBY is popularly understood to drive opposition.
+            \item However, several case studies and larger surveys have demonstrated
+            that this is not the case \cite{konisky_proximity_2021,aitken_why_2010}.
+            \item Instead, perceptions of legitimacy in decision-making processes
+            motivates this opposition
+            \cite{firestone_public_2012-1,stokes_prevalence_2023,
+            aitken_why_2010,walker_procedural_2017,liu_effects_2020}.
+            \item Public testimony may be dismissed for being nontechnical casting
+            doubt on legitimacy \cite{johnson_dakota_2021}.
+        \end{enumerate}
+        \begin{block}{title}
+            Existing energy planning processes and new energy projects (even ``clean energy'' projects) 
+            reproduce existing sociopolitical structures that violate principles of justice.
+        \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Three tenets of justice}
+    \begin{figure}
+        \centering
+        \resizebox{0.8\columnwidth}{!}{
+            \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+                \tikzstyle{every node}=[font=\small]
+                \tikzstyle{vertex} = [circle, draw=black, fill=trueilliniorange]
+                \tikzstyle{hidden} = [draw=none]
+                \tikzstyle{edge} = [<->, very thick]
+                
+                \node[vertex](v1) at (0,5) {\textbf{Recognition}};
+                \node[vertex](v2) at (4,0) {\textbf{Procedural}};
+                \node[vertex](v3) at (-4,0) {\textbf{Distribution}};
+    
+                \draw[edge] (v1) -- (v2);
+                \draw[edge] (v2) -- (v3);
+                \draw[edge] (v1) -- (v3);
+    
+        \end{tikzpicture}
+        }
+        \caption{Three aspects of justice \cite{schlosberg_1_2007}.}
+        \label{fig:justice-framework}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Distributional}
+    \begin{columns}
+        \column[t]{3cm}
+        \begin{figure}
+            \centering
+            \resizebox{0.7\columnwidth}{!}{
+                \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+                    \tikzstyle{every node}=[font=\small]
+                    \tikzstyle{vertex} = [circle, draw=black, fill=trueilliniorange]
+                    \tikzstyle{unfocus} = [circle, draw=gray, fill=illiniorange]
+                    \tikzstyle{hidden} = [draw=none]
+                    \tikzstyle{edge} = [<->, very thick]
+                    
+                    \node[vertex](v3) at (0,2) {\textcolor{black}{\textbf{Distribution}}};
+                    \node[unfocus](v2) at (0,0) {\textcolor{gray}{\textbf{Procedural}}};
+                    \node[unfocus](v1) at (0,-2) {\textcolor{gray}{\textbf{Recognition}}};
+        
+            \end{tikzpicture}}
+        \end{figure}
+        \column[t]{7cm}
+        \begin{block}{Distributional Justice}
+            Related to the distribution of burdens and benefits.
+        \end{block}
+        \begin{block}{Normative Question}
+            What is the fairest way to distribute benefits and burdens?
+        \end{block}
+        \begin{block}{Examples of injustice}
+            \begin{itemize}
+                \item Dispossession of land and benefits \cite{yenneti_spatial_2016,sovacool_dispossessed_2021}. 
+                \item Poorer air quality around fossil fuel plants --- primarily located in poorer communities \cite{mohai_which_2015}.
+                \item Solar panel subsidies and installations benefitting wealthier communities \cite{reames_distributional_2020}.
+            \end{itemize}
+        \end{block}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Procedural}
+    \begin{columns}
+        \column[t]{3cm}
+        \begin{figure}
+            \centering
+            \resizebox{0.7\columnwidth}{!}{
+                \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+                    \tikzstyle{every node}=[font=\small]
+                    \tikzstyle{vertex} = [circle, draw=black, fill=trueilliniorange]
+                    \tikzstyle{unfocus} = [circle, draw=gray, fill=illiniorange]
+                    \tikzstyle{hidden} = [draw=none]
+                    \tikzstyle{edge} = [<->, very thick]
+                    
+                    \node[unfocus](v3) at (0,2) {\textcolor{gray}{\textbf{Distribution}}};
+                    \node[vertex](v2) at (0,0) {\textcolor{black}{\textbf{Procedural}}};
+                    \node[unfocus](v1) at (0,-2) {\textcolor{gray}{\textbf{Recognition}}};
+        
+            \end{tikzpicture}}
+        \end{figure}
+        \column[t]{7cm}
+        \begin{block}{Procedural Justice}
+            Related to decision-making processes --- method and inclusion.
+        \end{block}
+        \begin{block}{Normative Question}
+            What is the fairest way to make decisions affecting specific groups of people?
+        \end{block}
+        \begin{block}{Examples of injustice}
+            \begin{itemize}
+                \item Dismissal of testimony for its lack of technical expertise \cite{johnson_dakota_2021}. 
+                \item Lack of transparency in decision making (do energy system models make this more transparent or less?).
+            \end{itemize}
+        \end{block}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recognitional}
+    \begin{columns}
+        \column[t]{3cm}
+        \begin{figure}
+            \centering
+            \resizebox{0.7\columnwidth}{!}{
+                \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+                    \tikzstyle{every node}=[font=\small]
+                    \tikzstyle{vertex} = [circle, draw=black, fill=trueilliniorange]
+                    \tikzstyle{unfocus} = [circle, draw=gray, fill=illiniorange]
+                    \tikzstyle{hidden} = [draw=none]
+                    \tikzstyle{edge} = [<->, very thick]
+                    
+                    \node[unfocus](v3) at (0,2) {\textcolor{gray}{\textbf{Distribution}}};
+                    \node[unfocus](v2) at (0,0) {\textcolor{gray}{\textbf{Procedural}}};
+                    \node[vertex](v1) at (0,-2) {\textcolor{black}{\textbf{Recognition}}};
+        
+            \end{tikzpicture}}
+        \end{figure}
+        \column[t]{7cm}
+        \begin{block}{Recognitional Justice}
+            Related to social value of people or groups derived from relationships, laws, and cultural standing.
+        \end{block}
+        \begin{block}{Normative Question}
+            How much and in what ways should a person or group of people be valued?
+        \end{block}
+        \begin{block}{Examples of injustice}
+            \begin{itemize}
+                \item Energy policies that interfere with loving relationships (e.g., stress from energy insecurity).\cite{van_uffelen_revisiting_2022}
+                \item Lack of labor protections for workers.\cite{van_uffelen_revisiting_2022}
+                \item Exclusion from a policy process (how inclusive is energy modeling?).\cite{van_uffelen_revisiting_2022}
+            \end{itemize}
+        \end{block}
+    \end{columns}
+    
+\end{frame}
+
+% \begin{frame}
+%     \frametitle{What drives opposition? It's not NIMBY}
+
+%     \begin{enumerate}
+%         \item NIMBY is popularly understood to drive opposition.
+%         \item However, several case studies and larger surveys have demonstrated
+%         that this is not the case \cite{konisky_proximity_2021,aitken_why_2010}.
+%         \item Instead, perceptions of legitimacy in decision-making processes
+%         motivates this opposition
+%         \cite{firestone_public_2012-1,stokes_prevalence_2023,
+%         aitken_why_2010,walker_procedural_2017,liu_effects_2020}.
+%         \item Public testimony may be dismissed for being nontechnical casting
+%         doubt on legitimacy \cite{johnson_dakota_2021}.
+%     \end{enumerate}
+
+% \end{frame}
+
+\begin{frame}
+    \frametitle{How does modeling contribute to justice issues?}
+
+    \begin{block}{Question 2}
+        How does energy modeling contribute to this problem [of public opposition to energy projects]?    
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{How does modeling contribute to justice issues?}
+
+    \begin{block}{Question 2}
+        How does energy modeling contribute to \st{this problem [of public opposition to energy projects]}?
+        \hspace{2.5cm} violations of procedural/recognition justice?    
+    \end{block}
+\end{frame}
+
+
+% talk about how esoms currently work
+\subsection{Background: Energy system models}
+\begin{frame}
+    \frametitle{Energy System Optimization Models (ESOMs)}
+    
+    \begin{block}{Formulation}
+        ESOMs consist of:
+        \begin{itemize}
+            \item A set of decision variables
+            \item ``An economic objective'' \cite{hobbs_optimization_1995}
+            \item A set of constraints
+        \end{itemize}
+    \end{block}
+    \begin{block}{Solution method}
+        Linear programming (LP) / mixed-integer linear programming (MILP)
+    \end{block}
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Final Motivating Question}
+    \frametitle{Simple Example Linear Program}
+    
+    \begin{columns}
+        \column[t]{4cm}
+        \begin{block}{Decision variables}
+            Determine the mix of energy sources...
+            \begin{align}
+                \mathbf{X} = {\mathrm{x}_1, \mathrm{x}_2 \mid \mathrm{x} \in \mathbf{R}+}
+            \end{align}
+        \end{block}
+        \begin{block}{Objective}
+            ...that minimizes total cost...
+            \begin{align}
+                \mathrm{min}\left(\mathrm{c}_1\mathrm{x}_1 + \mathrm{c}_2\mathrm{x}_2\right)
+            \end{align}
+        \end{block}
+        \begin{block}{Constraint}
+            ...such that energy demand is always met.
+            \begin{align}
+                \mathrm{x}_1 + \mathrm{x}_2 = 1
+            \end{align}
+        \end{block}
+        \column[t]{6cm}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input{images/simple_esom_lp.pgf}}
+            \caption{Solving a simple linear program by inspection.}
+            \label{fig:simple-lp}
+        \end{figure}
+
+    \end{columns}
+
+\end{frame}
+
+\input{uncertainty/01-parametric01.tex}
+
+\begin{frame}
+    \frametitle{Considering Parametric Uncertainty in a Linear Program}
+    \begin{columns}
+        \column[t]{10cm}
+        \begin{figure}
+            \centering
+            \resizebox{0.75\columnwidth}{!}{\input{images/parametric_uc_lp.pgf}}
+            \caption{Solving a simple linear program by inspection.}
+            \label{fig:param-uc}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\input{uncertainty/02-structural01.tex}
+
+\input{tech-gaps/02-gap.tex}
+
+% \section{Methodology}
+\input{proposal/osier.tex}
+
+%
+\section{Motivation and Background II}
+\subsection{New Questions}
+\begin{frame}
+    \frametitle{New Questions}
 
     \begin{block}{Question 3}
+        If structural uncertainty is addressed by presenting mutliple solutions,
+        how should society choose among those alternatives?
+    \end{block}
+
+    \begin{block}{Question 4}
         How can members of the lay public adequately deliberate on issues
         perceived by experts as highly technical?
     \end{block}
 
 \end{frame}
+
+\subsection{Cognitive Myopia}
+\begin{frame}
+    \frametitle{What's still missing?}
+
+    Despite awareness of structural and parametric uncertainties modelers still don't address
+    \begin{itemize}
+        \item How parameter distributions are chosen?
+        \item Why are certain objectives chosen (why should an economic objective be \textit{assumed})?
+        \item What motivated the specified set of decision variables (why are technologies included/excluded)?
+        \item Why is the recommended solution preferred to nearby alternatives?
+    \end{itemize}
+
+    This alludes to another kind of uncertainty... 
+\end{frame}
+
+\input{uncertainty/03-normative01.tex}
+
+\subsection{Proposal}
+\input{tech-gaps/03-gap.tex}
+
+\section{Components II+III: Details}
+\subsection{Component II: How engineering relates to energy justice}
+\input{uncertainty/07-triarchic-uncertainty.tex}
+\subsection{Component III: Regional Case Study}
+\begin{frame}
+    \frametitle{Regional Case Study}
+
+    \textit{Someday, details will go here!}
+
+\end{frame}
+
+% \begin{itemize}
+%     \item Provides an illusion of objectivity that can be used to dismiss non-technical concerns.
+%     \item Even ``transparent'' models are opaque to public scrutiny.
+% \end{itemize}
+
 
 % \begin{frame} \frametitle{Enhanced Participation?}
 
