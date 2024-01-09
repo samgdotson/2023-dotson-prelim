@@ -14,7 +14,7 @@
 % \end{frame}
 \section{Component 1: Preliminary Results with \texttt{Osier}}
 \begin{frame}
-    \frametitle{\texttt{Osier}}
+    \frametitle{Open source multi-objective energy system framework (\texttt{Osier})}
     \begin{itemize}
         \item Hybrid methods: linear programming \& evolutionary algorithms
         \item Novel algorithm for high dimensional MGA
@@ -33,6 +33,9 @@
     \frametitle{Multi-objective Solutions}
     \begin{columns}
         \column[t]{4cm}
+        \begin{block}{}
+            Another way to generate alternatives...
+        \end{block}
         \begin{block}{Pareto Front}
             Creates a \boldorange{set of solutions} rather than a single optimum.
         \end{block}
@@ -68,7 +71,7 @@
             \column[t]{4cm}
             \centering
             \begin{figure}
-            \includegraphics[width=0.8\linewidth]{images/ea-flow.png}  
+            \includegraphics[width=0.75\linewidth]{images/ea-flow.png}  
             \end{figure}
         \end{columns}
     \end{block}
@@ -77,13 +80,6 @@
 \begin{frame}
     \frametitle{How \texttt{Osier} handles structural uncertainty}
 
-    % \begin{columns}
-        % \column[t]{4cm}
-        % \begin{enumerate}
-        %     \item \boldorange{Reduce} uncertainty by introducing more objectives.
-        %     \item \boldorange{}
-        % \end{enumerate}
-        % \column[t]{6cm}
         \begin{figure}
             \centering
             \resizebox{0.75\columnwidth}{!}{\input{images/near-optimal-pareto-pres.pgf}}
@@ -93,13 +89,8 @@
     % \end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}<0>
     \frametitle{How \texttt{Osier} handles structural uncertainty}
-
-    % \begin{columns}
-        % \column[t]{4cm}
-
-        % \column[t]{6cm}
         \begin{figure}
             \centering
             \resizebox{0.75\columnwidth}{!}{\input{images/near-optimal-pareto-mga-pres.pgf}}
@@ -111,13 +102,8 @@
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}<0>
     \frametitle{How \texttt{Osier} handles structural uncertainty}
-
-    % \begin{columns}
-        % \column[t]{4cm}
-
-        % \column[t]{6cm}
         \begin{figure}
             \centering
             \resizebox{0.75\columnwidth}{!}{\input{images/nd-mga-paretofront-pres.pgf}}
@@ -130,7 +116,6 @@
 
 
 \subsection{Preliminary Results}
-
 \begin{frame}
     \frametitle{Validating \texttt{Osier}}
 
@@ -143,20 +128,6 @@
     \end{figure}
 
 \end{frame}
-
-\begin{frame}
-    \frametitle{Near-optimal Space for Cost and Carbon Emissions}
-
-    \begin{figure}
-        \centering 
-        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
-        \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/osier_mga_subset_01.pgf}}
-        \caption{Sampling the near-optimal space for \texttt{Osier}'s Pareto front.}
-        \label{fig:osier-temoa-benchmark-1}
-    \end{figure}
-
-\end{frame}
-
 
 
 
@@ -187,14 +158,76 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Optimizing four objectives}
+    \frametitle{How \texttt{Osier} improves on ESOMs --- and its limits}
 
     \begin{figure}
-        \centering 
-        % \resizebox{0.75\columnwidth}{!}{\input{../docs/figures/results/temoa_osier_benchmark_01.pgf}}
-        \resizebox{0.9\columnwidth}{!}{\input{../docs/figures/4_obj_design_space_total_cost.pgf}}
-        \caption{The five lowest cost solutions. Darker shade corresponds to lower cost.}
-        \label{fig:4-obj-design-space-total-cost}
+        \centering
+        \resizebox{0.8\columnwidth}{!}{
+            \begin{tikzpicture}[nodes={text depth=0.25ex,text height=1.25ex distance=1.7cm}]
+                \tikzstyle{every node}=[font=\small]
+                \tikzstyle{vertex} = [circle, draw=black]
+                \tikzstyle{hidden} = [draw=none]
+                \tikzstyle{edge} = [<->, very thick]
+                
+                \node[vertex, fill=illiniblue](v1) at (0,5) {\textbf{Normative}};
+                \node[vertex, fill=blue2](v2) at (4,0) {\textbf{Structural}};
+                \node[vertex, fill=blue6](v3) at (-4,0) {\textbf{Parametric}};
+    
+                \draw[edge] (v1) -- (v2);
+                \draw[edge] (v2) -- (v3);
+                \draw[edge] (v1) -- (v3);
+    
+                % hidden nodes for v1
+                \node[hidden](h1) at (-0.75, 5) {};
+                \node[hidden](h2) at (0.75, 5) {};
+    
+                % hidden nodes for v2
+                \node[hidden](h3) at (4, 0.75) {};
+                \node[hidden](h4) at (4, -0.7) {};
+    
+                % hidden nodes for v3
+                \node[hidden](h5) at (-4, -0.7) {};
+                \node[hidden](h6) at (-4, 0.75) {};
+    
+                \draw[draw=none] (h4) -- (h5) node[anchor=mid, midway, sloped]{\textbf{Descriptive}};
+                \draw[draw=none] (h6) -- (h1) node[anchor=mid, midway, sloped]{\textbf{Pre-descriptive}};
+                \draw[draw=none] (h2) -- (h3) node[anchor=mid, midway, sloped]{\textbf{Prescriptive}};
+
+                % objectivity scale
+                \node[hidden](u1) at (-6,5) {\textbf{Epistemic}};
+                \node[hidden](u2) at (-6,0) {\textbf{Aleatory}};
+                \draw[edge] (u1) -- (u2);
+
+
+                % objectivity scale
+                \node[hidden](u1) at (6,5) {\textbf{Subjective}};
+                \node[hidden](u2) at (6,0) {\textbf{Objective}}; \draw[edge]
+                (u1) -- (u2);
+    
+    
+        \end{tikzpicture}
+        }
+        \caption{A summary of three uncertainties and their interactions.}
+        \label{fig:triarchic-uncertainty}
     \end{figure}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Future Work for \texttt{Osier}}
+
+    \begin{block}{Improvement 1}
+        Improve the MGA procedure to identify \textit{maximally different} solutions in the design space.
+        I.e., more efficient search.
+    \end{block}
+    \begin{block}{Avenue 2}
+        This improvement could be unlocked with a greedy, farthest-first-traversal algorithm.
+    \end{block}
+    \begin{block}{Improvement 2}
+        Take advantage of evolutionary algorithms' parralelizability.
+    \end{block}
+    \begin{block}{Avenue 2}
+        Consider a method besides linear programming for energy dispatch (e.g., hierarchical dispatch) \cite{prina_multi-objective_2020}.
+    \end{block}
 
 \end{frame}
