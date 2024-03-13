@@ -1,5 +1,6 @@
 % For copyright and license information, see uiucthesis2021.dtx and derivatives.
-\documentclass{uiucthesis2021}
+% \documentclass{uiucthesis2021}
+\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{csquotes}
@@ -19,8 +20,8 @@
 \usepackage{lipsum}  % just for placeholder code
 
 % \usepackage[acronym,toc]{glossaries}
-\setcounter{tocdepth}{2}
-\usepackage[printonlyused,withpage]{acronym}
+% \setcounter{tocdepth}{2}
+\usepackage[nolist]{acronym}
 % \include{acros}
 
 \usepackage{float}
@@ -100,21 +101,21 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 
 \begin{document}
 
-\title{Towards a Holistic Integration of Energy Justice and Energy System Engineering}
-\author{Samuel G. Dotson}
-\department{Nuclear, Plasma, and Radiological Engineering}
+% \title{Towards a Holistic Integration of Energy Justice and Energy System Engineering}
+% \author{Samuel G. Dotson}
+% \department{Nuclear, Plasma, and Radiological Engineering}
 % \concentration{}
-\phdthesis
-\degreeyear{2024}
-\committee{
-    Research Scientist Madicken Munk, Chair\\
-    Professor James F. Stubbins\\
-    Professor Clifford Singer\\
-    Assistant Professor McKenzie F. Johnson\\
-    Research Scientist, Denia Djoki\'c}
-\maketitle
+% \phdthesis
+% \degreeyear{2024}
+% \committee{
+%     Research Scientist Madicken Munk, Chair\\
+%     Professor James F. Stubbins\\
+%     Professor Clifford Singer\\
+%     Assistant Professor McKenzie F. Johnson\\
+%     Research Scientist, Denia Djoki\'c}
+% \maketitle
 
-\frontmatter
+% \frontmatter
 
 % \begin{abstract}
 % This is a comprehensive study of caffeine consumption by graduate
@@ -145,39 +146,38 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 % \end{itemize}
 % \end{acknowledgments}
 
-{
-    \hypersetup{linkcolor=black}  % disable link coloring locally
-    \tableofcontents
-    % the Graduate College doesn't recommend including lot or lof
-    % \listoftables
-    % \listoffigures
-}
+% {
+%     \hypersetup{linkcolor=black}  % disable link coloring locally
+%     \tableofcontents
+%     % the Graduate College doesn't recommend including lot or lof
+%     % \listoftables
+%     % \listoffigures
+% }
 
 % \listoftables
 % \listoffigures
 
-\chapter{List of Abbreviations}
+% \chapter{List of Abbreviations}
 
 \begin{acronym}
-\input{acros}
+    \input{acros}
 \end{acronym}
-
 % \chapter{List of Symbols}
 
 % \begin{symbollist}[0.7in]
 % \item[$\tau$] Time taken to drink one cup of coffee.
 % \item[$\mu$g] Micrograms (of caffeine, generally).
 % \end{symbollist}
-\acresetall
-\mainmatter
+% \acresetall
+% \mainmatter
 
-\chapter{Motivation and Introduction}
+\section{Motivation and Introduction}
 % input individual chapters files
 \input{1-introduction}
 
 \input{2-literature/20-literature}
-\input{3-methods/30-methods}
-\input{4-benchmark-results/40-benchmark}
+% \input{3-methods/30-methods}
+% \input{4-benchmark-results/40-benchmark}
 \input{5-proposal/50-outline}
 
 % \chapter{Conclusions}
@@ -187,7 +187,7 @@ text width=22em, text centered, rounded corners, minimum height=3em]
 % per Graduate College preference, place the \appendix and the appendices content before the
 % bibliography (here) only if the appendices contain references.
 
-\backmatter
+% \backmatter
 
 \printbibliography[heading=bibintoc,title={References}]
 
